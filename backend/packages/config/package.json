@@ -1,0 +1,8 @@
+{
+  "name": "@commons-network/config",
+  "version": "2.3.0",
+  "private": true,
+  "description": "Central release metadata and environment validation for COMMONS.",
+  "main": "index.js",
+  "engines": { "node": ">=20" }
+}

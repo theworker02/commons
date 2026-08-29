@@ -1,0 +1,21 @@
+# ClusterIP: the ingress or load balancer in front of this service is what
+# agents connect to. Change the type only if you are exposing the service
+# directly without an ingress.
+apiVersion: v1
+kind: Service
+metadata:
+  name: commons
+  namespace: commons
+  labels:
+    app.kubernetes.io/name: commons
+    app.kubernetes.io/component: api
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: commons
+    app.kubernetes.io/component: api

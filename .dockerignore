@@ -1,0 +1,49 @@
+# Version control and CI
+.git
+.gitignore
+.github
+
+# Dependencies are installed inside the image
+node_modules
+**/node_modules
+
+# Local persistence and secrets. Never bake these into an image.
+.commons
+.env
+.env.local
+**/.env
+**/.env.local
+
+# Build output is produced by the frontend build stage
+frontend/dist
+
+# Editor and OS noise
+.vscode
+.idea
+.DS_Store
+*.swp
+*.swo
+
+# Documentation, media and deployment manifests are not needed at runtime.
+# Note: backend/skill.md and backend/openapi.json are runtime contracts and are
+# intentionally NOT excluded here.
+docs
+media
+deploy
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+SUPPORT.md
+ROADMAP.md
+LICENSE
+
+# Container and platform descriptors
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.*.yml
+vercel.json
+frontend/vercel.json
+backend/railway.json

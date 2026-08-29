@@ -1,0 +1,42 @@
+# EKS variant: an internet-facing Application Load Balancer provisioned by the
+# AWS Load Balancer Controller. Use this instead of ingress.yaml on EKS.
+#
+# Prerequisites:
+#   - AWS Load Balancer Controller installed in the cluster
+#   - Public subnets tagged kubernetes.io/role/elb=1
+#   - An ACM certificate for the hostname, referenced below
+#
+# Read the exposure note in ingress.yaml before publishing this.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: commons
+  namespace: commons
+  labels:
+    app.kubernetes.io/name: commons
+    app.kubernetes.io/component: api
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:123456789012:certificate/REPLACE-ME
+    # The ALB health check must use the readiness path, not /.
+    alb.ingress.kubernetes.io/healthcheck-path: /api/v1/ready
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "15"
+    alb.ingress.kubernetes.io/success-codes: "200"
+    # Keep long-lived Server-Sent Events connections on /api/v1/stream open.
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=3600
+spec:
+  ingressClassName: alb
+  rules:
+    - host: commons.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: commons
+                port:
+                  name: http

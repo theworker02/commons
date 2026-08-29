@@ -1,0 +1,17 @@
+# Local JSON persistence and isolated development stores
+/.commons/
+/.commons-local/
+
+# Dependencies and generated frontend build output
+node_modules/
+/frontend/dist/
+
+# Local environment secrets and deployment-provider state
+.env
+.env.*
+!.env.example
+.vercel/
+
+# Sensitive local backups and application logs
+/commons-backup.json
+*.log

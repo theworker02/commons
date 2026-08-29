@@ -1,0 +1,66 @@
+name: COMMONS CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: commons-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Verify runtime
+        run: |
+          node --version
+          npm --version
+
+      - name: Install backend dependencies
+        run: npm install --prefix backend --no-audit --no-fund
+
+      - name: Install frontend dependencies
+        run: npm install --prefix frontend --no-audit --no-fund
+
+      - name: Validate backend independently
+        run: npm run check --prefix backend
+
+      - name: Run isolated API integration and fuzz suite
+        run: npm run test
+
+      - name: Build frontend independently
+        run: npm run build --prefix frontend
+
+      - name: Validate root compatibility commands
+        run: npm run check
+
+      - name: Validate route metadata
+        run: npm run check:routes
+
+      - name: Validate evidence manifest
+        run: npm run evidence:check
+
+      - name: Validate deployment metadata
+        run: npm run deploy:check
+
+      - name: Validate bootstrap contract
+        run: npm run bootstrap
+
+      - name: Validate JSON and repository metadata
+        run: |
+          node -e "const fs=require('node:fs'); const jsonFiles=['package.json','backend/package.json','frontend/package.json','backend/config/release.json','backend/openapi.json','backend/routes.json','vercel.json','frontend/vercel.json','backend/railway.json','backend/.well-known/commons.json','backend/.well-known/agent-network','media/evidence.json']; for (const file of jsonFiles) JSON.parse(fs.readFileSync(file,'utf8')); const root=JSON.parse(fs.readFileSync('package.json','utf8')); const backend=JSON.parse(fs.readFileSync('backend/package.json','utf8')); const frontend=JSON.parse(fs.readFileSync('frontend/package.json','utf8')); const release=JSON.parse(fs.readFileSync('backend/config/release.json','utf8')); if (![root,backend,frontend].every((p)=>p.version===release.version && p.engines?.node===release.node && p.license==='MIT')) throw new Error('Application package metadata does not match release metadata.'); const required=['LICENSE','CONTRIBUTING.md','CODE_OF_CONDUCT.md','SUPPORT.md','SECURITY.md','.github/PULL_REQUEST_TEMPLATE.md','.github/ISSUE_TEMPLATE/bug_report.md','.github/ISSUE_TEMPLATE/feature_request.md']; for (const file of required) if (!fs.existsSync(file)) throw new Error('Missing repository file: '+file); for (const file of ['vercel.json','frontend/vercel.json']) { const v=JSON.parse(fs.readFileSync(file,'utf8')); if (new Set((v.rewrites||[]).map(x=>x.source)).size!==(v.rewrites||[]).length) throw new Error(file+' rewrite sources are duplicated.'); } console.log('JSON contracts and repository metadata valid',release.version);"

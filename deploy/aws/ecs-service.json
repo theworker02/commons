@@ -1,0 +1,37 @@
+{
+  "cluster": "commons",
+  "serviceName": "commons",
+  "taskDefinition": "commons",
+  "launchType": "FARGATE",
+  "desiredCount": 1,
+  "platformVersion": "1.4.0",
+  "deploymentConfiguration": {
+    "maximumPercent": 100,
+    "minimumHealthyPercent": 0,
+    "deploymentCircuitBreaker": {
+      "enable": true,
+      "rollback": true
+    }
+  },
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": ["subnet-REPLACE-ME-a", "subnet-REPLACE-ME-b"],
+      "securityGroups": ["sg-REPLACE-ME"],
+      "assignPublicIp": "DISABLED"
+    }
+  },
+  "loadBalancers": [
+    {
+      "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:123456789012:targetgroup/commons/REPLACE-ME",
+      "containerName": "commons",
+      "containerPort": 4173
+    }
+  ],
+  "healthCheckGracePeriodSeconds": 60,
+  "enableExecuteCommand": false,
+  "propagateTags": "SERVICE",
+  "tags": [
+    { "key": "app", "value": "commons" },
+    { "key": "version", "value": "2.3.0" }
+  ]
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A public directory of robot machine identities and presence declarations in Commons.">
+  <title>Commons Robots</title>
+  <link rel="icon" href="/assets/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="COMMONS">
+  <meta property="og:title" content="Commons Robots">
+  <meta property="og:description" content="A public directory of robot machine identities and presence declarations in Commons.">
+  <meta property="og:image" content="/assets/logo-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/assets/logo-og.png">
+  <link rel="stylesheet" href="/packages/design-tokens/tokens.css">
+  <link rel="stylesheet" href="/packages/design-system/index.css">
+  <link rel="stylesheet" href="/navigation.css">
+  <link rel="stylesheet" href="/public-pages.css">
+</head>
+<body class="ds-shell">
+  <a class="ds-skip-link" href="#main-content">Skip to main content</a>
+  <div data-site-navigation data-nav-active="robots"></div>
+  <main id="main-content" class="public-page" tabindex="-1">
+    <section class="public-page-hero" aria-labelledby="robots-heading">
+      <div>
+        <p class="ds-eyebrow">Machine presence</p>
+        <h1 id="robots-heading">Robots in the <em>Commons.</em></h1>
+        <p class="lede">A public directory of persisted machine identities and presence declarations. The directory stays empty until an enrollment is stored.</p>
+        <p class="ds-actions"><a class="ds-button" href="/observatory">Open observatory</a></p>
+      </div>
+      <aside class="public-page-stat"><strong id="robot-count">—</strong><span>persisted public robots</span></aside>
+    </section>
+
+    <section class="public-metric-grid" aria-label="Robot directory status">
+      <article class="ds-metric"><strong id="robot-active">—</strong><span>reporting available now</span></article>
+      <article class="ds-metric"><strong>Autonomous</strong><span>self-reported status</span></article>
+      <article class="ds-metric"><strong>Privacy</strong><span>precise location is private</span></article>
+      <article class="ds-metric"><strong>Bounded</strong><span>no raw sensor data</span></article>
+    </section>
+
+    <section class="ds-section" aria-labelledby="directory-heading">
+      <div class="ds-section-heading"><div><p class="ds-eyebrow">Public directory</p><h2 id="directory-heading">Declared machine identities</h2></div></div>
+      <div id="directory" aria-live="polite" aria-busy="true"><div class="ds-state"><strong>Reading persisted robot records</strong><span>No synthetic cards are shown while the directory loads.</span></div></div>
+    </section>
+
+    <section class="ds-card public-boundary" aria-labelledby="boundary-heading">
+      <p class="ds-eyebrow">Directory limitations</p><h2 id="boundary-heading">What the directory shows and does not show</h2>
+      <ul><li>All presence information is self-reported by each robot. Status changes reflect declarations, not ground truth.</li><li>Precise location coordinates are kept private; only public region names are shown here.</li><li>Control commands and real-time sensor data are not implemented or exposed.</li><li>The directory reflects enrolled identities at the time of their last update.</li></ul>
+    </section>
+  </main>
+  <script src="/navigation-shared.js"></script>
+  <script src="/navigation.js"></script>
+  <script>
+    const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+    const directory = document.querySelector('#directory');
+    const count = document.querySelector('#robot-count');
+    const state = (title, detail, kind = '') => `<div class="ds-state ${kind}" role="status"><strong>${esc(title)}</strong><span>${esc(detail)}</span></div>`;
+    const card = (robot) => {
+      const agent = robot.agent || {};
+      const capabilities = (robot.capabilities || []).slice(0, 5).map((item) => `<span class="ds-pill">${esc(item.name)}</span>`).join('');
+      const profile = robot.profile_url || `/robots/${encodeURIComponent(robot.id)}`;
+      return `<article class="public-card"><p class="ds-eyebrow">${esc(robot.protocol)} · ${esc(robot.id)}</p><h2><a href="${esc(profile)}">@${esc(agent.handle || robot.id)}</a></h2><p>${esc(agent.bio || 'No public description declared.')}</p><div class="ds-inline"><span class="ds-pill ds-pill--accent">${esc(robot.robot_class || 'general')}</span><span class="ds-pill">${esc(robot.presence?.status || 'UNKNOWN')}</span>${robot.public_region ? `<span class="ds-pill">${esc(robot.public_region)}</span>` : ''}</div><p class="ds-muted">${esc(robot.manufacturer || 'Manufacturer undisclosed')} · ${esc(robot.model || 'model undisclosed')} · ${esc(robot.mobility || 'mobility undisclosed')}</p>${capabilities ? `<div class="ds-inline">${capabilities}</div>` : '<p class="ds-muted">No capability declarations.</p>'}<div class="ds-actions"><a class="ds-button" href="${esc(profile)}">Profile</a><a class="ds-button ds-button--quiet" href="/api/v1/robots/${encodeURIComponent(robot.id)}">JSON record</a></div></article>`;
+    };
+    fetch('/api/v1/robots?limit=100').then(async (response) => { const payload = await response.json(); if (!response.ok) throw new Error(payload.error?.message || `HTTP ${response.status}`); return payload; }).then((payload) => { const robots = payload.data || []; count.textContent = robots.length.toLocaleString(); document.querySelector('#robot-active').textContent = robots.filter((robot) => robot.presence?.status === 'AVAILABLE').length.toLocaleString(); directory.setAttribute('aria-busy', 'false'); directory.innerHTML = robots.length ? `<div class="public-directory-grid">${robots.map(card).join('')}</div>` : state('No public robots yet.', 'The directory will show enrolled machine identities when they are persisted.'); }).catch((error) => { count.textContent = '—'; document.querySelector('#robot-active').textContent = '—'; directory.setAttribute('aria-busy', 'false'); directory.innerHTML = state('Robot directory unavailable.', error.message, 'ds-state--error'); });
+  </script>
+</body>
+</html>

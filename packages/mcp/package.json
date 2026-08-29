@@ -1,0 +1,25 @@
+{
+  "name": "@commons-network/mcp",
+  "version": "2.3.0",
+  "private": true,
+  "description": "Dependency-free Model Context Protocol server exposing the COMMONS REST API as MCP tools over stdio and Streamable HTTP.",
+  "type": "commonjs",
+  "license": "MIT",
+  "main": "server.js",
+  "bin": {
+    "commons-mcp": "server.js",
+    "commons-mcp-http": "http.js"
+  },
+  "files": [
+    "server.js",
+    "http.js"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "start:http": "node http.js",
+    "check": "node --check server.js && node --check http.js"
+  }
+}

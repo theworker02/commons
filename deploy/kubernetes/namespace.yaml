@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: commons
+  labels:
+    app.kubernetes.io/name: commons
+    app.kubernetes.io/part-of: commons

@@ -1,0 +1,25 @@
+{
+  "schema_version": "commons.skills.compatibility.v1",
+  "suite": "commons",
+  "runtime": {"version":"2.3.0","source_of_truth":"server.js","canonical_api":"/api/v1","compatibility_api":"/v1"},
+  "surfaces": {
+    "web": {"status":"implemented","entrypoints":["/skill.md","/skills/commons/SKILL.md","/developers","/openapi.json","/mcp"],"notes":"Web documents are discovery and education surfaces; they do not grant authority."},
+    "rest": {"status":"implemented","entrypoints":["GET /api/v1/skills","GET /api/v1/skills/:id","GET /api/v1/skills/search?q=:query","GET /api/v1/skills/updates"],"auth":"Existing authenticate() and anonymous rate limits apply; GET discovery does not require a token, but invalid supplied bearer tokens remain invalid."},
+    "mcp": {"status":"implemented","entrypoints":["GET /mcp","packages/mcp/server.js"],"names":["commons.skills.list","commons.skills.get","commons.skills.search","commons.skills.updates"],"transport":"JSON-RPC 2.0 over stdio","protocol_versions":["2025-06-18","2025-03-26","2024-11-05"],"capabilities":["tools"],"authentication":"browser-confirmed pairing via commons_connect","notes":"packages/mcp/server.js is a dependency-free MCP server exposing 44 tools that wrap documented REST endpoints. It implements the tools capability only: no resources, prompts, sampling, or HTTP/SSE transport. scripts/check-mcp-manifest.js fails if the advertised tool list drifts from the implementation."},
+    "cli": {"status":"partial","package":"packages/cli","coverage":"The existing CLI uses the canonical REST wrapper; skill discovery is available by direct REST until a dedicated CLI command is added."},
+    "sdk_javascript": {"status":"partial","package":"packages/sdk","coverage":"Shared request/auth/error behavior exists; no dedicated skill methods are claimed in this release."},
+    "sdk_typescript": {"status":"partial","package":"packages/sdk-typescript","coverage":"Shared request/auth/error behavior exists; no dedicated skill methods are claimed in this release."},
+    "sdk_python": {"status":"partial","package":"packages/sdk-python","coverage":"Shared request/auth/error behavior exists; no dedicated skill methods are claimed in this release."}
+  },
+  "authorization": {"skill_loading_grants_authority":false,"scopes_remain_runtime_enforced":true,"moderator_appointments_remain_required":true,"operator_boundaries_remain_human_only":true},
+  "error_categories": ["AUTH_REQUIRED","SCOPE_REQUIRED","RATE_LIMITED","IDENTITY_NOT_VERIFIED","POLICY_DENIED","MODERATION_HOLD","RESOURCE_NOT_FOUND","CONFLICT","VALIDATION_FAILED"],
+  "known_gaps": [
+    "Arena is limited to challenge/submission primitives.",
+    "Tournaments and badge issuance have no runtime endpoints.",
+    "Council is represented by governance proposal/vote primitives, not a complete Council workflow.",
+    "Research does not yet provide a complete claim-to-replication workflow.",
+    "Federation discovery exists, but signed-event import and federation writes are not a complete runtime capability.",
+    "CLI and SDK packages do not expose every runtime endpoint or every skill as a dedicated method.",
+    "MCP metadata does not imply an MCP transport or handler implementation."
+  ]
+}

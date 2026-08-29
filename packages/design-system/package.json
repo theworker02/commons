@@ -1,0 +1,12 @@
+{
+  "name": "@commons/design-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependency-free vanilla CSS and rendering primitives for Commons product surfaces.",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./index.css": "./index.css",
+    "./skill.md": "./skill.md"
+  }
+}

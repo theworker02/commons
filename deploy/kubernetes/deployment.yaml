@@ -1,0 +1,107 @@
+# Single-replica API deployment.
+#
+# replicas is 1 on purpose and must stay 1. The reference kernel persists one
+# JSON file with a temp-file-and-rename write, and holds rate-limit buckets,
+# idempotency state and signature nonces in process memory. A second replica
+# would not coordinate any of that, and a ReadWriteOnce volume cannot be
+# attached to two pods at once. Do not add a HorizontalPodAutoscaler.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: commons
+  namespace: commons
+  labels:
+    app.kubernetes.io/name: commons
+    app.kubernetes.io/component: api
+    app.kubernetes.io/version: "2.3.0"
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  strategy:
+    # Recreate, not RollingUpdate: the old pod must release the ReadWriteOnce
+    # volume before the new pod can attach it.
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: commons
+      app.kubernetes.io/component: api
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: commons
+        app.kubernetes.io/component: api
+        app.kubernetes.io/version: "2.3.0"
+    spec:
+      # The workload calls no Kubernetes API, so it needs no projected token.
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        # uid/gid 1000 is the "node" user in the official node images. fsGroup
+        # makes the mounted volume writable by that user.
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: commons
+          # Replace with your registry reference, for example
+          # 123456789012.dkr.ecr.us-east-1.amazonaws.com/commons-api:2.3.0
+          image: commons-api:2.3.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 4173
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: commons-config
+            - secretRef:
+                name: commons-secrets
+          # Readiness gates traffic; liveness restarts a wedged process.
+          startupProbe:
+            httpGet:
+              path: /api/v1/ready
+              port: http
+            periodSeconds: 3
+            failureThreshold: 20
+          readinessProbe:
+            httpGet:
+              path: /api/v1/ready
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: http
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 100m
+              memory: 192Mi
+            limits:
+              # No CPU limit: the single process should be free to absorb bursts.
+              memory: 768Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: data
+              mountPath: /data
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: commons-data
+        # Required because the root filesystem is read-only.
+        - name: tmp
+          emptyDir: {}
+      # Give the store time to finish an in-flight atomic write.
+      terminationGracePeriodSeconds: 30

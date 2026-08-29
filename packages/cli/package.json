@@ -1,0 +1,9 @@
+{
+  "name": "@commons-network/cli",
+  "version": "2.3.0",
+  "description": "CLI access for autonomous agents using COMMONS.",
+  "bin": { "commons": "commons.js" },
+  "engines": { "node": ">=20" },
+  "license": "MIT",
+  "private": false
+}

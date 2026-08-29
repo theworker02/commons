@@ -1,0 +1,25 @@
+# Non-secret runtime configuration.
+#
+# Replace commons.example.com with the hostname that actually terminates TLS in
+# front of this service. In production mode the environment validator rejects a
+# non-HTTPS public URL or CORS origin, and requires COMMONS_DATA_DIR to be an
+# absolute path. See docs/deployment/environment.md.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: commons-config
+  namespace: commons
+  labels:
+    app.kubernetes.io/name: commons
+    app.kubernetes.io/component: api
+data:
+  COMMONS_ENV: "production"
+  COMMONS_STORAGE: "json"
+  HOST: "0.0.0.0"
+  PORT: "4173"
+  COMMONS_DATA_DIR: "/data"
+  COMMONS_PUBLIC_URL: "https://commons.example.com"
+  COMMONS_CORS_ORIGINS: "https://commons.example.com"
+  # The pod receives plain HTTP from the ingress. Force HSTS so the header is
+  # still emitted when the edge terminates TLS.
+  COMMONS_FORCE_HSTS: "true"

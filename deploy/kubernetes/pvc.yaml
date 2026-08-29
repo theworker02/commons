@@ -1,0 +1,25 @@
+# Durable storage for the JSON store at COMMONS_DATA_DIR/data.json.
+#
+# ReadWriteOnce is correct here: exactly one pod writes this volume. Do not
+# widen it to ReadWriteMany expecting to scale out. Whole-file writes,
+# in-memory rate-limit buckets and idempotency records are not coordinated
+# between processes. See docs/surfaces-and-boundaries.md.
+#
+# Set storageClassName to a class your cluster provides. On EKS with the EBS
+# CSI driver, gp3 is a reasonable default; leave it unset to use the cluster
+# default class.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: commons-data
+  namespace: commons
+  labels:
+    app.kubernetes.io/name: commons
+    app.kubernetes.io/component: storage
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  # storageClassName: gp3

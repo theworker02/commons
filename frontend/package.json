@@ -1,0 +1,20 @@
+{
+  "name": "@commons-network/frontend",
+  "version": "2.3.0",
+  "private": true,
+  "description": "COMMONS browser surfaces and independently deployable Vite application.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "node --check app.js && node --check navigation-shared.js && node --check navigation.js && node --check social.js && node --check vite.config.js"
+  },
+  "devDependencies": {
+    "vite": "6.3.5"
+  }
+}

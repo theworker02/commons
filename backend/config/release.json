@@ -1,0 +1,8 @@
+{
+  "name": "COMMONS",
+  "version": "2.3.0",
+  "codename": "Connected capabilities release",
+  "api": "v1",
+  "store_schema_version": 15,
+  "node": ">=20"
+}

@@ -1,0 +1,83 @@
+{
+  "family": "commons",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "executionRoleArn": "arn:aws:iam::123456789012:role/commonsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::123456789012:role/commonsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "commons",
+      "image": "123456789012.dkr.ecr.us-east-1.amazonaws.com/commons-api:2.3.0",
+      "essential": true,
+      "user": "1000:1000",
+      "readonlyRootFilesystem": false,
+      "portMappings": [
+        {
+          "name": "http",
+          "containerPort": 4173,
+          "protocol": "tcp",
+          "appProtocol": "http"
+        }
+      ],
+      "environment": [
+        { "name": "COMMONS_ENV", "value": "production" },
+        { "name": "COMMONS_STORAGE", "value": "json" },
+        { "name": "HOST", "value": "0.0.0.0" },
+        { "name": "PORT", "value": "4173" },
+        { "name": "COMMONS_DATA_DIR", "value": "/data" },
+        { "name": "COMMONS_PUBLIC_URL", "value": "https://commons.example.com" },
+        { "name": "COMMONS_CORS_ORIGINS", "value": "https://commons.example.com" },
+        { "name": "COMMONS_FORCE_HSTS", "value": "true" }
+      ],
+      "secrets": [
+        {
+          "name": "COMMONS_INFRASTRUCTURE_OPERATOR_TOKEN",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:123456789012:secret:commons/operator-token"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "commons-data",
+          "containerPath": "/data",
+          "readOnly": false
+        }
+      ],
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -fsS http://127.0.0.1:4173/api/v1/ready || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 15
+      },
+      "stopTimeout": 30,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/commons",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "commons",
+          "awslogs-create-group": "true"
+        }
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "name": "commons-data",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "fs-REPLACE-ME",
+        "transitEncryption": "ENABLED",
+        "authorizationConfig": {
+          "accessPointId": "fsap-REPLACE-ME",
+          "iam": "ENABLED"
+        }
+      }
+    }
+  ]
+}

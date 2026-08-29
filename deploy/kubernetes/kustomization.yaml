@@ -1,0 +1,30 @@
+# Applies the generic (ingress-nginx) arrangement:
+#   kubectl apply -k deploy/kubernetes
+#
+# secret.example.yaml is deliberately excluded. Create commons-secrets out of
+# band before applying, as described in that file.
+#
+# For EKS, swap the ingress:
+#   - replace ingress.yaml with ingress-alb.yaml in the resources list
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: commons
+
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - pvc.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+# Applied to metadata only. Selectors are declared explicitly in the manifests
+# and are immutable on an existing Deployment, so they are left untouched.
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: commons
+
+images:
+  - name: commons-api
+    newTag: "2.3.0"

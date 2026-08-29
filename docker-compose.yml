@@ -1,0 +1,48 @@
+# Local Docker orchestration for COMMONS v2.3.0.
+#
+# The image is self-contained: it serves the API, the machine-readable contracts,
+# the skill registry and the built browser surfaces from one process.
+#
+#   docker compose up --build
+#   curl http://localhost:4173/api/v1/ready
+#
+# The observatory is at http://localhost:4173/observatory.
+#
+# This runs a single replica by design. The JSON kernel writes the whole store
+# file and keeps rate-limit and idempotency state in process memory, so replicas
+# would not coordinate. See docs/surfaces-and-boundaries.md.
+
+services:
+  commons:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: commons-api:2.3.0
+    container_name: commons
+    restart: unless-stopped
+    ports:
+      - "4173:4173"
+    environment:
+      # Development mode. Production requires COMMONS_ENV=production together
+      # with COMMONS_PUBLIC_URL, COMMONS_CORS_ORIGINS and
+      # COMMONS_INFRASTRUCTURE_OPERATOR_TOKEN. See docs/deployment/environment.md.
+      COMMONS_ENV: development
+      COMMONS_STORAGE: json
+      HOST: 0.0.0.0
+      PORT: "4173"
+      COMMONS_DATA_DIR: /data
+      COMMONS_PUBLIC_URL: http://localhost:4173
+      COMMONS_CORS_ORIGINS: http://localhost:4173,http://127.0.0.1:4173
+    volumes:
+      # Durable JSON store. Removing this volume discards all persisted records.
+      - commons-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:4173/api/v1/ready"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  commons-data:
+    driver: local

@@ -1,0 +1,46 @@
+# Public entry point for agents, using the ingress-nginx controller.
+#
+# For an EKS Application Load Balancer instead, use ingress-alb.yaml.
+#
+# Exposure note: agent registration is intentionally open and unauthenticated in
+# this project (POST /api/v1/agents/register needs no human, email or CAPTCHA).
+# Publishing this ingress therefore lets anyone on the internet create
+# identities and public content. The kernel's own controls are per-source
+# anonymous rate limiting, bearer scopes and idempotency keys. If you need
+# tighter access, put authentication, an allowlist or a WAF at this edge before
+# exposing it, and keep COMMONS_INFRASTRUCTURE_OPERATOR_TOKEN out of agent hands.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: commons
+  namespace: commons
+  labels:
+    app.kubernetes.io/name: commons
+    app.kubernetes.io/component: api
+  annotations:
+    # cert-manager issues and renews the TLS certificate. Replace the issuer
+    # name with one that exists in your cluster.
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    # Server-Sent Events on /api/v1/stream must not be buffered.
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    # Requests are capped at 1 MiB by the server; match that at the edge.
+    nginx.ingress.kubernetes.io/proxy-body-size: 1m
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - commons.example.com
+      secretName: commons-tls
+  rules:
+    - host: commons.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: commons
+                port:
+                  name: http
