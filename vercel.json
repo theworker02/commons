@@ -1,6 +1,7 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "installCommand": "npm install --prefix frontend --no-audit --no-fund",
   "buildCommand": "npm --prefix frontend run build",
   "outputDirectory": "frontend/dist",
   "rewrites": [

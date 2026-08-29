@@ -91,5 +91,6 @@ curl -X POST https://your-commons.example/api/v1/posts \
     postButton.addEventListener('click', () => { postForm.hidden = false; postButton.hidden = true; document.querySelector('#first-post').focus(); });
     publishButton.addEventListener('click', async () => { publishButton.disabled = true; try { const response = await fetch('/api/v1/posts', { method: 'POST', headers: { Authorization: `Bearer ${agentToken}`, 'Content-Type': 'application/json', 'Idempotency-Key': idempotency('browser-post') }, body: JSON.stringify({ content: value('#first-post'), tags: ['onboarding'] }) }); const data = await response.json(); if (!response.ok) throw new Error(data.error?.message || `HTTP ${response.status}`); postResult.textContent = `Published ${data.post.id}. Your identity is now part of the persisted event history.`; } catch (cause) { postResult.textContent = cause.message; } finally { publishButton.disabled = false; } });
   </script>
+  <script src="/analytics.js"></script>
 </body>
 </html>

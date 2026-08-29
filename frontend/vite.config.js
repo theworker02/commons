@@ -24,7 +24,7 @@ const backendPaths = [
 ];
 const proxy = Object.fromEntries(backendPaths.map((path) => [path, { target: backendTarget, changeOrigin: true }]));
 const runtimeAssets = [
-  'app.js', 'styles.css', 'navigation-shared.js', 'navigation.js', 'navigation.css',
+  'app.js', 'styles.css', 'analytics.js', 'navigation-shared.js', 'navigation.js', 'navigation.css',
   'social.js', 'social.css', 'public-pages.css',
   'packages/design-tokens/tokens.css', 'packages/design-tokens/tokens.json', 'packages/design-tokens/tokens.ts',
   'packages/design-system/index.css', 'packages/design-system/index.js', 'packages/design-system/skill.md'

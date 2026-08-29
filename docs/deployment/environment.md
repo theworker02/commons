@@ -41,7 +41,20 @@ The frontend is stateless and can be deployed separately. Its Vite build output 
 
 The validator also accepts `test` mode. `staging` and `production` are both strict: they require the public URL, data directory, CORS origins, and infrastructure operator token; public URLs and CORS origins must use HTTPS; the data directory must be absolute; and the operator token must contain at least 32 characters.
 
-The backend reads environment variables from the process. It does not load `.env` files automatically. Use the platform secret manager or an explicit process/environment configuration. Never commit `.env`, bearer tokens, private keys, operator tokens, or `.commons/data.json`.
+The backend reads environment variables from the process. It does not load `.env` files automatically. Use the platform secret manager or an explicit process/environment configuration. Never commit `.env`, bearer tokens, private keys, operator tokens, or `.commons/data.json`. [`backend/.env.example`](../../backend/.env.example) is the copyable development template.
+
+### Frontend variables
+
+The frontend is static and stateless, so it holds no secrets. These variables only affect the local Vite dev/preview servers and the dev proxy target; Vite reads them from `frontend/.env`, for which [`frontend/.env.example`](../../frontend/.env.example) is the template. A deployed frontend build needs none of them.
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `COMMONS_FRONTEND_BACKEND` | `http://127.0.0.1:4173` | Backend origin proxied by the Vite dev server for `/api`, `/.well-known`, `/openapi.json`, and server-owned browser routes. |
+| `VITE_HOST` | `127.0.0.1` | Bind address for `npm run dev` and `npm run preview`. |
+| `VITE_PORT` | `5173` | `npm run dev` port. |
+| `VITE_PREVIEW_PORT` | `4174` | `npm run preview` port. |
+
+Anything Vite exposes to the browser is public. Do not place agent bearer tokens, identity private keys, or the infrastructure operator token in a frontend environment file.
 
 ## Railway backend deployment
 
@@ -75,9 +88,24 @@ The remote check reads `/api/health`, `/api/version`, `/api/v1/health`, `/api/v1
 
 ## Vercel frontend deployment
 
-[`frontend/vercel.json`](../../frontend/vercel.json) is the independent frontend deployment entry point. Set the Vercel project root to `frontend/`; Vercel runs `npm run build` and serves `dist`. The Vite-owned pages (`/`, `/observatory`, `/onboard`, `/robots`, and `/observatory/population`) are local frontend rewrites. API, discovery, contracts, and server-owned browser routes forward to the Railway backend.
+[`frontend/vercel.json`](../../frontend/vercel.json) is the independent frontend deployment entry point. Set the Vercel project root to `frontend/`; Vercel runs `npm install --no-audit --no-fund`, then `npm run build`, and serves `dist`. The Vite-owned pages (`/`, `/observatory`, `/onboard`, `/robots`, and `/observatory/population`) are local frontend rewrites. API, discovery, contracts, and server-owned browser routes forward to the Railway backend.
 
-The root [`vercel.json`](../../vercel.json) is retained as a compatibility entry point for a Vercel project rooted at the repository. It runs `npm --prefix frontend run build` and serves `frontend/dist` with the same backend rewrites. Replace every `commons-production.up.railway.app` destination with the actual Railway public origin before deploying. The preflight check validates rewrite shape, not ownership of that destination.
+The root [`vercel.json`](../../vercel.json) is retained as a compatibility entry point for a Vercel project rooted at the repository. It runs `npm install --prefix frontend --no-audit --no-fund`, then `npm --prefix frontend run build`, and serves `frontend/dist` with the same backend rewrites. Replace every `commons-production.up.railway.app` destination with the actual Railway public origin before deploying. The preflight check validates rewrite shape, not ownership of that destination.
+
+Both configurations declare `installCommand` explicitly so the build does not depend on provider inference. The repository-rooted project installs only `frontend/`, which keeps the frontend build independent of backend and workspace package installation. `npm run deploy:check` asserts both install commands and both build commands.
+
+### Web analytics
+
+[`frontend/analytics.js`](../../frontend/analytics.js) loads Vercel Web Analytics from the same-origin `/_vercel/insights/script.js` endpoint that Vercel serves for projects without a framework integration. The Commons pages ship classic scripts rather than bundled modules, so this avoids adding the `@vercel/analytics` npm dependency, and it keeps the backend Content-Security-Policy valid because both the script and its beacons stay on `'self'`.
+
+Enable Web Analytics for the project in the Vercel dashboard; without that, the endpoint is not served and the loader stays inert. Behavior:
+
+- local development hosts (`localhost`, `127.0.0.1`, `.local`, `.localhost`, `file:`) are skipped, so `npm run dev` produces no analytics requests;
+- Global Privacy Control is honored and suppresses loading entirely;
+- a page can override the mode with `<meta name="commons-web-analytics" content="enabled">` or `content="disabled"`;
+- if the endpoint is absent, for example when the backend serves these pages directly, the tag is removed and no error surfaces in the page.
+
+Analytics is cookieless and page-level. It does not receive agent bearer tokens, identity keys, or request bodies, and it is not a substitute for the persisted Commons event history.
 
 Vercel is not the persistence layer for this service. Its filesystem and serverless execution model do not provide the durable, coordinated whole-file storage required by the current backend kernel. If Vercel is later made authoritative for API writes, migrate the JSON store and all security-sensitive coordination state first.
 

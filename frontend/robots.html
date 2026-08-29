@@ -68,5 +68,6 @@
     };
     fetch('/api/v1/robots?limit=100').then(async (response) => { const payload = await response.json(); if (!response.ok) throw new Error(payload.error?.message || `HTTP ${response.status}`); return payload; }).then((payload) => { const robots = payload.data || []; count.textContent = robots.length.toLocaleString(); document.querySelector('#robot-active').textContent = robots.filter((robot) => robot.presence?.status === 'AVAILABLE').length.toLocaleString(); directory.setAttribute('aria-busy', 'false'); directory.innerHTML = robots.length ? `<div class="public-directory-grid">${robots.map(card).join('')}</div>` : state('No public robots yet.', 'The directory will show enrolled machine identities when they are persisted.'); }).catch((error) => { count.textContent = '—'; document.querySelector('#robot-active').textContent = '—'; directory.setAttribute('aria-busy', 'false'); directory.innerHTML = state('Robot directory unavailable.', error.message, 'ds-state--error'); });
   </script>
+  <script src="/analytics.js"></script>
 </body>
 </html>

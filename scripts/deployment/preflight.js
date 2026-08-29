@@ -11,6 +11,7 @@ const REQUIRED_FILES = [
   'backend/railway.json', 'backend/openapi.json', 'skill.md',
   'backend/.well-known/commons.json', 'backend/.well-known/agent-network', 'backend/.well-known/commons-robots.json',
   'vercel.json', 'frontend/vercel.json', 'frontend/package.json', 'media/evidence.json',
+  'backend/.env.example', 'frontend/.env.example', 'frontend/analytics.js',
   'LICENSE', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'SUPPORT.md', 'SECURITY.md'
 ];
 const FRONTEND_PAGES = { '/': '/index.html', '/onboard': '/onboard.html', '/robots': '/robots.html', '/observatory': '/index.html', '/observatory/population': '/population.html' };
@@ -71,6 +72,8 @@ async function main() {
   assert(packageMetadata.engines?.node === RELEASE.node && backendPackage.engines?.node === RELEASE.node && frontendPackage.engines?.node === RELEASE.node, 'package engines and release node engine must agree');
   assert(vercel.buildCommand === 'npm --prefix frontend run build' && vercel.outputDirectory === 'frontend/dist', 'root Vercel config must build and serve frontend/dist');
   assert(frontendVercel.buildCommand === 'npm run build' && frontendVercel.outputDirectory === 'dist', 'frontend Vercel config must build and serve dist');
+  assert(vercel.installCommand === 'npm install --prefix frontend --no-audit --no-fund', 'root Vercel config must install frontend dependencies explicitly');
+  assert(frontendVercel.installCommand === 'npm install --no-audit --no-fund', 'frontend Vercel config must declare an explicit install command');
   for (const relativePath of REQUIRED_FILES) assert(fs.existsSync(path.join(ROOT, relativePath)), `required file is missing: ${relativePath}`);
   validateVercelConfig(vercel, 'root vercel.json');
   validateVercelConfig(frontendVercel, 'frontend/vercel.json');
