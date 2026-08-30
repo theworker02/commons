@@ -75,11 +75,10 @@ jobs:
       - name: Verify the deployment stays on the free plan
         run: npm run cf:guard
 
-      # Applies every migration to an in-memory SQLite database and checks
-      # ordering, gap-free versioning, resolvable foreign keys and that every
-      # table the parity ledger claims actually exists.
-      - name: Validate D1 migrations
-        run: npm run db:validate
+      # NOTE: D1 migration validation is NOT here. It needs node:sqlite, which
+      # requires Node 22.5+, and this job deliberately runs on Node 20 because
+      # that is the minimum the application declares in engines. See the `schema`
+      # job below.
 
       # The route inventory is the input to the parity gate, so it is regenerated
       # rather than trusted. A drift here means the extractor and the kernel
@@ -97,3 +96,54 @@ jobs:
       # fails if the contract would build differently than what is committed.
       - name: Verify the API contract is not stale
         run: npm run api:check
+
+  # D1 schema validation, on its own job and its own Node version.
+  #
+  # The validator applies every migration to a real in-memory SQLite database via
+  # node:sqlite, which landed in Node 22.5. The `validate` job above pins Node 20
+  # on purpose — that is the floor declared in engines and backend/config/
+  # release.json, and the application has to work there.
+  #
+  # Raising that job to Node 22 to satisfy a development tool would quietly stop
+  # testing the runtime the project claims to support. So the tool gets its own
+  # job instead. It is a build-time check on SQL text; it ships nothing, and the
+  # Node version it runs on has no bearing on what the Worker executes.
+  #
+  # Runs in parallel with `validate`, so this costs no wall-clock time.
+  schema:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Node 22 for node:sqlite. Not 20 (no node:sqlite) and not `latest`, which
+      # would make the job's behaviour drift without a commit.
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify runtime
+        run: |
+          node --version
+          node -e "require('node:sqlite'); console.log('node:sqlite available')"
+
+      # Applies all migrations in order to an in-memory database and checks
+      # ordering, gap-free versioning, resolvable foreign keys, primary keys,
+      # duplicate index names, and that every table the parity ledger claims for a
+      # normalized domain actually exists.
+      #
+      # No Cloudflare account, no credentials, no network, no cost.
+      - name: Validate D1 migrations
+        run: npm run db:validate
+
+      - name: Publish the resolved schema
+        run: node scripts/cloudflare/validate-migrations.mjs --json --out artifacts/schema-cloudflare.json
+
+      - name: Upload the schema artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: d1-schema
+          path: artifacts/schema-cloudflare.json
+          if-no-files-found: error

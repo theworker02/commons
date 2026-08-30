@@ -32,14 +32,43 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+/**
+ * RUNTIME REQUIREMENT: Node 22.5+, for node:sqlite.
+ *
+ * This is a build-time tool, not shipped code, so its Node requirement is
+ * independent of the application's. The project declares engines.node >= 20 and
+ * CI validates the application on Node 20 precisely to keep that promise
+ * honest; raising that job to satisfy this script would stop testing the runtime
+ * the project claims to support. The CI workflow therefore runs this in a
+ * separate `schema` job pinned to Node 22.
+ *
+ * `--skip-if-unsupported` exits 0 with a `skipped` status instead of failing, so
+ * an aggregate local command can include this without breaking for a contributor
+ * on Node 20. CI never passes that flag.
+ */
+const skipIfUnsupported = process.argv.includes('--skip-if-unsupported');
+
 let DatabaseSync;
 try {
   ({ DatabaseSync } = await import('node:sqlite'));
 } catch {
+  const detail =
+    `node:sqlite is unavailable on Node ${process.versions.node}; it requires Node 22.5 or newer. ` +
+    'This validator executes the migrations against a real SQLite engine, which cannot be ' +
+    'faked without adding a native dependency.';
+
+  if (skipIfUnsupported) {
+    console.log(JSON.stringify({ command: 'db:validate', status: 'skipped', reason: detail }, null, 2));
+    process.exit(0);
+  }
+
   console.error(
-    'MIGRATION_VALIDATION_UNAVAILABLE node:sqlite is not available in this Node build. ' +
-      'Node 22.5+ is required. Falling back is not possible without adding a dependency, ' +
-      'so run this on a newer Node or use `wrangler d1 migrations apply --local`.'
+    `MIGRATION_VALIDATION_UNAVAILABLE ${detail}\n\n` +
+      'Options:\n' +
+      '  1. Run on Node 22.5+            nvm use 22 && npm run db:validate\n' +
+      '  2. Apply against local D1       npx wrangler d1 migrations apply commons --local\n' +
+      '  3. Skip without failing         npm run db:validate -- --skip-if-unsupported\n\n' +
+      'In CI this runs in the dedicated `schema` job, which is pinned to Node 22.'
   );
   process.exit(2);
 }
