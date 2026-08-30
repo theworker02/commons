@@ -44,6 +44,8 @@ Dockerfile
 .dockerignore
 docker-compose.yml
 docker-compose.*.yml
-vercel.json
-frontend/vercel.json
 backend/railway.json
+wrangler.jsonc
+.dev.vars
+.dev.vars.example
+.wrangler/

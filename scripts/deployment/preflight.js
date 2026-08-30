@@ -10,12 +10,15 @@ const REQUIRED_FILES = [
   'backend/server.js', 'backend/package.json', 'backend/config/release.json', 'backend/routes.json',
   'backend/railway.json', 'backend/openapi.json', 'skill.md',
   'backend/.well-known/commons.json', 'backend/.well-known/agent-network', 'backend/.well-known/commons-robots.json',
-  'vercel.json', 'frontend/vercel.json', 'frontend/package.json', 'media/evidence.json',
+  'frontend/package.json', 'media/evidence.json',
   'backend/.env.example', 'frontend/.env.example', 'frontend/analytics.js',
   'LICENSE', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'SUPPORT.md', 'SECURITY.md'
 ];
-const FRONTEND_PAGES = { '/': '/index.html', '/onboard': '/onboard.html', '/robots': '/robots.html', '/observatory': '/index.html', '/observatory/population': '/population.html' };
-const FRONTEND_OWNED = new Set(Object.keys(FRONTEND_PAGES));
+// Pages whose HTML is authored in frontend/ and served by the backend's static
+// route rather than being server-rendered. On a single origin these are not
+// "frontend-owned" in a routing sense any more — one process serves both — but
+// the files still have to exist for those URLs to resolve.
+const FRONTEND_PAGES = { '/': 'index.html', '/onboard': 'onboard.html', '/robots': 'robots.html', '/observatory': 'index.html', '/observatory/population': 'population.html' };
 
 function hasFlag(name) { return process.argv.includes(name); }
 function option(name) { const index = process.argv.indexOf(name); return index >= 0 ? process.argv[index + 1] : null; }
@@ -41,17 +44,31 @@ async function checkRemote(base, endpoint) {
   assert(endpoint !== '/api/version' || body.api === 'v1', `${endpoint} did not report API v1`);
   return { endpoint, status: response.status, status_value: body.status || null, version: body.version };
 }
-function validateVercelConfig(vercel, label) {
-  const rewrites = vercel.rewrites || [];
-  const sources = new Set(rewrites.map((rewrite) => rewrite.source));
-  assert(sources.size === rewrites.length, `${label} rewrite sources must be unique`);
-  assert(sources.has('/api/:path*'), `${label} must forward /api/* to the reference service`);
-  assert(sources.has('/v1/:path*'), `${label} must forward /v1/* to the reference service`);
-  for (const [source, destination] of Object.entries(FRONTEND_PAGES)) {
-    const localRewrite = rewrites.find((rewrite) => rewrite.source === source);
-    assert(localRewrite?.destination === destination, `${label} must map frontend-owned ${source} to ${destination}`);
+// The frontend and the API are served from ONE origin by the backend process.
+// There is no proxy layer to validate, so instead of checking that a rewrite
+// table forwards to the right hostname, assert the two things a single origin
+// actually depends on: that every declared browser surface is reachable from the
+// backend, and that the HTML the static route serves exists on disk.
+function validateSingleOrigin(routes) {
+  const declared = [
+    ...Object.keys(routes.browserRoutes || {}),
+    ...(routes.staticRoutes || []),
+    ...(routes.dynamicRoutes || [])
+  ];
+  const duplicates = declared.filter((source, index) => declared.indexOf(source) !== index);
+  assert(!duplicates.length, `backend/routes.json declares duplicate routes: ${[...new Set(duplicates)].join(', ')}`);
+
+  // Every static page the backend hands to staticRoute must exist in frontend/.
+  for (const [source, file] of Object.entries(FRONTEND_PAGES)) {
+    assert(fs.existsSync(path.join(ROOT, 'frontend', file)), `single-origin page ${source} needs frontend/${file}`);
   }
-  assert(rewrites.every((rewrite) => typeof rewrite.destination === 'string' && (/^https:\/\//.test(rewrite.destination) || rewrite.destination.startsWith('/'))), `${label} rewrites must use HTTPS remote or local frontend destinations`);
+
+  // No absolute cross-origin destination may remain anywhere in the route table.
+  // A single origin means every browser surface resolves relatively.
+  const absolute = declared.filter((source) => /^https?:\/\//i.test(source));
+  assert(!absolute.length, `backend/routes.json must not reference absolute origins: ${absolute.join(', ')}`);
+
+  return { browser: Object.keys(routes.browserRoutes || {}).length, static: (routes.staticRoutes || []).length, dynamic: (routes.dynamicRoutes || []).length };
 }
 async function main() {
   const suppliedMode = hasFlag('--production') ? 'production' : process.env.COMMONS_ENV;
@@ -62,29 +79,30 @@ async function main() {
   const frontendPackage = readJson('frontend/package.json');
   const release = readJson('backend/config/release.json');
   const routes = readJson('backend/routes.json');
-  const vercel = readJson('vercel.json');
-  const frontendVercel = readJson('frontend/vercel.json');
   const railway = readJson('backend/railway.json');
   assert(Number(process.versions.node.split('.')[0]) >= 20, `Node 20 or newer is required; found ${process.versions.node}`);
   assert(packageMetadata.version === release.version && release.version === RELEASE_VERSION, 'root package and backend/config/release.json versions must agree');
   assert(backendPackage.version === release.version && frontendPackage.version === release.version, 'frontend/backend package versions must agree with backend/config/release.json');
   assert(packageMetadata.license === 'MIT' && backendPackage.license === 'MIT' && frontendPackage.license === 'MIT', 'root, frontend, and backend package metadata must declare the MIT license');
   assert(packageMetadata.engines?.node === RELEASE.node && backendPackage.engines?.node === RELEASE.node && frontendPackage.engines?.node === RELEASE.node, 'package engines and release node engine must agree');
-  assert(vercel.buildCommand === 'npm --prefix frontend run build' && vercel.outputDirectory === 'frontend/dist', 'root Vercel config must build and serve frontend/dist');
-  assert(frontendVercel.buildCommand === 'npm run build' && frontendVercel.outputDirectory === 'dist', 'frontend Vercel config must build and serve dist');
-  assert(vercel.installCommand === 'npm install --prefix frontend --no-audit --no-fund', 'root Vercel config must install frontend dependencies explicitly');
-  assert(frontendVercel.installCommand === 'npm install --no-audit --no-fund', 'frontend Vercel config must declare an explicit install command');
+  // The frontend build must land where the backend serves it from. Keeping these
+  // two facts asserted together is what stops the origins drifting apart again.
+  assert(packageMetadata.scripts?.build === 'npm --prefix frontend run build', 'root package must build the frontend with npm --prefix frontend run build');
+  assert(frontendPackage.scripts?.build, 'frontend package must declare a build script');
   for (const relativePath of REQUIRED_FILES) assert(fs.existsSync(path.join(ROOT, relativePath)), `required file is missing: ${relativePath}`);
-  validateVercelConfig(vercel, 'root vercel.json');
-  validateVercelConfig(frontendVercel, 'frontend/vercel.json');
+  // Guard against the two-origin split being reintroduced by accident.
+  for (const stale of ['vercel.json', 'frontend/vercel.json']) {
+    assert(!fs.existsSync(path.join(ROOT, stale)), `${stale} reintroduces a second origin; the frontend and API are served from one origin`);
+  }
   assert(Object.keys(routes.browserRoutes || {}).length > 0, 'backend/routes.json must define browser routes');
   assert(routes.staticRoutes.includes('/observatory') && routes.staticRoutes.includes('/onboard'), 'backend/routes.json must retain frontend static route metadata');
+  const origin = validateSingleOrigin(routes);
   const evidence = hasFlag('--skip-evidence') ? { skipped: true } : validateEvidenceManifest();
   assert(railway.build?.builder === 'NIXPACKS', 'Railway must use the declared Nixpacks builder');
   assert(railway.deploy?.startCommand === 'npm start', 'Railway must start the backend service with npm start');
   assert(railway.deploy?.healthcheckPath === '/api/v1/ready', 'Railway healthcheck must remain /api/v1/ready');
   const target = targetUrl();
   const checks = target ? await Promise.all(['/api/health', '/api/version', '/api/v1/health', '/api/v1/ready', '/api/v1/bootstrap'].map((endpoint) => checkRemote(target, endpoint))) : [];
-  console.log(JSON.stringify({ command: 'deploy:check', release_version: RELEASE_VERSION, mode: configuration.mode, storage: configuration.storage, read_only: true, target: target?.origin || null, evidence, checks }, null, 2));
+  console.log(JSON.stringify({ command: 'deploy:check', release_version: RELEASE_VERSION, mode: configuration.mode, storage: configuration.storage, read_only: true, topology: 'single-origin', routes: origin, target: target?.origin || null, evidence, checks }, null, 2));
 }
 main().catch((error) => { console.error(`PREFLIGHT_FAILED ${error.message}`); process.exitCode = 1; });

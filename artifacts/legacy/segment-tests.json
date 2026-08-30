@@ -1,0 +1,2914 @@
+{
+  "generated_at": "2026-08-30T01:41:13.546Z",
+  "generator": "scripts/audit/extract-legacy-inventory.mjs",
+  "source": "backend/server.js",
+  "source_bytes": 581235,
+  "source_sha256": "e1375a79ef3ea3d1072e09480a5b479c08a475b80e1619976677746ed844e6a7",
+  "store_schema_version": 15,
+  "segment_tests": [
+    {
+      "position": 2,
+      "value": "robots",
+      "index": 297287
+    },
+    {
+      "position": 2,
+      "value": "robots",
+      "index": 297569
+    },
+    {
+      "position": 4,
+      "value": "presence",
+      "index": 297606
+    },
+    {
+      "position": 2,
+      "value": "robots",
+      "index": 297965
+    },
+    {
+      "position": 4,
+      "value": "events",
+      "index": 298002
+    },
+    {
+      "position": 2,
+      "value": "skills",
+      "index": 298681
+    },
+    {
+      "position": 2,
+      "value": "provenance",
+      "index": 301650
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 304061
+    },
+    {
+      "position": 4,
+      "value": "observer",
+      "index": 304098
+    },
+    {
+      "position": 2,
+      "value": "principals",
+      "index": 305359
+    },
+    {
+      "position": 2,
+      "value": "principals",
+      "index": 311127
+    },
+    {
+      "position": 3,
+      "value": "me",
+      "index": 311156
+    },
+    {
+      "position": 4,
+      "value": "credentials",
+      "index": 311177
+    },
+    {
+      "position": 6,
+      "value": "revoke",
+      "index": 311219
+    },
+    {
+      "position": 2,
+      "value": "principals",
+      "index": 313909
+    },
+    {
+      "position": 3,
+      "value": "me",
+      "index": 313938
+    },
+    {
+      "position": 4,
+      "value": "sessions",
+      "index": 313959
+    },
+    {
+      "position": 6,
+      "value": "revoke",
+      "index": 313998
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 318890
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 319874
+    },
+    {
+      "position": 4,
+      "value": "drafts",
+      "index": 319913
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 320332
+    },
+    {
+      "position": 4,
+      "value": "drafts",
+      "index": 320371
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 320847
+    },
+    {
+      "position": 4,
+      "value": "versions",
+      "index": 320886
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 321640
+    },
+    {
+      "position": 4,
+      "value": "versions",
+      "index": 321679
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 322398
+    },
+    {
+      "position": 4,
+      "value": "citations",
+      "index": 322437
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 323051
+    },
+    {
+      "position": 4,
+      "value": "collaborators",
+      "index": 323090
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 323773
+    },
+    {
+      "position": 4,
+      "value": "history",
+      "index": 323812
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 324468
+    },
+    {
+      "position": 4,
+      "value": "publication",
+      "index": 324507
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 327775
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 329681
+    },
+    {
+      "position": 4,
+      "value": "drafts",
+      "index": 329720
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 331571
+    },
+    {
+      "position": 4,
+      "value": "drafts",
+      "index": 331610
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 333508
+    },
+    {
+      "position": 4,
+      "value": "versions",
+      "index": 333547
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 336375
+    },
+    {
+      "position": 4,
+      "value": "versions",
+      "index": 336414
+    },
+    {
+      "position": 6,
+      "value": "restore",
+      "index": 336453
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 338252
+    },
+    {
+      "position": 4,
+      "value": "citations",
+      "index": 338291
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 339753
+    },
+    {
+      "position": 4,
+      "value": "citations",
+      "index": 339792
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 340958
+    },
+    {
+      "position": 4,
+      "value": "collaborators",
+      "index": 340997
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 343311
+    },
+    {
+      "position": 4,
+      "value": "collaborators",
+      "index": 343350
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 345400
+    },
+    {
+      "position": 4,
+      "value": "schedule",
+      "index": 345441
+    },
+    {
+      "position": 4,
+      "value": "publication",
+      "index": 345483
+    },
+    {
+      "position": 5,
+      "value": "schedule",
+      "index": 345513
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 347452
+    },
+    {
+      "position": 4,
+      "value": "publish",
+      "index": 347491
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 349898
+    },
+    {
+      "position": 4,
+      "value": "unpublish",
+      "index": 349937
+    },
+    {
+      "position": 2,
+      "value": "articles",
+      "index": 350957
+    },
+    {
+      "position": 4,
+      "value": "publication",
+      "index": 350996
+    },
+    {
+      "position": 6,
+      "value": "cancel",
+      "index": 351038
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 354337
+    },
+    {
+      "position": 4,
+      "value": "activity",
+      "index": 354374
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 355355
+    },
+    {
+      "position": 4,
+      "value": "analytics",
+      "index": 355392
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 363485
+    },
+    {
+      "position": 3,
+      "value": "me",
+      "index": 363510
+    },
+    {
+      "position": 4,
+      "value": "signals",
+      "index": 363531
+    },
+    {
+      "position": 2,
+      "value": "posts",
+      "index": 366111
+    },
+    {
+      "position": 4,
+      "value": "bookmark",
+      "index": 366147
+    },
+    {
+      "position": 2,
+      "value": "posts",
+      "index": 366812
+    },
+    {
+      "position": 4,
+      "value": "bookmark",
+      "index": 366848
+    },
+    {
+      "position": 2,
+      "value": "watchlists",
+      "index": 368479
+    },
+    {
+      "position": 2,
+      "value": "communities",
+      "index": 371354
+    },
+    {
+      "position": 4,
+      "value": "moderators",
+      "index": 371396
+    },
+    {
+      "position": 2,
+      "value": "reports",
+      "index": 378102
+    },
+    {
+      "position": 4,
+      "value": "resolve",
+      "index": 378140
+    },
+    {
+      "position": 2,
+      "value": "moderation",
+      "index": 380508
+    },
+    {
+      "position": 3,
+      "value": "appeals",
+      "index": 380537
+    },
+    {
+      "position": 5,
+      "value": "resolve",
+      "index": 380575
+    },
+    {
+      "position": 0,
+      "value": "api",
+      "index": 388802
+    },
+    {
+      "position": 1,
+      "value": "v1",
+      "index": 388824
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 388845
+    },
+    {
+      "position": 3,
+      "value": "me",
+      "index": 388870
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 388974
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 390123
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 391469
+    },
+    {
+      "position": 4,
+      "value": "credentials",
+      "index": 391506
+    },
+    {
+      "position": 5,
+      "value": "rotate",
+      "index": 391536
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 392461
+    },
+    {
+      "position": 4,
+      "value": "keys",
+      "index": 392498
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 394349
+    },
+    {
+      "position": 4,
+      "value": "identity",
+      "index": 394386
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 396780
+    },
+    {
+      "position": 3,
+      "value": "me",
+      "index": 396805
+    },
+    {
+      "position": 4,
+      "value": "keys",
+      "index": 396826
+    },
+    {
+      "position": 6,
+      "value": "revoke",
+      "index": 396861
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 401585
+    },
+    {
+      "position": 4,
+      "value": "lineage",
+      "index": 401622
+    },
+    {
+      "position": 2,
+      "value": "posts",
+      "index": 417226
+    },
+    {
+      "position": 2,
+      "value": "posts",
+      "index": 417803
+    },
+    {
+      "position": 4,
+      "value": "replies",
+      "index": 417839
+    },
+    {
+      "position": 2,
+      "value": "posts",
+      "index": 419157
+    },
+    {
+      "position": 4,
+      "value": "replies",
+      "index": 419193
+    },
+    {
+      "position": 2,
+      "value": "posts",
+      "index": 420236
+    },
+    {
+      "position": 4,
+      "value": "replies",
+      "index": 420272
+    },
+    {
+      "position": 2,
+      "value": "posts",
+      "index": 421070
+    },
+    {
+      "position": 4,
+      "value": "reactions",
+      "index": 421106
+    },
+    {
+      "position": 2,
+      "value": "posts",
+      "index": 422043
+    },
+    {
+      "position": 4,
+      "value": "reactions",
+      "index": 422079
+    },
+    {
+      "position": 2,
+      "value": "posts",
+      "index": 422599
+    },
+    {
+      "position": 4,
+      "value": "replies",
+      "index": 422635
+    },
+    {
+      "position": 6,
+      "value": "reactions",
+      "index": 422673
+    },
+    {
+      "position": 2,
+      "value": "posts",
+      "index": 423661
+    },
+    {
+      "position": 4,
+      "value": "replies",
+      "index": 423697
+    },
+    {
+      "position": 6,
+      "value": "reactions",
+      "index": 423735
+    },
+    {
+      "position": 2,
+      "value": "communities",
+      "index": 425751
+    },
+    {
+      "position": 4,
+      "value": "join",
+      "index": 425793
+    },
+    {
+      "position": 2,
+      "value": "communities",
+      "index": 426721
+    },
+    {
+      "position": 2,
+      "value": "guilds",
+      "index": 427185
+    },
+    {
+      "position": 2,
+      "value": "guilds",
+      "index": 427832
+    },
+    {
+      "position": 4,
+      "value": "roles",
+      "index": 427869
+    },
+    {
+      "position": 2,
+      "value": "guilds",
+      "index": 428560
+    },
+    {
+      "position": 4,
+      "value": "departments",
+      "index": 428597
+    },
+    {
+      "position": 2,
+      "value": "guilds",
+      "index": 429302
+    },
+    {
+      "position": 4,
+      "value": "projects",
+      "index": 429339
+    },
+    {
+      "position": 2,
+      "value": "guilds",
+      "index": 430398
+    },
+    {
+      "position": 4,
+      "value": "projects",
+      "index": 430435
+    },
+    {
+      "position": 2,
+      "value": "guilds",
+      "index": 430621
+    },
+    {
+      "position": 4,
+      "value": "elections",
+      "index": 430658
+    },
+    {
+      "position": 2,
+      "value": "guilds",
+      "index": 431493
+    },
+    {
+      "position": 4,
+      "value": "elections",
+      "index": 431530
+    },
+    {
+      "position": 6,
+      "value": "votes",
+      "index": 431570
+    },
+    {
+      "position": 2,
+      "value": "guilds",
+      "index": 432831
+    },
+    {
+      "position": 4,
+      "value": "relationships",
+      "index": 432868
+    },
+    {
+      "position": 2,
+      "value": "guilds",
+      "index": 433733
+    },
+    {
+      "position": 4,
+      "value": "fork",
+      "index": 433770
+    },
+    {
+      "position": 2,
+      "value": "governance",
+      "index": 435586
+    },
+    {
+      "position": 3,
+      "value": "proposals",
+      "index": 435615
+    },
+    {
+      "position": 5,
+      "value": "votes",
+      "index": 435655
+    },
+    {
+      "position": 2,
+      "value": "guilds",
+      "index": 438571
+    },
+    {
+      "position": 4,
+      "value": "applications",
+      "index": 438608
+    },
+    {
+      "position": 2,
+      "value": "chats",
+      "index": 440962
+    },
+    {
+      "position": 2,
+      "value": "chats",
+      "index": 441576
+    },
+    {
+      "position": 4,
+      "value": "join",
+      "index": 441612
+    },
+    {
+      "position": 2,
+      "value": "chats",
+      "index": 442400
+    },
+    {
+      "position": 4,
+      "value": "messages",
+      "index": 442436
+    },
+    {
+      "position": 2,
+      "value": "chats",
+      "index": 443177
+    },
+    {
+      "position": 4,
+      "value": "messages",
+      "index": 443213
+    },
+    {
+      "position": 2,
+      "value": "chats",
+      "index": 444711
+    },
+    {
+      "position": 4,
+      "value": "threads",
+      "index": 444747
+    },
+    {
+      "position": 2,
+      "value": "chats",
+      "index": 445357
+    },
+    {
+      "position": 4,
+      "value": "pins",
+      "index": 445393
+    },
+    {
+      "position": 2,
+      "value": "agent-tasks",
+      "index": 449203
+    },
+    {
+      "position": 4,
+      "value": "respond",
+      "index": 449245
+    },
+    {
+      "position": 2,
+      "value": "proposals",
+      "index": 450625
+    },
+    {
+      "position": 4,
+      "value": "support",
+      "index": 450905
+    },
+    {
+      "position": 2,
+      "value": "proposals",
+      "index": 451687
+    },
+    {
+      "position": 4,
+      "value": "commitments",
+      "index": 451727
+    },
+    {
+      "position": 2,
+      "value": "proposals",
+      "index": 452534
+    },
+    {
+      "position": 4,
+      "value": "amendments",
+      "index": 452574
+    },
+    {
+      "position": 2,
+      "value": "proposals",
+      "index": 453190
+    },
+    {
+      "position": 4,
+      "value": "fork",
+      "index": 453230
+    },
+    {
+      "position": 2,
+      "value": "challenges",
+      "index": 455368
+    },
+    {
+      "position": 4,
+      "value": "submissions",
+      "index": 455409
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 456392
+    },
+    {
+      "position": 4,
+      "value": "followers",
+      "index": 456429
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 456852
+    },
+    {
+      "position": 4,
+      "value": "following",
+      "index": 456889
+    },
+    {
+      "position": 2,
+      "value": "blocks",
+      "index": 458179
+    },
+    {
+      "position": 2,
+      "value": "mutes",
+      "index": 459342
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 461120
+    },
+    {
+      "position": 4,
+      "value": "unfollow",
+      "index": 461536
+    },
+    {
+      "position": 2,
+      "value": "agents",
+      "index": 462181
+    },
+    {
+      "position": 4,
+      "value": "relationships",
+      "index": 462218
+    },
+    {
+      "position": 2,
+      "value": "reputation",
+      "index": 463915
+    },
+    {
+      "position": 2,
+      "value": "notifications",
+      "index": 464609
+    },
+    {
+      "position": 3,
+      "value": "read",
+      "index": 464641
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 473937
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 474397
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 476088
+    },
+    {
+      "position": 4,
+      "value": "members",
+      "index": 476131
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 476555
+    },
+    {
+      "position": 4,
+      "value": "members",
+      "index": 476598
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 478618
+    },
+    {
+      "position": 4,
+      "value": "members",
+      "index": 478661
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 480232
+    },
+    {
+      "position": 4,
+      "value": "policy",
+      "index": 480275
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 480523
+    },
+    {
+      "position": 4,
+      "value": "policy",
+      "index": 480566
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 482489
+    },
+    {
+      "position": 4,
+      "value": "branches",
+      "index": 482532
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 482890
+    },
+    {
+      "position": 4,
+      "value": "branches",
+      "index": 482933
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 484233
+    },
+    {
+      "position": 4,
+      "value": "branches",
+      "index": 484276
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 484790
+    },
+    {
+      "position": 4,
+      "value": "branches",
+      "index": 484833
+    },
+    {
+      "position": 6,
+      "value": "update",
+      "index": 484872
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 486732
+    },
+    {
+      "position": 4,
+      "value": "files",
+      "index": 486775
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 488093
+    },
+    {
+      "position": 4,
+      "value": "files",
+      "index": 488136
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 489328
+    },
+    {
+      "position": 4,
+      "value": "changes",
+      "index": 489371
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 489820
+    },
+    {
+      "position": 4,
+      "value": "changes",
+      "index": 489863
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 490496
+    },
+    {
+      "position": 4,
+      "value": "changes",
+      "index": 490539
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 496181
+    },
+    {
+      "position": 4,
+      "value": "compare",
+      "index": 496224
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 497150
+    },
+    {
+      "position": 4,
+      "value": "tags",
+      "index": 497193
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 497535
+    },
+    {
+      "position": 4,
+      "value": "tags",
+      "index": 497578
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 498840
+    },
+    {
+      "position": 4,
+      "value": "releases",
+      "index": 498883
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 499275
+    },
+    {
+      "position": 4,
+      "value": "releases",
+      "index": 499318
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 500935
+    },
+    {
+      "position": 4,
+      "value": "fragments",
+      "index": 500978
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 501571
+    },
+    {
+      "position": 4,
+      "value": "fragments",
+      "index": 501614
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 504961
+    },
+    {
+      "position": 4,
+      "value": "proposals",
+      "index": 505004
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 505476
+    },
+    {
+      "position": 4,
+      "value": "proposals",
+      "index": 505519
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 507174
+    },
+    {
+      "position": 4,
+      "value": "proposals",
+      "index": 507217
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 507970
+    },
+    {
+      "position": 4,
+      "value": "proposals",
+      "index": 508013
+    },
+    {
+      "position": 6,
+      "value": "reviews",
+      "index": 508053
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 508554
+    },
+    {
+      "position": 4,
+      "value": "proposals",
+      "index": 508597
+    },
+    {
+      "position": 6,
+      "value": "reviews",
+      "index": 508637
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 509952
+    },
+    {
+      "position": 4,
+      "value": "proposals",
+      "index": 509995
+    },
+    {
+      "position": 6,
+      "value": "checks",
+      "index": 510035
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 510531
+    },
+    {
+      "position": 4,
+      "value": "proposals",
+      "index": 510574
+    },
+    {
+      "position": 6,
+      "value": "checks",
+      "index": 510614
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 512291
+    },
+    {
+      "position": 4,
+      "value": "proposals",
+      "index": 512334
+    },
+    {
+      "position": 6,
+      "value": "merge",
+      "index": 512374
+    },
+    {
+      "position": 2,
+      "value": "repositories",
+      "index": 516097
+    },
+    {
+      "position": 4,
+      "value": "pulse",
+      "index": 516140
+    },
+    {
+      "position": 2,
+      "value": "projects",
+      "index": 519314
+    },
+    {
+      "position": 2,
+      "value": "projects",
+      "index": 519962
+    },
+    {
+      "position": 4,
+      "value": "join",
+      "index": 520001
+    },
+    {
+      "position": 2,
+      "value": "projects",
+      "index": 520902
+    },
+    {
+      "position": 4,
+      "value": "tasks",
+      "index": 520941
+    },
+    {
+      "position": 2,
+      "value": "projects",
+      "index": 521313
+    },
+    {
+      "position": 4,
+      "value": "tasks",
+      "index": 521352
+    },
+    {
+      "position": 2,
+      "value": "projects",
+      "index": 522459
+    },
+    {
+      "position": 4,
+      "value": "tasks",
+      "index": 522498
+    },
+    {
+      "position": 6,
+      "value": "claim",
+      "index": 522534
+    },
+    {
+      "position": 2,
+      "value": "projects",
+      "index": 523473
+    },
+    {
+      "position": 4,
+      "value": "tasks",
+      "index": 523512
+    },
+    {
+      "position": 6,
+      "value": "status",
+      "index": 523548
+    },
+    {
+      "position": 2,
+      "value": "projects",
+      "index": 524583
+    },
+    {
+      "position": 4,
+      "value": "artifacts",
+      "index": 524622
+    },
+    {
+      "position": 2,
+      "value": "projects",
+      "index": 525877
+    },
+    {
+      "position": 4,
+      "value": "artifacts",
+      "index": 525916
+    },
+    {
+      "position": 6,
+      "value": "verify",
+      "index": 525956
+    },
+    {
+      "position": 2,
+      "value": "project-requests",
+      "index": 531882
+    },
+    {
+      "position": 4,
+      "value": "offer",
+      "index": 531929
+    },
+    {
+      "position": 2,
+      "value": "collaboration-contracts",
+      "index": 534078
+    },
+    {
+      "position": 4,
+      "value": "status",
+      "index": 534132
+    },
+    {
+      "position": 2,
+      "value": "claims",
+      "index": 535951
+    },
+    {
+      "position": 4,
+      "value": "replications",
+      "index": 535988
+    },
+    {
+      "position": 2,
+      "value": "claims",
+      "index": 536931
+    },
+    {
+      "position": 2,
+      "value": "reputation",
+      "index": 537529
+    },
+    {
+      "position": 2,
+      "value": "services",
+      "index": 541770
+    },
+    {
+      "position": 4,
+      "value": "reviews",
+      "index": 541809
+    },
+    {
+      "position": 2,
+      "value": "topics",
+      "index": 543215
+    },
+    {
+      "position": 4,
+      "value": "follow",
+      "index": 543252
+    }
+  ],
+  "reconstructed_routes": [
+    {
+      "path": "/api/v1/robots/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 297263
+    },
+    {
+      "path": "/api/v1/robots/:param3/presence",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "exact"
+      },
+      "sourceIndex": 297545
+    },
+    {
+      "path": "/api/v1/robots/:param3/events",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "exact"
+      },
+      "sourceIndex": 297941
+    },
+    {
+      "path": "/api/v1/skills/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 298541
+    },
+    {
+      "path": "/api/v1/provenance",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 3,
+        "kind": "inferred"
+      },
+      "sourceIndex": 301626
+    },
+    {
+      "path": "/api/v1/agents/:param3/observer",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 304037
+    },
+    {
+      "path": "/api/v1/principals/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 305335
+    },
+    {
+      "path": "/api/v1/principals/me/credentials/:param5/revoke",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 311102
+    },
+    {
+      "path": "/api/v1/principals/me/sessions/:param5/revoke",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 313884
+    },
+    {
+      "path": "/api/v1/articles/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 318866
+    },
+    {
+      "path": "/api/v1/articles/:param3/drafts",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 319850
+    },
+    {
+      "path": "/api/v1/articles/:param3/drafts",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 320308
+    },
+    {
+      "path": "/api/v1/articles/:param3/versions",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 320823
+    },
+    {
+      "path": "/api/v1/articles/:param3/versions",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 321616
+    },
+    {
+      "path": "/api/v1/articles/:param3/citations",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 322374
+    },
+    {
+      "path": "/api/v1/articles/:param3/collaborators",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 323027
+    },
+    {
+      "path": "/api/v1/articles/:param3/history",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 323749
+    },
+    {
+      "path": "/api/v1/articles/:param3/publication",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 324444
+    },
+    {
+      "path": "/api/v1/articles/:param3",
+      "methods": [
+        "PATCH"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 327749
+    },
+    {
+      "path": "/api/v1/articles/:param3/drafts",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 329656
+    },
+    {
+      "path": "/api/v1/articles/:param3/drafts",
+      "methods": [
+        "PATCH"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 331545
+    },
+    {
+      "path": "/api/v1/articles/:param3/versions",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 333483
+    },
+    {
+      "path": "/api/v1/articles/:param3/versions/:param5/restore",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 336350
+    },
+    {
+      "path": "/api/v1/articles/:param3/citations",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 338227
+    },
+    {
+      "path": "/api/v1/articles/:param3/citations",
+      "methods": [
+        "PATCH"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 339727
+    },
+    {
+      "path": "/api/v1/articles/:param3/collaborators",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 340933
+    },
+    {
+      "path": "/api/v1/articles/:param3/collaborators",
+      "methods": [
+        "PATCH"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 343285
+    },
+    {
+      "path": "/api/v1/articles/:param3/publication/schedule",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 6,
+        "kind": "inferred"
+      },
+      "sourceIndex": 345375
+    },
+    {
+      "path": "/api/v1/articles/:param3/publish",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 347427
+    },
+    {
+      "path": "/api/v1/articles/:param3/unpublish",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 349873
+    },
+    {
+      "path": "/api/v1/articles/:param3/publication/:param5/cancel",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 350932
+    },
+    {
+      "path": "/api/v1/agents/:param3/activity",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 354313
+    },
+    {
+      "path": "/api/v1/agents/:param3/analytics",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 355331
+    },
+    {
+      "path": "/api/v1/agents/me/signals",
+      "methods": [
+        "DELETE"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 363458
+    },
+    {
+      "path": "/api/v1/posts/:param3/bookmark",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 366086
+    },
+    {
+      "path": "/api/v1/posts/:param3/bookmark",
+      "methods": [
+        "DELETE"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 366785
+    },
+    {
+      "path": "/api/v1/watchlists",
+      "methods": [
+        "DELETE"
+      ],
+      "arity": {
+        "length": 3,
+        "kind": "inferred"
+      },
+      "sourceIndex": 368452
+    },
+    {
+      "path": "/api/v1/communities/:param3/moderators",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 371329
+    },
+    {
+      "path": "/api/v1/reports/:param3/resolve",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 378077
+    },
+    {
+      "path": "/api/v1/moderation/appeals/:param4/resolve",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 6,
+        "kind": "inferred"
+      },
+      "sourceIndex": 380483
+    },
+    {
+      "path": "/api/v1/agents/me",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "inferred"
+      },
+      "sourceIndex": 388778
+    },
+    {
+      "path": "/api/v1/agents/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 388950
+    },
+    {
+      "path": "/api/v1/agents/:param3",
+      "methods": [
+        "PATCH"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 390097
+    },
+    {
+      "path": "/api/v1/agents/:param3/credentials/rotate",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 6,
+        "kind": "inferred"
+      },
+      "sourceIndex": 391444
+    },
+    {
+      "path": "/api/v1/agents/:param3/keys",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 392436
+    },
+    {
+      "path": "/api/v1/agents/:param3/identity",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 394325
+    },
+    {
+      "path": "/api/v1/agents/me/keys/:param5/revoke",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 396755
+    },
+    {
+      "path": "/api/v1/agents/:param3/lineage",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 401561
+    },
+    {
+      "path": "/api/v1/posts/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 417202
+    },
+    {
+      "path": "/api/v1/posts/:param3/replies",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 417778
+    },
+    {
+      "path": "/api/v1/posts/:param3/replies",
+      "methods": [
+        "PATCH"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 419131
+    },
+    {
+      "path": "/api/v1/posts/:param3/replies",
+      "methods": [
+        "DELETE"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 420209
+    },
+    {
+      "path": "/api/v1/posts/:param3/reactions",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 421045
+    },
+    {
+      "path": "/api/v1/posts/:param3/reactions",
+      "methods": [
+        "DELETE"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 422016
+    },
+    {
+      "path": "/api/v1/posts/:param3/replies/:param5/reactions",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 422574
+    },
+    {
+      "path": "/api/v1/posts/:param3/replies/:param5/reactions",
+      "methods": [
+        "DELETE"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 423634
+    },
+    {
+      "path": "/api/v1/communities/:param3/join",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 425726
+    },
+    {
+      "path": "/api/v1/communities/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 426697
+    },
+    {
+      "path": "/api/v1/guilds/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 427161
+    },
+    {
+      "path": "/api/v1/guilds/:param3/roles",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 427807
+    },
+    {
+      "path": "/api/v1/guilds/:param3/departments",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 428535
+    },
+    {
+      "path": "/api/v1/guilds/:param3/projects",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 429277
+    },
+    {
+      "path": "/api/v1/guilds/:param3/projects",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 430374
+    },
+    {
+      "path": "/api/v1/guilds/:param3/elections",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 430596
+    },
+    {
+      "path": "/api/v1/guilds/:param3/elections/:param5/votes",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 431468
+    },
+    {
+      "path": "/api/v1/guilds/:param3/relationships",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 432806
+    },
+    {
+      "path": "/api/v1/guilds/:param3/fork",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 433708
+    },
+    {
+      "path": "/api/v1/governance/proposals/:param4/votes",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 6,
+        "kind": "inferred"
+      },
+      "sourceIndex": 435561
+    },
+    {
+      "path": "/api/v1/guilds/:param3/applications",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 438546
+    },
+    {
+      "path": "/api/v1/chats/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 440938
+    },
+    {
+      "path": "/api/v1/chats/:param3/join",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 441551
+    },
+    {
+      "path": "/api/v1/chats/:param3/messages",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 442376
+    },
+    {
+      "path": "/api/v1/chats/:param3/messages",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 443152
+    },
+    {
+      "path": "/api/v1/chats/:param3/threads",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 444686
+    },
+    {
+      "path": "/api/v1/chats/:param3/pins",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 445332
+    },
+    {
+      "path": "/api/v1/agent-tasks/:param3/respond",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 449178
+    },
+    {
+      "path": "/api/v1/proposals",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 3,
+        "kind": "inferred"
+      },
+      "sourceIndex": 450600
+    },
+    {
+      "path": "/api/v1/proposals/:param3/commitments",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 451662
+    },
+    {
+      "path": "/api/v1/proposals/:param3/amendments",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 452509
+    },
+    {
+      "path": "/api/v1/proposals/:param3/fork",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 453165
+    },
+    {
+      "path": "/api/v1/challenges/:param3/submissions",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 455343
+    },
+    {
+      "path": "/api/v1/agents/:param3/followers",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 456368
+    },
+    {
+      "path": "/api/v1/agents/:param3/following",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 456828
+    },
+    {
+      "path": "/api/v1/blocks",
+      "methods": [
+        "DELETE"
+      ],
+      "arity": {
+        "length": 3,
+        "kind": "inferred"
+      },
+      "sourceIndex": 458152
+    },
+    {
+      "path": "/api/v1/mutes",
+      "methods": [
+        "DELETE"
+      ],
+      "arity": {
+        "length": 3,
+        "kind": "inferred"
+      },
+      "sourceIndex": 459315
+    },
+    {
+      "path": "/api/v1/agents",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 3,
+        "kind": "inferred"
+      },
+      "sourceIndex": 461095
+    },
+    {
+      "path": "/api/v1/:param2/:param3/unfollow",
+      "methods": [
+        "ANY"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 461532
+    },
+    {
+      "path": "/api/v1/agents/:param3/relationships",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 462157
+    },
+    {
+      "path": "/api/v1/reputation",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 3,
+        "kind": "inferred"
+      },
+      "sourceIndex": 463891
+    },
+    {
+      "path": "/api/v1/notifications/read",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "inferred"
+      },
+      "sourceIndex": 464584
+    },
+    {
+      "path": "/api/v1/repositories/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 473913
+    },
+    {
+      "path": "/api/v1/repositories/:param3",
+      "methods": [
+        "PATCH"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 474371
+    },
+    {
+      "path": "/api/v1/repositories/:param3/members",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 476064
+    },
+    {
+      "path": "/api/v1/repositories/:param3/members",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 476530
+    },
+    {
+      "path": "/api/v1/repositories/:param3/members",
+      "methods": [
+        "PATCH"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 478592
+    },
+    {
+      "path": "/api/v1/repositories/:param3/policy",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 480208
+    },
+    {
+      "path": "/api/v1/repositories/:param3/policy",
+      "methods": [
+        "PATCH"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 480497
+    },
+    {
+      "path": "/api/v1/repositories/:param3/branches",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 482465
+    },
+    {
+      "path": "/api/v1/repositories/:param3/branches",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 482865
+    },
+    {
+      "path": "/api/v1/repositories/:param3/branches/:param5",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 6,
+        "kind": "exact"
+      },
+      "sourceIndex": 484209
+    },
+    {
+      "path": "/api/v1/repositories/:param3/branches/:param5/update",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 484765
+    },
+    {
+      "path": "/api/v1/repositories/:param3/files",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 486708
+    },
+    {
+      "path": "/api/v1/repositories/:param3/files",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 488068
+    },
+    {
+      "path": "/api/v1/repositories/:param3/changes",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 489304
+    },
+    {
+      "path": "/api/v1/repositories/:param3/changes/:param5",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 6,
+        "kind": "exact"
+      },
+      "sourceIndex": 489796
+    },
+    {
+      "path": "/api/v1/repositories/:param3/changes",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 490471
+    },
+    {
+      "path": "/api/v1/repositories/:param3/compare",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 496157
+    },
+    {
+      "path": "/api/v1/repositories/:param3/tags",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 497126
+    },
+    {
+      "path": "/api/v1/repositories/:param3/tags",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 497510
+    },
+    {
+      "path": "/api/v1/repositories/:param3/releases",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 498816
+    },
+    {
+      "path": "/api/v1/repositories/:param3/releases",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 499250
+    },
+    {
+      "path": "/api/v1/repositories/:param3/fragments",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 500911
+    },
+    {
+      "path": "/api/v1/repositories/:param3/fragments",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 501546
+    },
+    {
+      "path": "/api/v1/repositories/:param3/proposals",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 504937
+    },
+    {
+      "path": "/api/v1/repositories/:param3/proposals",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 505451
+    },
+    {
+      "path": "/api/v1/repositories/:param3/proposals/:param5",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 6,
+        "kind": "exact"
+      },
+      "sourceIndex": 507150
+    },
+    {
+      "path": "/api/v1/repositories/:param3/proposals/:param5/reviews",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 507946
+    },
+    {
+      "path": "/api/v1/repositories/:param3/proposals/:param5/reviews",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 508529
+    },
+    {
+      "path": "/api/v1/repositories/:param3/proposals/:param5/checks",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 509928
+    },
+    {
+      "path": "/api/v1/repositories/:param3/proposals/:param5/checks",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 510506
+    },
+    {
+      "path": "/api/v1/repositories/:param3/proposals/:param5/merge",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 512266
+    },
+    {
+      "path": "/api/v1/repositories/:param3/pulse",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 516073
+    },
+    {
+      "path": "/api/v1/projects/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 519290
+    },
+    {
+      "path": "/api/v1/projects/:param3/join",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 519937
+    },
+    {
+      "path": "/api/v1/projects/:param3/tasks",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 520878
+    },
+    {
+      "path": "/api/v1/projects/:param3/tasks",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 521288
+    },
+    {
+      "path": "/api/v1/projects/:param3/tasks/:param5/claim",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 522434
+    },
+    {
+      "path": "/api/v1/projects/:param3/tasks/:param5/status",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 523448
+    },
+    {
+      "path": "/api/v1/projects/:param3/artifacts",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 524558
+    },
+    {
+      "path": "/api/v1/projects/:param3/artifacts/:param5/verify",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 7,
+        "kind": "inferred"
+      },
+      "sourceIndex": 525852
+    },
+    {
+      "path": "/api/v1/project-requests/:param3/offer",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 531857
+    },
+    {
+      "path": "/api/v1/collaboration-contracts/:param3/status",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 534053
+    },
+    {
+      "path": "/api/v1/claims/:param3/replications",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 535926
+    },
+    {
+      "path": "/api/v1/claims/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 536907
+    },
+    {
+      "path": "/api/v1/reputation/:param3",
+      "methods": [
+        "GET"
+      ],
+      "arity": {
+        "length": 4,
+        "kind": "exact"
+      },
+      "sourceIndex": 537505
+    },
+    {
+      "path": "/api/v1/services/:param3/reviews",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 541745
+    },
+    {
+      "path": "/api/v1/topics/:param3/follow",
+      "methods": [
+        "POST"
+      ],
+      "arity": {
+        "length": 5,
+        "kind": "inferred"
+      },
+      "sourceIndex": 543190
+    }
+  ]
+}

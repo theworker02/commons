@@ -1,0 +1,1316 @@
+{
+  "generated_at": "2026-08-30T01:41:13.546Z",
+  "generator": "scripts/audit/extract-legacy-inventory.mjs",
+  "source": "backend/server.js",
+  "source_bytes": 581235,
+  "source_sha256": "e1375a79ef3ea3d1072e09480a5b479c08a475b80e1619976677746ed844e6a7",
+  "store_schema_version": 15,
+  "collections": [
+    {
+      "collection": "actionRuns",
+      "readRoutes": 7,
+      "writeRoutes": 0,
+      "domains": [
+        "identity",
+        "pages",
+        "provenance"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "agentCapabilities",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "agentCommitments",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "identity",
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "agentMemories",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "agentRuntimeRuns",
+      "readRoutes": 1,
+      "writeRoutes": 0,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "agentSchedules",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "agentServices",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "discovery"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "agentSignals",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "agentTasks",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "agents",
+      "readRoutes": 8,
+      "writeRoutes": 2,
+      "domains": [
+        "discovery",
+        "identity",
+        "observatory",
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "amendments",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "councils"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "articleCitations",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "articles"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "articleCollaborators",
+      "readRoutes": 2,
+      "writeRoutes": 2,
+      "domains": [
+        "articles"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "articleDrafts",
+      "readRoutes": 2,
+      "writeRoutes": 2,
+      "domains": [
+        "articles"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "articlePublicationJobs",
+      "readRoutes": 1,
+      "writeRoutes": 2,
+      "domains": [
+        "articles"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "articleRevisionHistory",
+      "readRoutes": 1,
+      "writeRoutes": 0,
+      "domains": [
+        "articles"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "articleVersions",
+      "readRoutes": 2,
+      "writeRoutes": 2,
+      "domains": [
+        "articles",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "articles",
+      "readRoutes": 8,
+      "writeRoutes": 1,
+      "domains": [
+        "articles",
+        "discovery",
+        "observatory",
+        "pages",
+        "projects"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "attestations",
+      "readRoutes": 3,
+      "writeRoutes": 1,
+      "domains": [
+        "reputation",
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "auditEvents",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "autonomyEvents",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "blocks",
+      "readRoutes": 1,
+      "writeRoutes": 2,
+      "domains": [
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "bookmarks",
+      "readRoutes": 1,
+      "writeRoutes": 2,
+      "domains": [
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "challenges",
+      "readRoutes": 3,
+      "writeRoutes": 1,
+      "domains": [
+        "challenges",
+        "discovery"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "chatMembers",
+      "readRoutes": 3,
+      "writeRoutes": 2,
+      "domains": [
+        "chats",
+        "observatory",
+        "projects"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "chatMessages",
+      "readRoutes": 3,
+      "writeRoutes": 1,
+      "domains": [
+        "chats",
+        "identity",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "chatPins",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "chats"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "chatRooms",
+      "readRoutes": 3,
+      "writeRoutes": 0,
+      "domains": [
+        "chats",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "chatThreads",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "chats"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "citations",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "claims",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "pages",
+        "reputation"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "collaborationContracts",
+      "readRoutes": 4,
+      "writeRoutes": 1,
+      "domains": [
+        "observatory",
+        "pages",
+        "projects"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "commitments",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "councils"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "communities",
+      "readRoutes": 4,
+      "writeRoutes": 1,
+      "domains": [
+        "communities",
+        "discovery",
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "communityMemberships",
+      "readRoutes": 4,
+      "writeRoutes": 2,
+      "domains": [
+        "communities",
+        "identity",
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "conversationMemory",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "credentialRequests",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "credentials",
+      "readRoutes": 4,
+      "writeRoutes": 4,
+      "domains": [
+        "credentials",
+        "identity",
+        "oauth"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "deliveryLogs",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "discovery"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "emergencyControls",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "councils"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "events",
+      "readRoutes": 9,
+      "writeRoutes": 0,
+      "domains": [
+        "identity",
+        "observatory",
+        "pages",
+        "projects"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "featureFlags",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "federationEvents",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "federationNetworks",
+      "readRoutes": 1,
+      "writeRoutes": 0,
+      "domains": [
+        "federation"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "federationPolicies",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "fragments",
+      "readRoutes": 4,
+      "writeRoutes": 2,
+      "domains": [
+        "discovery",
+        "observatory",
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "governanceProposals",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "councils",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "governanceVotes",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "councils",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "guildDepartments",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "guilds"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "guildElections",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "guilds"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "guildMemory",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "guildPermissions",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "guildProjects",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "guilds"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "guildRelationships",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "guilds",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "guildRoles",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "guilds"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "guildVotes",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "guilds"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "guilds",
+      "readRoutes": 6,
+      "writeRoutes": 2,
+      "domains": [
+        "discovery",
+        "guilds",
+        "observatory",
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "heartbeats",
+      "readRoutes": 0,
+      "writeRoutes": 2,
+      "domains": [
+        "identity",
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "idempotency",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "identityDelegations",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "identityGateDecisions",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "identityKeyHistory",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "identityLineage",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "identityMigrations",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "invitations",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "keys",
+      "readRoutes": 4,
+      "writeRoutes": 2,
+      "domains": [
+        "identity",
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "mcpPairings",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "mcp"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "memberships",
+      "readRoutes": 7,
+      "writeRoutes": 3,
+      "domains": [
+        "guilds",
+        "identity",
+        "pages",
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "memoryIndexes",
+      "readRoutes": 1,
+      "writeRoutes": 0,
+      "domains": [
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "mentionRecords",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "moderationAppeals",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "moderation",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "moderationEvents",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "moderation",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "moderatorReviews",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "moderation"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "moderatorRoles",
+      "readRoutes": 3,
+      "writeRoutes": 1,
+      "domains": [
+        "communities",
+        "moderation",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "mutes",
+      "readRoutes": 1,
+      "writeRoutes": 2,
+      "domains": [
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "networkMilestones",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "networkSnapshots",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "notificationPreferences",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "notifications"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "notifications",
+      "readRoutes": 4,
+      "writeRoutes": 0,
+      "domains": [
+        "notifications",
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "oauthAuthorizationCodes",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "oauth"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "oauthAuthorizationRequests",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "oauth"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "oauthClients",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "oauth"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "oauthRefreshTokens",
+      "readRoutes": 2,
+      "writeRoutes": 0,
+      "domains": [
+        "oauth"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "observerEvents",
+      "readRoutes": 3,
+      "writeRoutes": 0,
+      "domains": [
+        "identity",
+        "provenance"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "operators",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "packageIdentities",
+      "readRoutes": 2,
+      "writeRoutes": 2,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "personas",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "phaseProjects",
+      "readRoutes": 7,
+      "writeRoutes": 1,
+      "domains": [
+        "discovery",
+        "observatory",
+        "pages",
+        "projects"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "postHistory",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "posts",
+      "readRoutes": 7,
+      "writeRoutes": 2,
+      "domains": [
+        "discovery",
+        "identity",
+        "observatory",
+        "pages",
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "principals",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "profileHistory",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "projectArtifacts",
+      "readRoutes": 6,
+      "writeRoutes": 1,
+      "domains": [
+        "observatory",
+        "pages",
+        "projects"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "projectMemory",
+      "readRoutes": 4,
+      "writeRoutes": 4,
+      "domains": [
+        "discovery",
+        "projects",
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "projectRequests",
+      "readRoutes": 3,
+      "writeRoutes": 1,
+      "domains": [
+        "pages",
+        "projects"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "projectTasks",
+      "readRoutes": 4,
+      "writeRoutes": 1,
+      "domains": [
+        "observatory",
+        "pages",
+        "projects"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "proposalSupport",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "councils"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "proposals",
+      "readRoutes": 2,
+      "writeRoutes": 2,
+      "domains": [
+        "councils",
+        "discovery"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "provenanceRecords",
+      "readRoutes": 3,
+      "writeRoutes": 0,
+      "domains": [
+        "identity",
+        "provenance"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "queueJobs",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "reactions",
+      "readRoutes": 4,
+      "writeRoutes": 2,
+      "domains": [
+        "identity",
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "recoveryMethods",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "relationshipMemory",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "relationships",
+      "readRoutes": 13,
+      "writeRoutes": 4,
+      "domains": [
+        "identity",
+        "observatory",
+        "pages",
+        "projects",
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "remoteIdentities",
+      "readRoutes": 1,
+      "writeRoutes": 0,
+      "domains": [
+        "federation"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "replications",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "pages",
+        "reputation"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "replies",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "identity",
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "replyHistory",
+      "readRoutes": 0,
+      "writeRoutes": 2,
+      "domains": [
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "reports",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "moderation",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositories",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "pages",
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryBranchUpdates",
+      "readRoutes": 0,
+      "writeRoutes": 3,
+      "domains": [
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryBranches",
+      "readRoutes": 4,
+      "writeRoutes": 2,
+      "domains": [
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryChangeFiles",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryChanges",
+      "readRoutes": 5,
+      "writeRoutes": 1,
+      "domains": [
+        "discovery",
+        "observatory",
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryChecks",
+      "readRoutes": 3,
+      "writeRoutes": 1,
+      "domains": [
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryFiles",
+      "readRoutes": 0,
+      "writeRoutes": 2,
+      "domains": [
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryMembers",
+      "readRoutes": 1,
+      "writeRoutes": 2,
+      "domains": [
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryPolicies",
+      "readRoutes": 0,
+      "writeRoutes": 2,
+      "domains": [
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryProposals",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "discovery",
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryReleases",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "observatory",
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryReviews",
+      "readRoutes": 3,
+      "writeRoutes": 1,
+      "domains": [
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "repositoryTags",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "repositories"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "reputationEvidence",
+      "readRoutes": 1,
+      "writeRoutes": 0,
+      "domains": [
+        "reputation"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "reputationRecords",
+      "readRoutes": 2,
+      "writeRoutes": 0,
+      "domains": [
+        "pages",
+        "reputation"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "robotCapabilities",
+      "readRoutes": 1,
+      "writeRoutes": 0,
+      "domains": [
+        "robots"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "robotChallenges",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "robots"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "robotEvents",
+      "readRoutes": 2,
+      "writeRoutes": 0,
+      "domains": [
+        "robots"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "robotKeys",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "robotPresence",
+      "readRoutes": 1,
+      "writeRoutes": 0,
+      "domains": [
+        "pages"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "robotQualifications",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "robotSimulationCommands",
+      "readRoutes": 1,
+      "writeRoutes": 0,
+      "domains": [
+        "robots"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "robotSimulationTelemetry",
+      "readRoutes": 1,
+      "writeRoutes": 0,
+      "domains": [
+        "robots"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "robotSimulations",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    },
+    {
+      "collection": "robots",
+      "readRoutes": 2,
+      "writeRoutes": 0,
+      "domains": [
+        "pages",
+        "robots"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "runtimeSessions",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "identity"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "submissions",
+      "readRoutes": 1,
+      "writeRoutes": 1,
+      "domains": [
+        "challenges",
+        "observatory"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "toolExecutions",
+      "readRoutes": 2,
+      "writeRoutes": 0,
+      "domains": [
+        "identity",
+        "provenance"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "topicFollows",
+      "readRoutes": 0,
+      "writeRoutes": 1,
+      "domains": [
+        "topics"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "topics",
+      "readRoutes": 2,
+      "writeRoutes": 1,
+      "domains": [
+        "observatory",
+        "topics"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "watchlists",
+      "readRoutes": 1,
+      "writeRoutes": 2,
+      "domains": [
+        "social"
+      ],
+      "touched": true
+    },
+    {
+      "collection": "webhooks",
+      "readRoutes": 0,
+      "writeRoutes": 0,
+      "domains": [],
+      "touched": false
+    }
+  ]
+}

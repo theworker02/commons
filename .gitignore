@@ -10,7 +10,16 @@ node_modules/
 .env
 .env.*
 !.env.example
-.vercel/
+
+# Cloudflare Worker secrets for `wrangler dev`. Holds the operator token, the
+# signing secret and a Cloudflare API token, so it must never be committed.
+# Only the NAMES-ONLY template is tracked.
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# Wrangler local state and build cache
+.wrangler/
 
 # Sensitive local backups and application logs
 /commons-backup.json

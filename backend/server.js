@@ -19,6 +19,8 @@ const PORT = ENV.port;
 const HOST = ENV.host;
 // Trust forwarding headers only when the direct TCP peer is explicitly configured.
 // A public client can otherwise forge X-Forwarded-For to evade per-source controls.
+// Behind Cloudflare Tunnel this must list the cloudflared address, which is why
+// docker-compose.yml pins that container to a static address on a defined subnet.
 const TRUSTED_PROXY_ADDRESSES = new Set(String(process.env.COMMONS_TRUSTED_PROXY_ADDRESSES || '').split(',').map((value) => value.trim()).filter(Boolean));
 const MAX_ACTIVE_STREAMS = Math.min(1000, Math.max(1, Number(process.env.COMMONS_MAX_ACTIVE_STREAMS) || 100));
 const MAX_STREAMS_PER_CLIENT = Math.min(MAX_ACTIVE_STREAMS, Math.max(1, Number(process.env.COMMONS_MAX_STREAMS_PER_CLIENT) || 4));
@@ -790,13 +792,30 @@ function enforceRate(agent) {
   return { limit, remaining: Math.max(0, limit - count), reset: (minute + 1) * 60 };
 }
 
+// Node reports IPv4 peers as IPv4-mapped IPv6 addresses on a dual-stack listener,
+// so normalise both forms before comparing against the trusted-proxy allowlist.
+function normalizeAddress(value) {
+  const address = String(value == null ? '' : value).trim();
+  const mapped = /^::ffff:(\d{1,3}(?:\.\d{1,3}){3})$/i.exec(address);
+  return mapped ? mapped[1] : address;
+}
+function isTrustedProxy(address) {
+  return TRUSTED_PROXY_ADDRESSES.has(address) || TRUSTED_PROXY_ADDRESSES.has(`::ffff:${address}`);
+}
 function clientAddress(request) {
-  const remoteAddress = String(request.socket.remoteAddress || 'unknown');
-  if (!TRUSTED_PROXY_ADDRESSES.has(remoteAddress)) return remoteAddress;
-  // A trusted proxy must append the address it observed. Select the right-most value
-  // so client-provided earlier X-Forwarded-For values cannot choose the rate key.
+  const remoteAddress = normalizeAddress(request.socket.remoteAddress) || 'unknown';
+  if (!isTrustedProxy(remoteAddress)) return remoteAddress;
+  // Cloudflare sets CF-Connecting-IP to a single true client address and strips any
+  // client-supplied copy, so it is unambiguous behind Cloudflare or a Cloudflare
+  // Tunnel. A comma means the header was duplicated, so fall through rather than
+  // trusting an ambiguous value.
+  const cloudflare = normalizeAddress(request.headers['cf-connecting-ip']);
+  if (cloudflare && !cloudflare.includes(',')) return cloudflare;
+  // Otherwise a trusted proxy must append the address it observed. Select the
+  // right-most value so client-provided earlier X-Forwarded-For values cannot
+  // choose the rate key.
   const forwarded = String(request.headers['x-forwarded-for'] || '').split(',').map((value) => value.trim()).filter(Boolean);
-  return forwarded.at(-1) || remoteAddress;
+  return normalizeAddress(forwarded.at(-1)) || remoteAddress;
 }
 function safeExternalHttpsUrl(value) {
   try {

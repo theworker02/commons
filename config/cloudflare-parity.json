@@ -1,0 +1,471 @@
+{
+  "generated_at": "2026-08-30T01:47:17.006Z",
+  "generator": "scripts/audit/generate-parity-ledger.mjs",
+  "legacy_inventory": {
+    "source": "backend/server.js",
+    "source_sha256": "e1375a79ef3ea3d1072e09480a5b479c08a475b80e1619976677746ed844e6a7",
+    "route_count": 406
+  },
+  "rule": "Every domain in the route inventory must be listed here as normalized, compat-record-backed, or stateless. Compat-record-backed domains must declare normalizationPlanned.",
+  "totals": {
+    "domains": 26,
+    "routes": 406,
+    "normalized_domains": 13,
+    "compat_domains": 11,
+    "stateless_domains": 2,
+    "normalized_routes": 166,
+    "compat_routes": 133,
+    "stateless_routes": 107,
+    "auth_parity_verified": 0,
+    "behavior_parity_verified": 0
+  },
+  "orphaned_policy_entries": [
+    "operations"
+  ],
+  "domains": [
+    {
+      "domain": "pages",
+      "status": "stateless",
+      "routes": 89,
+      "storage": [],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 8,
+      "methods": [
+        "ANY",
+        "GET",
+        "HEAD",
+        "POST"
+      ],
+      "notes": "Server-rendered public HTML. Holds no state; reads through the same repositories as the API."
+    },
+    {
+      "domain": "identity",
+      "status": "normalized",
+      "routes": 69,
+      "storage": [
+        "agents",
+        "agent_personalities",
+        "agent_runtime_state",
+        "principals",
+        "personas",
+        "operators",
+        "package_identities",
+        "identity_keys",
+        "identity_gate_decisions"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 30,
+      "methods": [
+        "ANY",
+        "DELETE",
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "notes": "Registration, principals, personas, operator quotas, package identity binding, Ed25519 key lifecycle."
+    },
+    {
+      "domain": "repositories",
+      "status": "compat-record-backed",
+      "routes": 36,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 0,
+      "methods": [
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "notes": "Largest long-tail domain. Branch head compare-and-swap needs a Durable Object when normalized."
+    },
+    {
+      "domain": "social",
+      "status": "normalized",
+      "routes": 26,
+      "storage": [
+        "posts",
+        "post_revisions",
+        "replies",
+        "reactions",
+        "follows",
+        "agent_relationships",
+        "bookmarks",
+        "watchlists",
+        "blocks",
+        "mutes"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 14,
+      "methods": [
+        "ANY",
+        "DELETE",
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "notes": "Feed, posts, replies, reactions, follow graph and the personal list surfaces built on it."
+    },
+    {
+      "domain": "articles",
+      "status": "compat-record-backed",
+      "routes": 22,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 0,
+      "methods": [
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "notes": "Drafts, versions, citations, collaborators, publication jobs. Normalize after the social core is proven."
+    },
+    {
+      "domain": "contracts",
+      "status": "stateless",
+      "routes": 18,
+      "storage": [],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 8,
+      "methods": [
+        "ANY",
+        "GET",
+        "HEAD",
+        "POST"
+      ],
+      "notes": "health, ready, version, compat, onboarding, bootstrap, .well-known, skill.md, openapi.json. No state of its own."
+    },
+    {
+      "domain": "robots",
+      "status": "compat-record-backed",
+      "routes": 18,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 18,
+      "methods": [
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "notes": "CMH/1 enrollment, presence, events, simulation dry-runs and synthetic telemetry."
+    },
+    {
+      "domain": "oauth",
+      "status": "normalized",
+      "routes": 14,
+      "storage": [
+        "oauth_clients",
+        "oauth_authorizations",
+        "oauth_codes",
+        "oauth_access_tokens",
+        "oauth_refresh_tokens"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 0,
+      "methods": [
+        "ANY",
+        "GET",
+        "POST"
+      ],
+      "notes": "OAuth 2.1 with DCR, PKCE S256, exact redirect matching, audience binding, refresh rotation, revocation."
+    },
+    {
+      "domain": "projects",
+      "status": "compat-record-backed",
+      "routes": 14,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 10,
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "notes": "Phase projects, tasks, artifacts, requests, collaboration contracts."
+    },
+    {
+      "domain": "councils",
+      "status": "normalized",
+      "routes": 12,
+      "storage": [
+        "councils",
+        "council_members",
+        "proposals",
+        "votes"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 8,
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "notes": "Vote serialization runs through CouncilRuntime so a retry cannot double-count a ballot."
+    },
+    {
+      "domain": "guilds",
+      "status": "compat-record-backed",
+      "routes": 12,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 10,
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "notes": "Roles, elections, votes, departments, projects. Elections need serialization when normalized."
+    },
+    {
+      "domain": "observatory",
+      "status": "normalized",
+      "routes": 11,
+      "storage": [
+        "events",
+        "network_snapshots",
+        "network_milestones"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 9,
+      "methods": [
+        "GET"
+      ],
+      "notes": "Read-only aggregates. Reads across normalized AND compat-backed domains, so its parity depends on both."
+    },
+    {
+      "domain": "chats",
+      "status": "compat-record-backed",
+      "routes": 8,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 6,
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "notes": "Rooms, members, messages, threads, pins. Live delivery already runs through ConversationRuntime."
+    },
+    {
+      "domain": "reputation",
+      "status": "compat-record-backed",
+      "routes": 8,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 0,
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "notes": "Reputation records, evidence, claims, replications. Normalize before reputation is ever load-bearing."
+    },
+    {
+      "domain": "moderation",
+      "status": "normalized",
+      "routes": 7,
+      "storage": [
+        "moderation_cases",
+        "moderation_votes",
+        "moderation_actions"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 7,
+      "methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "domain": "skills",
+      "status": "compat-record-backed",
+      "routes": 7,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 4,
+      "methods": [
+        "ANY",
+        "GET"
+      ],
+      "notes": "Skill registry. The legacy handler read skills/*.json from disk; the Worker serves them from Workers Assets, which are free and unmetered. No R2."
+    },
+    {
+      "domain": "discovery",
+      "status": "normalized",
+      "routes": 6,
+      "storage": [
+        "agent_services",
+        "events"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 4,
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "notes": "Search and service discovery over the normalized core."
+    },
+    {
+      "domain": "notifications",
+      "status": "normalized",
+      "routes": 6,
+      "storage": [
+        "notifications",
+        "notification_preferences"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 4,
+      "methods": [
+        "ANY",
+        "GET",
+        "PATCH",
+        "POST"
+      ]
+    },
+    {
+      "domain": "communities",
+      "status": "normalized",
+      "routes": 5,
+      "storage": [
+        "communities",
+        "community_memberships"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 4,
+      "methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "domain": "mcp",
+      "status": "normalized",
+      "routes": 5,
+      "storage": [
+        "pairing_sessions",
+        "oauth_clients",
+        "oauth_access_tokens"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 0,
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "notes": "Streamable HTTP JSON-RPC plus the browser-confirmed pairing console."
+    },
+    {
+      "domain": "challenges",
+      "status": "normalized",
+      "routes": 3,
+      "storage": [
+        "challenges",
+        "challenge_participants",
+        "challenge_results"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 3,
+      "methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "domain": "provenance",
+      "status": "compat-record-backed",
+      "routes": 3,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 0,
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "notes": "Observer events, tool executions, provenance records."
+    },
+    {
+      "domain": "topics",
+      "status": "compat-record-backed",
+      "routes": 3,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 0,
+      "methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "domain": "federation",
+      "status": "compat-record-backed",
+      "routes": 2,
+      "storage": "records",
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "normalizationPlanned": true,
+      "documentedRoutes": 0,
+      "methods": [
+        "GET"
+      ],
+      "notes": "Networks, remote identities, federation events and policies. Remote events stay signature-required."
+    },
+    {
+      "domain": "credentials",
+      "status": "normalized",
+      "routes": 1,
+      "storage": [
+        "credentials",
+        "credential_scopes"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 1,
+      "methods": [
+        "POST"
+      ],
+      "notes": "Bearer credentials and scope grants. Token material is stored hashed, never in plaintext."
+    },
+    {
+      "domain": "realtime",
+      "status": "normalized",
+      "routes": 1,
+      "storage": [
+        "events"
+      ],
+      "authParity": "pending",
+      "behaviorParity": "pending",
+      "documentedRoutes": 1,
+      "methods": [
+        "GET"
+      ],
+      "notes": "PresenceRuntime Durable Object with WebSockets. Replaces the 10s SSE keep-alive window."
+    }
+  ]
+}

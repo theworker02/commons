@@ -1,39 +1,71 @@
+// Validates the single-origin route table.
+//
+// The frontend and the API are served by one process from one origin: the
+// backend owns every browser surface in backend/routes.json, and falls back to
+// staticRoute() for HTML authored in frontend/. There is no proxy rewrite table
+// to keep in sync any more, so this check verifies internal consistency instead
+// of cross-origin forwarding:
+//
+//   - route metadata is well-formed and free of duplicates
+//   - every static page the backend serves exists in frontend/
+//   - no route declares an absolute cross-origin destination
+//
+// Run with `npm run check:routes`.
 const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const routes = JSON.parse(fs.readFileSync(path.join(root, 'backend', 'routes.json'), 'utf8'));
-const frontendPages = { '/': '/index.html', '/onboard': '/onboard.html', '/robots': '/robots.html', '/observatory': '/index.html', '/observatory/population': '/population.html' };
-const frontendOwned = new Set(Object.keys(frontendPages));
-const required = [
-  ...Object.keys(routes.browserRoutes).filter((source) => !frontendOwned.has(source)),
-  ...routes.staticRoutes.filter((source) => !frontendOwned.has(source)),
-  ...routes.dynamicRoutes
-];
-const duplicates = required.filter((source, index) => required.indexOf(source) !== index);
+
+// HTML authored in frontend/ and handed to the backend's staticRoute(). The
+// backend maps '/' and '/observatory' to index.html internally.
+const staticPages = {
+  '/': 'index.html',
+  '/onboard': 'onboard.html',
+  '/robots': 'robots.html',
+  '/observatory': 'index.html',
+  '/observatory/population': 'population.html'
+};
+
+const browserRoutes = routes.browserRoutes || {};
+const staticRoutes = routes.staticRoutes || [];
+const dynamicRoutes = routes.dynamicRoutes || [];
+
+// Every surface the one origin is expected to answer.
+const declared = [...Object.keys(browserRoutes), ...staticRoutes, ...dynamicRoutes];
+
+const duplicates = declared.filter((source, index) => declared.indexOf(source) !== index);
 if (duplicates.length) throw new Error(`Duplicate route metadata: ${[...new Set(duplicates)].join(', ')}`);
 
-function validateVercel(relativePath) {
-  const filePath = path.join(root, relativePath);
-  const vercel = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  const rewriteSources = new Set((vercel.rewrites || []).map((rewrite) => rewrite.source));
-  const missing = required.filter((source) => !rewriteSources.has(source));
-  for (const [source, destination] of Object.entries(frontendPages)) {
-    const localRewrite = (vercel.rewrites || []).find((rewrite) => rewrite.source === source);
-    if (!localRewrite || localRewrite.destination !== destination) throw new Error(`${relativePath} must map frontend-owned ${source} to ${destination}`);
+for (const [source, value] of Object.entries(browserRoutes)) {
+  if (!Array.isArray(value) || value.length !== 2 || value.some((item) => typeof item !== 'string' || !item)) {
+    throw new Error(`Invalid browser route metadata: ${source}`);
   }
-  for (const rewrite of vercel.rewrites || []) {
-    if (typeof rewrite.destination !== 'string' || (!/^https:\/\//.test(rewrite.destination) && !rewrite.destination.startsWith('/'))) throw new Error(`${relativePath} has an invalid destination for ${rewrite.source}`);
-  }
-  return { relativePath, rewrites: rewriteSources.size };
 }
 
-for (const [source, value] of Object.entries(routes.browserRoutes)) {
-  if (!Array.isArray(value) || value.length !== 2 || value.some((item) => typeof item !== 'string' || !item)) throw new Error(`Invalid browser route metadata: ${source}`);
+// A single origin means every declared surface is a path, never an absolute URL.
+for (const source of declared) {
+  if (typeof source !== 'string' || !source.startsWith('/')) {
+    throw new Error(`Route must be a rooted path on the single origin: ${String(source)}`);
+  }
+  if (/^https?:\/\//i.test(source)) {
+    throw new Error(`Route must not point at a second origin: ${source}`);
+  }
 }
-const pages = { '/': 'index.html', '/onboard': 'onboard.html', '/robots': 'robots.html', '/observatory': 'index.html', '/observatory/population': 'population.html' };
-for (const [source, file] of Object.entries(pages)) {
-  if (!fs.existsSync(path.join(root, 'frontend', file))) throw new Error(`Frontend page for ${source} is missing: frontend/${file}`);
+
+for (const [source, file] of Object.entries(staticPages)) {
+  if (!fs.existsSync(path.join(root, 'frontend', file))) {
+    throw new Error(`Static page for ${source} is missing: frontend/${file}`);
+  }
 }
-const configs = [validateVercel('vercel.json'), validateVercel(path.join('frontend', 'vercel.json'))];
-console.log(`ROUTES_OK ${required.length} ${configs.map((config) => `${config.relativePath}:${config.rewrites}`).join(' ')}`);
+
+// The two-origin Vercel proxy split is retired. Fail loudly if it comes back,
+// because a rewrite table forwarding to a second hostname silently undoes the
+// single-origin contract that OAuth redirect URIs and CORS depend on.
+for (const stale of ['vercel.json', path.join('frontend', 'vercel.json')]) {
+  if (fs.existsSync(path.join(root, stale))) {
+    throw new Error(`${stale} reintroduces a second origin; the frontend and API are served from one origin`);
+  }
+}
+
+console.log(`ROUTES_OK single-origin browser:${Object.keys(browserRoutes).length} static:${staticRoutes.length} dynamic:${dynamicRoutes.length} pages:${Object.keys(staticPages).length}`);

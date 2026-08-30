@@ -1,0 +1,98 @@
+# COMMONS v2.3.0 behind Cloudflare, reached over a Cloudflare Tunnel.
+#
+#   Users / Agents -> Cloudflare (DNS, TLS, WAF, rate limits, cache)
+#                  -> Cloudflare Tunnel (cloudflared)
+#                  -> Node origin (this stack)
+#                  -> persistent volume -> COMMONS JSON store
+#
+# This is a STANDALONE compose file, not an overlay on docker-compose.yml.
+# Compose merges `ports` additively across files, so an overlay could not remove
+# the local 4173:4173 publish. Use docker-compose.yml for local work and this
+# file for tunnel-fronted deployment.
+#
+#   cp deploy/cloudflare/.env.example .env   # then fill it in
+#   docker compose -f docker-compose.cloudflare.yml up -d --build
+#
+# The origin publishes NO host ports. cloudflared reaches it over the internal
+# network only, so there is no public ingress to the Node process at all. Close
+# inbound 4173 (and inbound 80/443 if nothing else needs them) at the firewall.
+#
+# Still a single replica by design: the JSON kernel writes the whole store file
+# and keeps rate-limit and idempotency state in process memory.
+# See docs/deployment/cloudflare.md and docs/surfaces-and-boundaries.md.
+
+name: commons-cloudflare
+
+services:
+  commons:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: commons-api:2.3.0
+    container_name: commons
+    restart: unless-stopped
+    # Reachable only from the internal network. No `ports:` mapping on purpose.
+    expose:
+      - "4173"
+    networks:
+      commons-edge:
+        ipv4_address: 172.28.0.2
+    environment:
+      COMMONS_ENV: production
+      COMMONS_STORAGE: json
+      HOST: 0.0.0.0
+      PORT: "4173"
+      COMMONS_DATA_DIR: /data
+      # The single logical API origin. Everything public derives from this value;
+      # no provider hostname appears anywhere in source or config.
+      COMMONS_PUBLIC_URL: ${COMMONS_PUBLIC_URL:?set the public HTTPS origin, for example https://api.example.com}
+      COMMONS_CORS_ORIGINS: ${COMMONS_CORS_ORIGINS:?set the comma-separated HTTPS origins allowed to call the API}
+      COMMONS_INFRASTRUCTURE_OPERATOR_TOKEN: ${COMMONS_INFRASTRUCTURE_OPERATOR_TOKEN:?set at least 32 random characters}
+      # cloudflared is the ONLY ingress, so trust exactly its pinned address and
+      # nothing else. The server reads CF-Connecting-IP from a trusted peer, so
+      # per-source rate limits key on the real visitor rather than on the tunnel.
+      # Without this every visitor collapses into one rate-limit bucket.
+      COMMONS_TRUSTED_PROXY_ADDRESSES: 172.28.0.3
+    volumes:
+      # Durable JSON store. Removing this volume discards all persisted records.
+      - commons-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:4173/api/v1/ready"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  cloudflared:
+    # Pinned. Multi-arch digest for 2026.8.2:
+    # sha256:0aa26e284f05e6c77ae375b8c9c11d9eb6a448fb7bcd8d40f31cb6176189eb38
+    image: cloudflare/cloudflared:2026.8.2
+    container_name: commons-cloudflared
+    restart: unless-stopped
+    # --no-autoupdate keeps the pinned version authoritative. Metrics and the
+    # /ready probe are bound inside the network for scraping, not published.
+    command: tunnel --no-autoupdate --metrics 0.0.0.0:2000 run
+    environment:
+      # Remotely managed tunnel. The public hostname to service mapping lives in
+      # the Cloudflare dashboard; point it at http://commons:4173
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN:?set the tunnel token from the Cloudflare dashboard}
+    networks:
+      commons-edge:
+        ipv4_address: 172.28.0.3
+    depends_on:
+      commons:
+        condition: service_healthy
+
+networks:
+  commons-edge:
+    driver: bridge
+    ipam:
+      config:
+        # An explicit subnet is required for static addresses. The pinned
+        # cloudflared address is what COMMONS_TRUSTED_PROXY_ADDRESSES allows,
+        # because that allowlist matches exact addresses and has no CIDR support.
+        - subnet: 172.28.0.0/24
+
+volumes:
+  commons-data:
+    driver: local

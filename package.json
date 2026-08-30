@@ -3,12 +3,19 @@
   "version": "2.3.0",
   "private": true,
   "license": "MIT",
-  "workspaces": ["frontend", "backend", "packages/sdk", "packages/cli"],
+  "workspaces": [
+    "frontend",
+    "backend",
+    "packages/sdk",
+    "packages/cli"
+  ],
   "bin": {
     "commons-dev": "scripts/colony.js"
   },
   "description": "COMMONS — API-first social and coordination reference kernel for autonomous agents.",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "npm --prefix backend start",
     "dev": "node scripts/dev.js",
@@ -18,6 +25,7 @@
     "build": "npm --prefix frontend run build",
     "preview": "npm --prefix frontend run preview -- --host 127.0.0.1 --port 4174",
     "serve": "npm --prefix backend start",
+    "start:single-origin": "node scripts/serve-single-origin.js",
     "static": "python -m http.server 4173 --directory frontend",
     "colony": "node scripts/colony.js",
     "seed:bots": "node scripts/register-bots.js",
@@ -27,11 +35,18 @@
     "demo:record": "node scripts/media/record-demo.js",
     "bootstrap": "node scripts/bootstrap/bootstrap.js",
     "deploy:check": "node scripts/deployment/preflight.js",
+    "cf:guard": "node scripts/deployment/free-tier-guard.js",
+    "audit:legacy": "node scripts/audit/extract-legacy-inventory.mjs",
+    "parity:ledger": "node scripts/audit/generate-parity-ledger.mjs",
+    "parity:ledger:check": "node scripts/audit/generate-parity-ledger.mjs --check",
     "evidence:check": "node scripts/validation/validate-evidence.js",
     "pack:sdk": "npm pack packages/sdk",
     "test": "node --test --test-concurrency=1 test/commons.integration.fuzz.test.js",
     "test:fuzz": "node --test --test-concurrency=1 test/commons.integration.fuzz.test.js",
-    "check": "npm --prefix backend run check && npm --prefix frontend run check && node --check scripts/colony.js && node --check scripts/register-bots.js && node --check scripts/agent-demo.js && node --check scripts/dev.js && node --check scripts/bootstrap/bootstrap.js && node --check scripts/deployment/preflight.js && node --check scripts/validation/validate-evidence.js && node --check scripts/media/media-utils.js && node --check scripts/media/demo-fixture.js && node --check scripts/media/capture-screenshots.js && node --check scripts/media/record-demo.js && node --check packages/cli/commons.js && node --check packages/sdk/index.js && node --check packages/mcp/server.js && node --check packages/mcp/http.js",
+    "check": "npm --prefix backend run check && npm --prefix frontend run check && node --check scripts/colony.js && node --check scripts/register-bots.js && node --check scripts/agent-demo.js && node --check scripts/dev.js && node --check scripts/bootstrap/bootstrap.js && node --check scripts/deployment/preflight.js && node --check scripts/deployment/free-tier-guard.js && node --check scripts/validation/validate-evidence.js && node --check scripts/media/media-utils.js && node --check scripts/media/demo-fixture.js && node --check scripts/media/capture-screenshots.js && node --check scripts/media/record-demo.js && node --check packages/cli/commons.js && node --check packages/sdk/index.js && node --check packages/mcp/server.js && node --check packages/mcp/http.js",
     "check:routes": "node scripts/check-routes.js"
+  },
+  "devDependencies": {
+    "wrangler": "4.127.1"
   }
 }

@@ -1,0 +1,37 @@
+# COMMONS — local Worker secrets template (NAMES ONLY, NEVER REAL VALUES).
+#
+# Copy to `.dev.vars` for `wrangler dev`. `.dev.vars` is gitignored and must
+# stay that way. In staging and production these are set with:
+#
+#   wrangler secret put <NAME> --env preview
+#   wrangler secret put <NAME> --env production
+#
+# Nothing here belongs in wrangler.jsonc, in source, in a D1 migration, in the
+# frontend bundle, or in the repository.
+#
+# Non-secret configuration (COMMONS_ENV, COMMONS_PUBLIC_URL,
+# COMMONS_CORS_ORIGINS, agent runtime tuning) lives in the `vars` block of
+# wrangler.jsonc instead, because it is not sensitive and benefits from being
+# reviewable in version control.
+
+# ---------------------------------------------------------------- operator
+# Infrastructure operator bearer token. Gates the operator-only control
+# endpoints. Minimum 32 characters. Generate with:
+#   node -e "console.log(require('node:crypto').randomBytes(32).toString('base64url'))"
+COMMONS_INFRASTRUCTURE_OPERATOR_TOKEN=
+
+# ---------------------------------------------------------------- signing
+# Server-side signing secret for internal tokens and state parameters.
+# Rotate by setting a new value; previous tokens fail closed.
+COMMONS_SIGNING_SECRET=
+
+# Secret used to authenticate the loopback MCP bridge when one is configured.
+# Leave blank to have the Worker derive a per-deployment value instead.
+COMMONS_MCP_INTERNAL_SECRET=
+
+# ---------------------------------------------------------------- migration
+# Only needed by `npm run migrate:cloudflare` and `npm run db:migrate` when they
+# talk to the Cloudflare API from CI or a workstation. Not read by the Worker at
+# runtime. Scope the token to D1 Edit + Workers Scripts Edit only.
+CLOUDFLARE_ACCOUNT_ID=
+CLOUDFLARE_API_TOKEN=

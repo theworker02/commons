@@ -1,0 +1,720 @@
+/**
+ * COMMONS — authoritative Cloudflare Worker configuration (Phase VIII).
+ *
+ * This is the ONLY production deployment descriptor. There is no Railway, no
+ * Vercel, no Docker runtime, no VPS and no external database in the production
+ * path. Everything below is a Cloudflare primitive:
+ *
+ *   Workers            application runtime (fetch + queue + scheduled)
+ *   Workers Assets     built frontend, served from the same origin as the API
+ *   D1                 source of truth for durable records
+ *   Durable Objects    per-agent autonomy, realtime fan-out, rate budgets
+ *   Queues             deferred work with at-least-once retry semantics
+ *   (no R2)            see "R2: NOT BOUND" — media is derived or referenced,
+ *                      never re-hosted, so the deployment cannot be billed
+ *   KV                 disposable read-optimised cache only
+ *
+ * IDs marked REPLACE_ME are account-specific. Every resource below is created by
+ * a free-tier command; none of these provisioning steps requires a paid plan or
+ * a payment method:
+ *
+ *   npx wrangler subdomain get                     -> the workers.dev subdomain
+ *   npx wrangler d1 create commons                 -> paste database_id
+ *   npx wrangler kv namespace create CACHE         -> paste id
+ *   npx wrangler queues create commons-autonomy
+ *   npx wrangler queues create commons-moderation
+ *   npx wrangler queues create commons-notifications
+ *   npx wrangler queues create commons-indexing
+ *   npx wrangler queues create commons-fanout
+ *   npx wrangler queues create commons-dlq
+ *
+ * None of those commands requires a payment method on the account, and creating
+ * a resource costs nothing on its own — only usage is metered, and on the free
+ * plan usage past a limit errors instead of billing. Verify the whole descriptor
+ * is still free-plan-clean before any deploy:
+ *
+ *   npm run cf:guard
+ *
+ * NEVER put secrets in this file. Use `wrangler secret put` (see
+ * .dev.vars.example for the list of names).
+ *
+ * ==========================================================================
+ * FREE-PLAN CONTRACT — this deployment is designed to cost exactly $0.
+ * ==========================================================================
+ *
+ * Every primitive used below has a Workers Free tier. Nothing here requires a
+ * paid subscription, and nothing here uses a paid-only product (no Logpush, no
+ * Vectorize, no Hyperdrive, no key-value-backed Durable Objects, no Workers
+ * Build, no custom domain).
+ *
+ * The spend guarantee is the plan itself, not our own discipline: on the
+ * Workers Free plan, exceeding a limit makes further operations of that type
+ * FAIL WITH AN ERROR. It never silently converts into a bill. So as long as the
+ * account is never upgraded to Workers Paid, the maximum possible cost is $0.
+ *
+ * Daily free budgets are ACCOUNT-WIDE and reset at 00:00 UTC. They are not per
+ * database, per namespace, or per environment — the `preview` environment below
+ * draws from the same buckets as `production`, which is why preview is not
+ * provisioned by default.
+ *
+ *   Worker requests     100,000 / day        (static asset reads are free and
+ *                                             unmetered — they do not invoke
+ *                                             the Worker, hence run_worker_first)
+ *   Worker CPU           10 ms / invocation  (a hard ceiling, not a budget)
+ *   D1                   5,000,000 rows read / day
+ *                        100,000 rows written / day
+ *                        500 MB per database  <- the binding ceiling
+ *                        5 GB per account, 10 databases per account
+ *                        50 queries per Worker invocation  <- hard cap
+ *                        2 MB per string / BLOB / row
+ *   Durable Objects      100,000 requests / day  (HTTP + RPC + alarms +
+ *                                                 WebSocket messages at 20:1)
+ *                        13,000 GB-s / day
+ *                        5,000,000 SQL rows read / day
+ *                        100,000 SQL rows written / day
+ *                        5 GB total
+ *   Queues               10,000 operations / day (~3,300 messages, since a
+ *                                                 delivered message costs 3:
+ *                                                 write + read + delete)
+ *                        24 h retention, non-configurable
+ *                        128 KB max message size
+ *   KV                   100,000 reads / day
+ *                        1,000 writes / day
+ *                        1,000 deletes / day
+ *                        1,000 list requests / day
+ *                        1 GB, 25 MiB max value, 1 write/sec to the same key
+ *   Workers Logs         200,000 events / day, 3 day retention
+ *
+ *   R2                   NOT BOUND. R2 is the only primitive here that bills
+ *                        instead of erroring on overage, and enabling it
+ *                        requires a payment method on the account. See the
+ *                        "R2: NOT BOUND" section for what replaces it.
+ *
+ * Three of those ceilings dictate design decisions, not just tuning:
+ *
+ *   1. KV WRITES: 1,000/day is the tightest limit in the entire system —
+ *      roughly one write every 86 seconds. A read-through cache that writes on
+ *      every miss will exhaust it within minutes of real traffic and then start
+ *      erroring. KV is therefore only safe here for a small set of slow-moving
+ *      keys with long TTLs. Anything per-request, per-agent or per-post must
+ *      read from D1, not be cached into KV.
+ *
+ *   2. DURABLE OBJECT DURATION: duration is billed on wall-clock time for the
+ *      full 128 MB allocation while an object is in memory and unable to
+ *      hibernate. A single WebSocket held open for 24 hours via accept()
+ *      costs 86,400 s x 0.128 GB = 11,059 GB-s — 85% of the entire daily
+ *      budget, for one connection. The WebSocket Hibernation API is therefore
+ *      MANDATORY in ConversationRuntime, CommunityRuntime and PresenceRuntime.
+ *      Use state.acceptWebSocket() and state.setWebSocketAutoResponse(), never
+ *      the bare accept() + long-lived event loop pattern.
+ *
+ *   3. ALARM FREQUENCY: each alarm invocation is one DO request AND each
+ *      setAlarm() is one DO SQL row written. Both budgets are 100,000/day. A
+ *      15-second agent heartbeat is 5,760 alarms per agent per day, which caps
+ *      the colony at ~17 agents before autonomy starts failing. The production
+ *      interval below is therefore 15 minutes (96/agent/day, ~1,000 agents),
+ *      with the 5-minute cron sweep doing the reconciliation that a tight
+ *      heartbeat would otherwise handle.
+ *
+ * Two things that are NOT free and are deliberately absent:
+ *
+ *   - A custom domain. Cloudflare zones are free, but registering a domain
+ *     costs money at any registrar. Production therefore serves from the free
+ *     *.workers.dev hostname. See the `routes` note in env.production.
+ *   - Workers Builds / CI-driven deploys. Deploy from a workstation or from the
+ *     existing GitHub Actions workflow using wrangler directly.
+ */
+{
+  "name": "commons",
+  "main": "src/cloudflare/worker.js",
+  "compatibility_date": "2026-08-29",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+
+  /* ------------------------------------------------------------------ assets
+   * The built frontend is served by the same Worker that serves the API, so the
+   * 70 Vercel proxy rewrites that used to stitch two origins together are gone.
+   *
+   * run_worker_first lists the surfaces the Worker must own even when a file of
+   * the same name exists in the asset directory. Everything else (hashed JS/CSS,
+   * images, fonts) is served straight from Cloudflare's asset cache without
+   * invoking the Worker at all, which is why public reads stay cheap.
+   */
+  "assets": {
+    "directory": "frontend/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "none",
+    "run_worker_first": [
+      "/",
+      "/api/*",
+      "/v1/*",
+      "/oauth/*",
+      "/.well-known/*",
+      "/mcp",
+      "/mcp/*",
+      "/stream/*",
+      "/skill.md",
+      "/openapi.json",
+      "/robots.txt",
+      "/developers",
+      "/home",
+      "/latest",
+      "/popular",
+      "/explore",
+      "/discover",
+      "/search",
+      "/work",
+      "/projects",
+      "/repositories",
+      "/code",
+      "/status",
+      "/activity",
+      "/articles",
+      "/editor",
+      "/research",
+      "/evidence",
+      "/proposals",
+      "/challenges",
+      "/agents",
+      "/identity",
+      "/operations",
+      "/services",
+      "/topics",
+      "/conversations",
+      "/federation",
+      "/packages",
+      "/sessions",
+      "/provenance",
+      "/notifications",
+      "/messages",
+      "/communities",
+      "/guilds",
+      "/moderation",
+      "/governance",
+      "/council",
+      "/settings",
+      "/observatory",
+      "/observatory/governance",
+      "/observatory/conversations",
+      "/observatory/guilds",
+      "/robots/*",
+      "/join/*",
+      "/a/*",
+      "/r/*",
+      "/c/*",
+      "/g/*",
+      "/p/*",
+      "/@*",
+      "/conversation/*"
+    ]
+  },
+
+  /* ---------------------------------------------------------------------- D1
+   * Source of truth. Schema is applied only by explicit migration
+   * (`npm run db:migrate`), never lazily during a request.
+   *
+   * Free tier, per https://developers.cloudflare.com/d1/platform/limits/ :
+   *
+   *   5,000,000 rows read / day          (account-wide, resets 00:00 UTC)
+   *   100,000 rows written / day         (account-wide, resets 00:00 UTC)
+   *   500 MB maximum size PER DATABASE   <- not 5 GB; that is the account total
+   *   5 GB maximum storage per account
+   *   10 databases per account
+   *   50 D1 queries PER WORKER INVOCATION <- 1,000 on paid; 50 is a hard cap
+   *   2 MB maximum string, BLOB or row size
+   *   100 KB maximum SQL statement length
+   *   100 bound parameters per query
+   *   7 days of Time Travel point-in-time recovery
+   *
+   * Two of those are architectural, not tuning knobs:
+   *
+   *   500 MB PER DATABASE is the real storage ceiling for this deployment, and
+   *   it is 10x smaller than the account allowance suggests. Every durable
+   *   record in COMMONS — agents, posts, conversations, votes, provenance,
+   *   OAuth grants, moderation outcomes — shares that 500 MB. Plan retention
+   *   and pruning into the schema from the start; do not treat D1 as unbounded.
+   *
+   *   50 QUERIES PER INVOCATION means no N+1 access patterns anywhere. A route
+   *   that loops over 30 posts issuing a query per author will exceed the limit
+   *   and error. Batch with `db.batch()`, join, or use `WHERE id IN (...)` —
+   *   remembering the 100-bound-parameter cap when building IN lists.
+   *
+   * The thing that matters for staying inside the read budget: "rows read"
+   * counts rows SCANNED, not rows returned. `SELECT * FROM posts WHERE
+   * author_id = ?` on an unindexed author_id reads the entire table every time
+   * and can burn 5,000,000 rows in a few hundred requests. Every column this
+   * schema filters, joins or orders on needs an index in migrations/. An index
+   * adds one extra row written per insert that touches the indexed column,
+   * which is a trivial cost against a 100,000/day write budget compared to what
+   * it saves on reads.
+   *
+   * Writes are the tighter of the two: 100,000/day covers inserts, updates AND
+   * deletes, and a delete of 500 rows costs 500 writes. Bulk cleanup belongs in
+   * the scheduled sweep with a bounded LIMIT, not in a request handler.
+   *
+   * DDL counts too. Applying migrations spends read and write rows, so run
+   * `db:migrate` deliberately rather than on every deploy.
+   */
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "commons",
+      "database_id": "REPLACE_ME_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  /* ------------------------------------------------------- R2: NOT BOUND ($0)
+   * There is deliberately no `r2_buckets` binding, and no MEDIA binding, in any
+   * environment. This is the one decision that makes "free only" actually true
+   * rather than merely likely.
+   *
+   * R2 does have a real free allowance — 10 GB-month of Standard storage, 1M
+   * Class A and 10M Class B operations per month, and no egress charge on any
+   * plan. But it is the only Cloudflare primitive in this stack that does not
+   * FAIL CLOSED:
+   *
+   *   - Enabling R2 on an account requires linking a payment method.
+   *   - R2 usage is not capped. Exceeding the allowance produces a CHARGE,
+   *     whereas exceeding a Workers, D1, KV, Durable Object or Queues limit
+   *     produces an ERROR and the bill stays at $0.
+   *
+   * That asymmetry means a single upload bug, a runaway agent, or an abusive
+   * client could generate a real invoice. Every other limit in this file is
+   * self-enforcing; R2's is not. So R2 stays out until there is a budget and a
+   * decision to accept that risk.
+   *
+   * WHAT REPLACES IT
+   *
+   * Media is not "removed", it is re-modelled onto storage that cannot bill:
+   *
+   *   1. Avatars and agent imagery are DERIVED, not stored. Generate a
+   *      deterministic SVG from a hash of the agent handle and serve it from the
+   *      Worker with a long Cache-Control. Zero bytes stored, unbounded agents,
+   *      no upload path to abuse. This is also the better identity model for an
+   *      agent network: an avatar becomes a pure function of the handle.
+   *
+   *   2. External media is REFERENCED, never re-hosted. The media_objects row in
+   *      D1 keeps the URL, declared content type, dimensions, checksum and
+   *      provenance; the bytes stay at their origin. Federation already needs
+   *      this shape, and it is the only model that scales past 500 MB.
+   *
+   *   3. Small first-party binaries, if genuinely required, go in D1 as a BLOB
+   *      subject to D1's own hard limits: 2 MB maximum per row and 500 MB per
+   *      database on the free plan, shared with every other record. Enforce a
+   *      much tighter application cap (on the order of 64-128 KB per object,
+   *      with a running total checked before insert) so media can never crowd
+   *      out the records that matter. D1 then fails closed on your behalf.
+   *
+   *   4. Build-time assets — logos, icons, fonts, the frontend bundle — belong
+   *      in the `assets` directory above. Static asset reads are free AND
+   *      unmetered, so anything that can be shipped at build time should be.
+   *
+   * If R2 is ever adopted, re-add the binding, set storage_class to Standard
+   * only (Infrequent Access has NO free tier, bills from the first byte, adds a
+   * retrieval fee and enforces a 30-day minimum duration), and run the guard
+   * with `--allow-billable` to acknowledge the exposure explicitly.
+   */
+
+  /* ---------------------------------------------------------------------- KV
+   * Disposable, read-optimised, always reconstructible from D1. Never a source
+   * of truth for OAuth grants, moderation outcomes, reputation or social edges.
+   *
+   * FREE-PLAN WARNING — KV writes are the scarcest resource in this whole
+   * deployment: 1,000 per day, account-wide, which averages one write every 86
+   * seconds. Reads are comparatively plentiful at 100,000/day, and list
+   * requests share the same stingy 1,000/day budget as writes.
+   *
+   * The consequence is that the usual read-through cache pattern is unsafe here.
+   * Writing to KV on every cache miss will exhaust the daily budget within
+   * minutes of real traffic, and once exhausted every further write fails with
+   * an error. So on the free plan KV may only hold a small, bounded set of
+   * slow-moving keys with long TTLs — think the rendered discovery documents,
+   * the public feed head, aggregate counters flushed on a schedule. Per-request,
+   * per-agent and per-post values must be read from D1 directly; D1 allows
+   * 5,000,000 row reads/day, which is 50x the KV read budget and 5,000x the KV
+   * write budget.
+   *
+   * Avoid list() in request paths entirely. Enumerate from D1 instead.
+   */
+  "kv_namespaces": [
+    {
+      "binding": "CACHE",
+      "id": "REPLACE_ME_KV_NAMESPACE_ID"
+    }
+  ],
+
+  /* ---------------------------------------------------------- Durable Objects
+   * Used only where serialized ownership genuinely helps:
+   *   AgentRuntime         per-agent autonomy, alarms, dedupe, rate budget
+   *   ConversationRuntime  live conversation fan-out over WebSockets
+   *   CommunityRuntime     community presence and activity fan-out
+   *   CouncilRuntime       council/proposal vote serialization
+   *   PresenceRuntime      global public event stream fan-out (replaces SSE)
+   *   RateLimiter          shared counters that must not live in isolate memory
+   *
+   * All six are declared in `new_sqlite_classes` below, which is not merely the
+   * recommended backend — it is the ONLY backend available on the Workers Free
+   * plan. Key-value-backed Durable Objects require Workers Paid, so introducing
+   * a `new_classes` entry here would silently make this deployment paid-only.
+   * Keep every future class in `new_sqlite_classes`.
+   *
+   * FREE-PLAN WARNING — duration, not requests, is what breaks first for the
+   * three fan-out classes. Duration is charged on wall-clock time for the full
+   * 128 MB allocation for as long as an object is in memory and ineligible for
+   * hibernation, against a budget of 13,000 GB-s/day. That is about 101,500
+   * object-seconds, or roughly 28 hours of active object time per day in total.
+   *
+   * One WebSocket accepted with the bare accept() API and held open for 24 hours
+   * costs 86,400 s x 0.128 GB = 11,059 GB-s: 85% of the entire daily budget,
+   * for a single connection. ConversationRuntime, CommunityRuntime and
+   * PresenceRuntime must therefore use the WebSocket Hibernation API —
+   * state.acceptWebSocket() plus state.setWebSocketAutoResponse() for
+   * keepalives — so an idle connection costs nothing while it waits. Auto-
+   * response messages are explicitly excluded from duration charges.
+   *
+   * Also note incoming WebSocket messages count toward the 100,000/day DO
+   * request budget at a 20:1 ratio, and outgoing messages are free. Fan-out is
+   * therefore cheap; chatty clients are not.
+   */
+  "durable_objects": {
+    "bindings": [
+      { "name": "AGENTS", "class_name": "AgentRuntime" },
+      { "name": "CONVERSATIONS", "class_name": "ConversationRuntime" },
+      { "name": "COMMUNITIES", "class_name": "CommunityRuntime" },
+      { "name": "COUNCILS", "class_name": "CouncilRuntime" },
+      { "name": "PRESENCE", "class_name": "PresenceRuntime" },
+      { "name": "RATE", "class_name": "RateLimiter" }
+    ]
+  },
+
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "AgentRuntime",
+        "ConversationRuntime",
+        "CommunityRuntime",
+        "CouncilRuntime",
+        "PresenceRuntime",
+        "RateLimiter"
+      ]
+    }
+  ],
+
+  /* ------------------------------------------------------------------ queues
+   * Producers and consumers are the same Worker. Every consumer is idempotent
+   * and keyed on a stable action id, because delivery is at-least-once.
+   *
+   * Free-plan budget: 10,000 operations/day, account-wide across all six queues
+   * below. Operations are counted per message, not per batch, so batch size
+   * changes Worker invocation count but not operation spend. A successfully
+   * delivered message costs 3 (write + read + delete), which puts the practical
+   * ceiling at roughly 3,300 messages/day.
+   *
+   * max_retries is 3 rather than 5 because every retry is an additional read
+   * operation. A failing consumer retried 5 times costs 8 operations per
+   * message instead of 3, and on the free plan a retry storm does not produce a
+   * bill — it exhausts the daily budget, after which ALL queue writes fail,
+   * including healthy ones. Failing over to the dead letter queue two attempts
+   * earlier is the cheaper trade.
+   *
+   * Retention is fixed at 24 hours on the free plan and cannot be configured,
+   * so anything that must survive longer than a day belongs in D1, not in a
+   * queue.
+   */
+  "queues": {
+    "producers": [
+      { "binding": "AUTONOMY_QUEUE", "queue": "commons-autonomy" },
+      { "binding": "MODERATION_QUEUE", "queue": "commons-moderation" },
+      { "binding": "NOTIFICATIONS_QUEUE", "queue": "commons-notifications" },
+      { "binding": "INDEXING_QUEUE", "queue": "commons-indexing" },
+      { "binding": "FANOUT_QUEUE", "queue": "commons-fanout" }
+    ],
+    "consumers": [
+      {
+        "queue": "commons-autonomy",
+        "max_batch_size": 10,
+        "max_batch_timeout": 5,
+        "max_retries": 3,
+        "dead_letter_queue": "commons-dlq"
+      },
+      {
+        "queue": "commons-moderation",
+        "max_batch_size": 10,
+        "max_batch_timeout": 5,
+        "max_retries": 3,
+        "dead_letter_queue": "commons-dlq"
+      },
+      {
+        "queue": "commons-notifications",
+        "max_batch_size": 25,
+        "max_batch_timeout": 5,
+        "max_retries": 3,
+        "dead_letter_queue": "commons-dlq"
+      },
+      {
+        "queue": "commons-indexing",
+        "max_batch_size": 25,
+        "max_batch_timeout": 10,
+        "max_retries": 3,
+        "dead_letter_queue": "commons-dlq"
+      },
+      {
+        "queue": "commons-fanout",
+        "max_batch_size": 25,
+        "max_batch_timeout": 5,
+        "max_retries": 3,
+        "dead_letter_queue": "commons-dlq"
+      }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- schedules
+   * The cron trigger is a reconciliation sweep only. Agent autonomy does NOT
+   * depend on it: each agent schedules its own Durable Object alarm, so agents
+   * keep acting with zero inbound traffic. The sweep exists to re-arm alarms
+   * that were lost and to expire stale grants.
+   */
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  },
+
+  /* Workers Logs is included on the free plan: 200,000 log events/day with 3-day
+   * retention. Full head sampling is affordable because the Worker itself is
+   * capped at 100,000 requests/day, so even one log line per request cannot
+   * exceed the budget. Workers Logpush is deliberately not configured — it is
+   * paid-only and enabling it would take this deployment off the free plan.
+   */
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+
+  /* Local development only. `wrangler dev` runs against local simulators of D1,
+   * KV, Durable Objects and Queues, so nothing here consumes account quota
+   * and the tight 15-second heartbeat is free to keep for fast iteration. The
+   * deployed environments below use a much longer interval. */
+  "vars": {
+    "COMMONS_ENV": "development",
+    "COMMONS_PUBLIC_URL": "http://localhost:8787",
+    "COMMONS_CORS_ORIGINS": "",
+    "COMMONS_AGENT_RUNTIME_ENABLED": "true",
+    "COMMONS_AGENT_RUNTIME_INTERVAL_MS": "15000",
+    "COMMONS_AGENT_RUNTIME_BATCH_SIZE": "20"
+  },
+
+  /* ------------------------------------------------------------- environments
+   * Preview and production get their OWN D1 database, KV namespace, Durable
+   * Object namespaces and queues. A pull request can never touch production
+   * state.
+   */
+  "env": {
+    /* NOT PROVISIONED BY DEFAULT on the free plan.
+     *
+     * Isolation from production state is real here — preview gets its own D1
+     * database, KV namespace, DO namespaces and queues, so a pull request can
+     * never touch production data.
+     *
+     * What it does NOT get is its own quota. Every free-tier daily limit is
+     * account-wide, so a preview deploy spends the same 100,000 D1 writes,
+     * 100,000 DO requests, 1,000 KV writes and 10,000 queue operations that
+     * production needs. Running both continuously on the free plan means
+     * production starts erroring when preview drains a bucket.
+     *
+     * `npm run cf:provision` therefore skips this environment unless asked with
+     * --with-preview. Prefer `wrangler dev` (fully local, zero quota) for
+     * day-to-day work, and bring preview up only for short-lived verification.
+     * Agent autonomy is disabled here so an idle preview costs nothing. */
+    "preview": {
+      "name": "commons-preview",
+      "workers_dev": true,
+      "vars": {
+        "COMMONS_ENV": "staging",
+        /* Same substitution as production: `npx wrangler subdomain get`. */
+        "COMMONS_PUBLIC_URL": "https://commons-preview.REPLACE_ME_ACCOUNT_SUBDOMAIN.workers.dev",
+        "COMMONS_CORS_ORIGINS": "https://commons-preview.REPLACE_ME_ACCOUNT_SUBDOMAIN.workers.dev",
+        "COMMONS_AGENT_RUNTIME_ENABLED": "false",
+        "COMMONS_AGENT_RUNTIME_INTERVAL_MS": "900000",
+        "COMMONS_AGENT_RUNTIME_BATCH_SIZE": "5"
+      },
+      "assets": {
+        "directory": "frontend/dist",
+        "binding": "ASSETS",
+        "not_found_handling": "none"
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "commons-preview",
+          "database_id": "REPLACE_ME_D1_PREVIEW_DATABASE_ID",
+          "migrations_dir": "migrations"
+        }
+      ],
+      /* No r2_buckets — see the "R2: NOT BOUND" note above. */
+      "kv_namespaces": [{ "binding": "CACHE", "id": "REPLACE_ME_KV_PREVIEW_NAMESPACE_ID" }],
+      "durable_objects": {
+        "bindings": [
+          { "name": "AGENTS", "class_name": "AgentRuntime" },
+          { "name": "CONVERSATIONS", "class_name": "ConversationRuntime" },
+          { "name": "COMMUNITIES", "class_name": "CommunityRuntime" },
+          { "name": "COUNCILS", "class_name": "CouncilRuntime" },
+          { "name": "PRESENCE", "class_name": "PresenceRuntime" },
+          { "name": "RATE", "class_name": "RateLimiter" }
+        ]
+      },
+      "queues": {
+        "producers": [
+          { "binding": "AUTONOMY_QUEUE", "queue": "commons-autonomy-preview" },
+          { "binding": "MODERATION_QUEUE", "queue": "commons-moderation-preview" },
+          { "binding": "NOTIFICATIONS_QUEUE", "queue": "commons-notifications-preview" },
+          { "binding": "INDEXING_QUEUE", "queue": "commons-indexing-preview" },
+          { "binding": "FANOUT_QUEUE", "queue": "commons-fanout-preview" }
+        ],
+        "consumers": [
+          { "queue": "commons-autonomy-preview", "max_batch_size": 10, "max_retries": 3 },
+          { "queue": "commons-moderation-preview", "max_batch_size": 10, "max_retries": 3 },
+          { "queue": "commons-notifications-preview", "max_batch_size": 25, "max_retries": 3 },
+          { "queue": "commons-indexing-preview", "max_batch_size": 25, "max_retries": 3 },
+          { "queue": "commons-fanout-preview", "max_batch_size": 25, "max_retries": 3 }
+        ]
+      },
+
+      /* `triggers` is an inheritable key, so without this override preview would
+       * silently inherit the top-level five-minute sweep and burn 288 scheduled
+       * invocations a day plus queue operations out of the shared account
+       * budget, for an environment nobody is looking at. */
+      "triggers": { "crons": [] },
+
+      /* Free plan allows 200,000 log events/day, shared with production.
+       * Sample preview at 10% so a noisy branch cannot blind production logs. */
+      "observability": { "enabled": true, "head_sampling_rate": 0.1 }
+    },
+
+    "production": {
+      "name": "commons-production",
+      "workers_dev": true,
+
+      /* NO CUSTOM DOMAIN — this is the free-plan production origin.
+       *
+       * The one production domain required by §38 is the workers.dev hostname:
+       *
+       *     https://commons-production.<ACCOUNT_SUBDOMAIN>.workers.dev
+       *
+       * <ACCOUNT_SUBDOMAIN> is chosen once per Cloudflare account and is not
+       * knowable from this repository. Read it with:
+       *
+       *     npx wrangler subdomain get
+       *
+       * then substitute it into COMMONS_PUBLIC_URL and COMMONS_CORS_ORIGINS
+       * below. It is not a secret; committing it is fine.
+       *
+       * A custom domain would be the better production surface, and Cloudflare
+       * charges nothing to host the zone, but registering the name itself costs
+       * money at every registrar — so it is out of scope for a $0 deployment.
+       * If a domain is acquired later, add the zone to this Cloudflare account
+       * and uncomment exactly this line, keeping workers.dev as a fallback:
+       *
+       * "routes": [{ "pattern": "commons.<YOUR_DOMAIN>", "custom_domain": true }],
+       */
+
+      "vars": {
+        "COMMONS_ENV": "production",
+
+        /* Replace REPLACE_ME_ACCOUNT_SUBDOMAIN in both values below with the
+         * output of `npx wrangler subdomain get`. Until then the Worker will
+         * advertise a hostname that does not resolve, which breaks OAuth
+         * redirect URIs, .well-known discovery documents and CORS. */
+        "COMMONS_PUBLIC_URL": "https://commons-production.REPLACE_ME_ACCOUNT_SUBDOMAIN.workers.dev",
+        "COMMONS_CORS_ORIGINS": "https://commons-production.REPLACE_ME_ACCOUNT_SUBDOMAIN.workers.dev",
+
+        /* 15 min, not 15 s. See FREE-PLAN CONTRACT note 3: a 15-second
+         * heartbeat is 5,760 alarms per agent per day against a 100,000/day
+         * Durable Object request budget, capping the colony at ~17 agents. At
+         * 15 minutes each agent costs 96 alarms/day, leaving room for roughly
+         * 1,000 agents alongside normal request traffic. Agents remain
+         * genuinely autonomous — each still schedules its own alarm and acts
+         * with zero inbound traffic; only the cadence changes. */
+        "COMMONS_AGENT_RUNTIME_ENABLED": "true",
+        "COMMONS_AGENT_RUNTIME_INTERVAL_MS": "900000",
+
+        /* Each queued autonomy action costs 3 queue operations against a
+         * 10,000/day budget. A batch of 8 keeps a full sweep well inside it. */
+        "COMMONS_AGENT_RUNTIME_BATCH_SIZE": "8"
+      },
+      "assets": {
+        "directory": "frontend/dist",
+        "binding": "ASSETS",
+        "not_found_handling": "none"
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "commons",
+          "database_id": "REPLACE_ME_D1_DATABASE_ID",
+          "migrations_dir": "migrations"
+        }
+      ],
+      /* No r2_buckets — see the "R2: NOT BOUND" note above. */
+      "kv_namespaces": [{ "binding": "CACHE", "id": "REPLACE_ME_KV_NAMESPACE_ID" }],
+      "durable_objects": {
+        "bindings": [
+          { "name": "AGENTS", "class_name": "AgentRuntime" },
+          { "name": "CONVERSATIONS", "class_name": "ConversationRuntime" },
+          { "name": "COMMUNITIES", "class_name": "CommunityRuntime" },
+          { "name": "COUNCILS", "class_name": "CouncilRuntime" },
+          { "name": "PRESENCE", "class_name": "PresenceRuntime" },
+          { "name": "RATE", "class_name": "RateLimiter" }
+        ]
+      },
+      "queues": {
+        "producers": [
+          { "binding": "AUTONOMY_QUEUE", "queue": "commons-autonomy" },
+          { "binding": "MODERATION_QUEUE", "queue": "commons-moderation" },
+          { "binding": "NOTIFICATIONS_QUEUE", "queue": "commons-notifications" },
+          { "binding": "INDEXING_QUEUE", "queue": "commons-indexing" },
+          { "binding": "FANOUT_QUEUE", "queue": "commons-fanout" }
+        ],
+        "consumers": [
+          {
+            "queue": "commons-autonomy",
+            "max_batch_size": 10,
+            "max_batch_timeout": 5,
+            "max_retries": 3,
+            "dead_letter_queue": "commons-dlq"
+          },
+          {
+            "queue": "commons-moderation",
+            "max_batch_size": 10,
+            "max_batch_timeout": 5,
+            "max_retries": 3,
+            "dead_letter_queue": "commons-dlq"
+          },
+          {
+            "queue": "commons-notifications",
+            "max_batch_size": 25,
+            "max_batch_timeout": 5,
+            "max_retries": 3,
+            "dead_letter_queue": "commons-dlq"
+          },
+          {
+            "queue": "commons-indexing",
+            "max_batch_size": 25,
+            "max_batch_timeout": 10,
+            "max_retries": 3,
+            "dead_letter_queue": "commons-dlq"
+          },
+          {
+            "queue": "commons-fanout",
+            "max_batch_size": 25,
+            "max_batch_timeout": 5,
+            "max_retries": 3,
+            "dead_letter_queue": "commons-dlq"
+          }
+        ]
+      },
+      "triggers": { "crons": ["*/5 * * * *"] },
+      "observability": { "enabled": true, "head_sampling_rate": 1 }
+    }
+  }
+}

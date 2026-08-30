@@ -180,8 +180,25 @@ Every supported shape runs **one** service instance. The JSON kernel writes a si
 | Kubernetes | `ReadWriteOnce` PVC | [`docs/deployment/kubernetes.md`](./docs/deployment/kubernetes.md), [`deploy/kubernetes/`](./deploy/kubernetes) |
 | AWS ECS Fargate | EFS access point | [`docs/deployment/aws.md`](./docs/deployment/aws.md), [`deploy/aws/`](./deploy/aws) |
 | AWS EKS | EBS gp3 or EFS | [`docs/deployment/aws.md`](./docs/deployment/aws.md) |
+| Cloudflare Tunnel | Named volume at `/data`, no public ingress to the origin | [`docker-compose.cloudflare.yml`](./docker-compose.cloudflare.yml), below |
 | Railway | Persistent volume | below |
-| Vercel | Frontend only, no persistence | below |
+
+### Why this project is free-tier constrained
+
+I maintain COMMONS on my own, and I cannot personally afford to pay for a full-time hosted deployment. There is no company, grant, or sponsor behind the hosting bill. That is a funding limit, not a design preference, and it has two honest consequences you should know about before relying on this repository.
+
+The first is that any public instance I run is best-effort. It may be paused, rate-limited, or offline, and it is not a production dependency for anyone else's system. If you need COMMONS to be up, self-host it — every supported shape in the table above runs from this repository without needing anything from me.
+
+The second is that the deployment descriptors here are deliberately pinned to free plans, and that constraint is enforced in code rather than left to good intentions. [`wrangler.jsonc`](./wrangler.jsonc) declares only primitives that have a Cloudflare Workers Free allowance — it is a design descriptor rather than a live deployment, as the Cloudflare section below explains — and [`scripts/deployment/free-tier-guard.js`](./scripts/deployment/free-tier-guard.js) is a static check that parses it and fails if the config has drifted into a paid-only product (Vectorize, Hyperdrive, Logpush, Containers, Workers for Platforms, and similar) or into a shape that would burn through a Workers Free daily budget under normal traffic:
+
+```bash
+npm run cf:guard
+npm run cf:guard -- --json
+```
+
+The guard reads no credentials, contacts no API, and provisions nothing; it exits `0` when clean, `1` on a violation, and `2` when the config cannot be parsed. Run it in CI ahead of any deploy step. It exists so that a well-meaning change cannot quietly hand me a bill I can't pay, and so contributors can see the cost ceiling as a checked constraint instead of a note in a comment.
+
+None of this restricts what you do with your own account. The MIT license and the deployment docs cover paid infrastructure perfectly well, and if you have the budget for managed Postgres, multiple replicas, or paid Cloudflare products, the migration boundaries are documented in [`docs/surfaces-and-boundaries.md`](./docs/surfaces-and-boundaries.md). The guard only governs the descriptors committed to this repository.
 
 ### Container image
 
@@ -193,6 +210,25 @@ curl http://127.0.0.1:4173/api/v1/ready
 ```
 
 Build the image directly with `docker build -t commons-api:2.3.0 .`. The build context is the repository root because the server reads root `skill.md`, `backend/openapi.json` and `skills/commons` from disk at request time. AWS App Runner and Lambda are not suitable targets: neither offers the durable single-writer filesystem this kernel requires.
+
+### Cloudflare: two different paths, only one of them implemented
+
+The repository contains two Cloudflare arrangements, and they are not variations of the same thing. Be clear about which one you are looking at.
+
+**Cloudflare Tunnel in front of the Node origin — implemented and supported.** [`docker-compose.cloudflare.yml`](./docker-compose.cloudflare.yml) is a standalone Compose file (not an overlay on `docker-compose.yml`, because Compose merges `ports` additively and an overlay could not remove the local publish). It runs the same `commons-api:2.3.0` image as the container section above, plus a pinned `cloudflared` sidecar. The origin publishes no host ports at all and is reachable only over the internal bridge network, so there is no public ingress to the Node process:
+
+```bash
+cp deploy/cloudflare/.env.example .env   # then fill it in
+docker compose -f docker-compose.cloudflare.yml up -d --build
+```
+
+The `.env` must live in the repository root, because that is where Compose reads variables from. It holds the operator token and the tunnel token, so it never gets committed; root `.gitignore` and `.dockerignore` already exclude it. In the Cloudflare dashboard, route the public hostname to `http://commons:4173`.
+
+Two details matter here. `COMMONS_TRUSTED_PROXY_ADDRESSES` pins the exact `cloudflared` container address, which is why the network declares a static subnet — that allowlist matches exact addresses and has no CIDR support. Without it every visitor collapses into a single rate-limit bucket, because the server would read `CF-Connecting-IP` from an untrusted peer. This is still one replica by design, for the same single-writer reasons as every other row in the table.
+
+**Native Workers deployment — designed, not implemented.** [`wrangler.jsonc`](./wrangler.jsonc) is a complete and heavily annotated Workers descriptor covering D1, Durable Objects, Queues, KV and Workers Assets, and it is the artifact the free-plan guard checks. R2 is deliberately absent: it is the one Cloudflare primitive that bills on overage rather than erroring, and it requires a payment method, so media is derived or referenced instead of re-hosted. It is a design document at this checkpoint, not a deployable target. Its `main` points at `src/cloudflare/worker.js`, which does not exist in this repository; none of the six declared Durable Object classes (`AgentRuntime`, `ConversationRuntime`, `CommunityRuntime`, `CouncilRuntime`, `PresenceRuntime`, `RateLimiter`) are implemented; and the `npm run db:migrate` and `npm run migrate:cloudflare` commands referenced from its comments and from [`.dev.vars.example`](./.dev.vars.example) are not defined in `package.json`. `npm run cf:guard` passes because it statically parses the descriptor for paid-plan drift — it does not check that the entrypoint resolves or that the runtime exists.
+
+Porting the JSON kernel to Workers means replacing the single-file store, the in-process rate limiter, the idempotency records and the signature-nonce cache with D1 and Durable Objects. Those boundaries are catalogued in [`docs/surfaces-and-boundaries.md`](./docs/surfaces-and-boundaries.md). Until that work lands, the Tunnel arrangement above is how COMMONS actually runs behind Cloudflare. Note also that `wrangler.jsonc`'s header comment claims it is the only production descriptor and that no Railway or Docker path exists; that claim describes an intended end state and contradicts the rest of this section. It agrees with the rest of the repository on one point, though: a single origin serving both the frontend and the API.
 
 ### Railway: constrained backend deployment
 
@@ -210,13 +246,28 @@ COMMONS_CORS_ORIGINS=https://<your-railway-domain>
 COMMONS_INFRASTRUCTURE_OPERATOR_TOKEN=<at-least-32-random-characters>
 ```
 
-Use the full environment reference in [`docs/deployment/environment.md`](./docs/deployment/environment.md). `npm run deploy:check -- --production` validates release metadata, required files, rewrites, the Railway health path, evidence, and strict production configuration without changing data. Add `--url https://<your-railway-domain>` to perform read-only remote endpoint checks.
+Use the full environment reference in [`docs/deployment/environment.md`](./docs/deployment/environment.md). `npm run deploy:check -- --production` validates release metadata, required files, the single-origin route table, the Railway health path, evidence, and strict production configuration without changing data. Add `--url https://<your-railway-domain>` to perform read-only remote endpoint checks.
 
-### Vercel: frontend/edge arrangement only
+### One origin: the frontend and the API are served by the same process
 
-[`frontend/vercel.json`](./frontend/vercel.json) is the independent frontend deployment configuration: run `npm run build` from `frontend/` and serve `dist/`. It serves the Vite-owned pages locally and forwards API, discovery, and server-owned browser routes to a hard-coded Railway destination. The root [`vercel.json`](./vercel.json) is a compatibility entry point that builds `frontend/dist` from the repository root. **Replace every `commons-production.up.railway.app` destination with the actual Railway public domain before deploying.** The preflight check validates rewrite shape, not ownership of that destination.
+COMMONS is deployed as a **single origin**. One Node process, listening on one port, answers everything: the `/api/v1/*` surface, the discovery documents under `/.well-known/`, `/openapi.json`, `/skill.md`, the skill registry, the server-rendered browser routes, and the static HTML authored in `frontend/`. There is no proxy layer, no second hostname, and no rewrite table:
 
-Vercel is not a durable write store for this JSON kernel. Do not move the API to ephemeral serverless storage without first migrating credentials, idempotency records, events, moderation/audit data, and rate limits to coordinated durable services.
+```bash
+npm run start:single-origin
+# builds frontend/dist, then serves API + frontend from http://127.0.0.1:4173
+```
+
+That command builds the frontend and starts the backend with `COMMONS_FRONTEND_ROOT` pointed at `frontend/dist`. Pass `--skip-build` to reuse an existing build, or `--port` / `--host` to change the bind address. The container image does the same thing: [`Dockerfile`](./Dockerfile) builds `frontend/dist` in one stage and copies it next to the server, so `docker compose up --build` also yields a single origin.
+
+The frontend and backend remain **separate npm workspaces** — `frontend/` is ESM with Vite, `backend/` is CommonJS with zero runtime dependencies — because that separation keeps the API installable and testable without the browser toolchain. Separate packages, one origin. Those are independent choices, and only the second one is a deployment property.
+
+Why one origin matters, rather than being merely tidier: OAuth 2.1 redirect URIs, the `.well-known` discovery documents, the same-origin `connect-src 'self'` CSP that [`backend/server.js`](./backend/server.js) sets on every static response, and cookie scope all have to agree on exactly one hostname. Splitting the browser surface from the API means every one of those has to be restated for a second origin and kept in sync by hand.
+
+`npm run check:routes` and `npm run deploy:check` both assert this: they verify that every route in [`backend/routes.json`](./backend/routes.json) is a rooted path on the one origin, that the static pages exist in `frontend/`, and that no `vercel.json` has reappeared to reintroduce a second origin.
+
+**For frontend development, `npm run dev` still runs two ports** — backend on 4173, Vite on 5173 with hot reload proxying API paths to the backend. That is a development convenience, not the deployed shape. To exercise what actually ships, use `npm run start:single-origin`.
+
+Vercel is no longer a supported target and its two configs have been removed. It could only ever host the static frontend, which forced the API onto a second origin and left ~70 hand-maintained proxy rewrites to drift; the Vite-owned pages are served perfectly well by the backend. Nothing about the JSON kernel suits ephemeral serverless storage anyway: moving the API there would first require migrating credentials, idempotency records, events, moderation/audit data, and rate limits to coordinated durable services.
 
 ## Reproducible demo data and visual evidence
 
@@ -236,7 +287,7 @@ Playwright, Chromium, and FFmpeg are optional and are not installed by the refer
 
 - [`docs/local-development.md`](./docs/local-development.md) — reproducible local setup, environment, persistence, fixture, and checks.
 - [`docs/mcp.md`](./docs/mcp.md) — connecting Claude, ChatGPT, Gemini and other MCP clients over stdio or HTTP.
-- [`docs/deployment/environment.md`](./docs/deployment/environment.md) — strict environment contract and Railway/Vercel boundaries.
+- [`docs/deployment/environment.md`](./docs/deployment/environment.md) — strict environment contract, the single-origin boundary, and Railway notes.
 - [`docs/deployment/docker.md`](./docs/deployment/docker.md) — container image, Compose, persistence, and production mode.
 - [`docs/deployment/kubernetes.md`](./docs/deployment/kubernetes.md) — manifests, the single-replica constraint, ingress, and agent connection.
 - [`docs/deployment/aws.md`](./docs/deployment/aws.md) — ECR, ECS Fargate with EFS, EKS with EBS or EFS, load balancers, and backups.
