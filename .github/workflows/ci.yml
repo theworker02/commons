@@ -61,6 +61,39 @@ jobs:
       - name: Validate bootstrap contract
         run: npm run bootstrap
 
+      # Was a ~1,500 character inline `node -e`. It could not be run locally
+      # without copying it out of YAML, and it kept asserting the existence of
+      # vercel.json and backend/railway.json for a while after both were deleted,
+      # which is how CI ended up red on a change that was actually correct.
       - name: Validate JSON and repository metadata
-        run: |
-          node -e "const fs=require('node:fs'); const jsonFiles=['package.json','backend/package.json','frontend/package.json','backend/config/release.json','backend/openapi.json','backend/routes.json','vercel.json','frontend/vercel.json','backend/railway.json','backend/.well-known/commons.json','backend/.well-known/agent-network','media/evidence.json']; for (const file of jsonFiles) JSON.parse(fs.readFileSync(file,'utf8')); const root=JSON.parse(fs.readFileSync('package.json','utf8')); const backend=JSON.parse(fs.readFileSync('backend/package.json','utf8')); const frontend=JSON.parse(fs.readFileSync('frontend/package.json','utf8')); const release=JSON.parse(fs.readFileSync('backend/config/release.json','utf8')); if (![root,backend,frontend].every((p)=>p.version===release.version && p.engines?.node===release.node && p.license==='MIT')) throw new Error('Application package metadata does not match release metadata.'); const required=['LICENSE','CONTRIBUTING.md','CODE_OF_CONDUCT.md','SUPPORT.md','SECURITY.md','.github/PULL_REQUEST_TEMPLATE.md','.github/ISSUE_TEMPLATE/bug_report.md','.github/ISSUE_TEMPLATE/feature_request.md']; for (const file of required) if (!fs.existsSync(file)) throw new Error('Missing repository file: '+file); for (const file of ['vercel.json','frontend/vercel.json']) { const v=JSON.parse(fs.readFileSync(file,'utf8')); if (new Set((v.rewrites||[]).map(x=>x.source)).size!==(v.rewrites||[]).length) throw new Error(file+' rewrite sources are duplicated.'); } console.log('JSON contracts and repository metadata valid',release.version);"
+        run: node scripts/validation/validate-repository-metadata.js
+
+      # ---- Cloudflare gates. All static: no account, no credentials, no cost.
+
+      # Fails if wrangler.jsonc has drifted into anything that needs a paid plan
+      # or that could produce a bill instead of an error.
+      - name: Verify the deployment stays on the free plan
+        run: npm run cf:guard
+
+      # Applies every migration to an in-memory SQLite database and checks
+      # ordering, gap-free versioning, resolvable foreign keys and that every
+      # table the parity ledger claims actually exists.
+      - name: Validate D1 migrations
+        run: npm run db:validate
+
+      # The route inventory is the input to the parity gate, so it is regenerated
+      # rather than trusted. A drift here means the extractor and the kernel
+      # disagree.
+      - name: Regenerate the legacy route inventory
+        run: npm run audit:legacy
+
+      # Every domain in the route inventory must carry an explicit storage
+      # decision. A new domain with no recorded decision fails the build, which is
+      # what stops the compatibility table becoming an invisible junk drawer.
+      - name: Verify the parity ledger is current
+        run: npm run parity:ledger:check
+
+      # The published API contract is generated from the implementation. This
+      # fails if the contract would build differently than what is committed.
+      - name: Verify the API contract is not stale
+        run: npm run api:check

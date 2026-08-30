@@ -98,7 +98,7 @@ only the physical schema is transitional.
 - `guilds` — 12 routes. Roles, elections, votes, departments, projects. Elections need serialization when normalized.
 - `chats` — 8 routes. Rooms, members, messages, threads, pins. Live delivery already runs through ConversationRuntime.
 - `reputation` — 8 routes. Reputation records, evidence, claims, replications. Normalize before reputation is ever load-bearing.
-- `skills` — 7 routes. Skill registry. The legacy handler read skills/*.json from disk; the Worker serves them from Workers Assets, which are free and unmetered. No R2.
+- `skills` — 7 routes. Skill registry. The legacy handler read skills/*.json from disk; the Worker serves them from assets/R2.
 - `provenance` — 3 routes. Observer events, tool executions, provenance records.
 - `topics` — 3 routes
 - `federation` — 2 routes. Networks, remote identities, federation events and policies. Remote events stay signature-required.

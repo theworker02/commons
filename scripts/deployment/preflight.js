@@ -8,7 +8,10 @@ const { validateEvidenceManifest } = require('../validation/validate-evidence');
 const ROOT = path.resolve(__dirname, '../..');
 const REQUIRED_FILES = [
   'backend/server.js', 'backend/package.json', 'backend/config/release.json', 'backend/routes.json',
-  'backend/railway.json', 'backend/openapi.json', 'skill.md',
+  'backend/openapi.json', 'skill.md',
+  // The single authoritative Cloudflare deployment descriptor. Production runs
+  // on Workers, so this file existing is now part of the release contract.
+  'wrangler.jsonc',
   'backend/.well-known/commons.json', 'backend/.well-known/agent-network', 'backend/.well-known/commons-robots.json',
   'frontend/package.json', 'media/evidence.json',
   'backend/.env.example', 'frontend/.env.example', 'frontend/analytics.js',
@@ -79,7 +82,6 @@ async function main() {
   const frontendPackage = readJson('frontend/package.json');
   const release = readJson('backend/config/release.json');
   const routes = readJson('backend/routes.json');
-  const railway = readJson('backend/railway.json');
   assert(Number(process.versions.node.split('.')[0]) >= 20, `Node 20 or newer is required; found ${process.versions.node}`);
   assert(packageMetadata.version === release.version && release.version === RELEASE_VERSION, 'root package and backend/config/release.json versions must agree');
   assert(backendPackage.version === release.version && frontendPackage.version === release.version, 'frontend/backend package versions must agree with backend/config/release.json');
@@ -94,13 +96,19 @@ async function main() {
   for (const stale of ['vercel.json', 'frontend/vercel.json']) {
     assert(!fs.existsSync(path.join(ROOT, stale)), `${stale} reintroduces a second origin; the frontend and API are served from one origin`);
   }
+  // Production is Cloudflare-only. A provider descriptor reappearing means some
+  // part of the deployment story has drifted back to an external host, which is
+  // the exact regression Phase VIII exists to prevent.
+  for (const retired of ['backend/railway.json', 'render.yaml', 'fly.toml', 'Procfile', 'app.yaml']) {
+    assert(
+      !fs.existsSync(path.join(ROOT, retired)),
+      `${retired} reintroduces an external hosting provider; production runs on Cloudflare Workers only`
+    );
+  }
   assert(Object.keys(routes.browserRoutes || {}).length > 0, 'backend/routes.json must define browser routes');
   assert(routes.staticRoutes.includes('/observatory') && routes.staticRoutes.includes('/onboard'), 'backend/routes.json must retain frontend static route metadata');
   const origin = validateSingleOrigin(routes);
   const evidence = hasFlag('--skip-evidence') ? { skipped: true } : validateEvidenceManifest();
-  assert(railway.build?.builder === 'NIXPACKS', 'Railway must use the declared Nixpacks builder');
-  assert(railway.deploy?.startCommand === 'npm start', 'Railway must start the backend service with npm start');
-  assert(railway.deploy?.healthcheckPath === '/api/v1/ready', 'Railway healthcheck must remain /api/v1/ready');
   const target = targetUrl();
   const checks = target ? await Promise.all(['/api/health', '/api/version', '/api/v1/health', '/api/v1/ready', '/api/v1/bootstrap'].map((endpoint) => checkRemote(target, endpoint))) : [];
   console.log(JSON.stringify({ command: 'deploy:check', release_version: RELEASE_VERSION, mode: configuration.mode, storage: configuration.storage, read_only: true, topology: 'single-origin', routes: origin, target: target?.origin || null, evidence, checks }, null, 2));

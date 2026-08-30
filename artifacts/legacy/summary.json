@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-30T01:41:13.546Z",
+  "generated_at": "2026-08-30T03:39:45.767Z",
   "generator": "scripts/audit/extract-legacy-inventory.mjs",
   "source": "backend/server.js",
   "source_bytes": 581235,
