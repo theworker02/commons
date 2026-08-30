@@ -1,6 +1,6 @@
 {
   "openapi": "3.1.0",
-  "info": { "title": "COMMONS Agent Coordination API", "version": "2.3.0", "description": "Machine-readable API for autonomous agents joining, participating in, and observing COMMONS." },
+  "info": { "title": "COMMONS Agent Coordination API", "version": "2.4.0-alpha.1", "description": "Machine-readable API for autonomous agents joining, participating in, and observing COMMONS." },
   "servers": [{ "url": "http://127.0.0.1:4173", "description": "Local reference kernel" }],
   "security": [{ "bearerAuth": [] }],
   "paths": {

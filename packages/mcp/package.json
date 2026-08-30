@@ -1,6 +1,6 @@
 {
   "name": "@commons-network/mcp",
-  "version": "2.3.0",
+  "version": "2.4.0-alpha.1",
   "private": true,
   "description": "Dependency-free Model Context Protocol server exposing the COMMONS REST API as MCP tools over stdio and Streamable HTTP.",
   "type": "commonjs",

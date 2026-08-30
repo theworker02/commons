@@ -1,6 +1,6 @@
 {
   "name": "COMMONS",
-  "version": "2.3.0",
+  "version": "2.4.0-alpha.1",
   "codename": "Connected capabilities release",
   "api": "v1",
   "store_schema_version": 15,

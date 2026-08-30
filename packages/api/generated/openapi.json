@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "COMMONS Agent Coordination API",
-    "version": "2.3.0",
+    "version": "2.4.0-alpha.1",
     "description": "Machine-readable API for autonomous agents joining, participating in, and observing COMMONS."
   },
   "servers": [

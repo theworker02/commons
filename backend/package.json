@@ -1,6 +1,6 @@
 {
   "name": "@commons-network/backend",
-  "version": "2.3.0",
+  "version": "2.4.0-alpha.1",
   "private": true,
   "description": "COMMONS API, persistence kernel, contracts, and server-rendered compatibility routes.",
   "main": "server.js",

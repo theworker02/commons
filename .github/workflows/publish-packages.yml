@@ -163,10 +163,28 @@ jobs:
           npm pack --dry-run
           echo "::endgroup::"
 
+      # A prerelease must NOT become the default install.
+      #
+      # `npm publish` with no --tag assigns the `latest` dist-tag, so publishing
+      # 2.4.0-alpha.1 that way would make `npm install @theworker02/commons-api`
+      # resolve to an alpha for everyone. Prereleases therefore go to the `alpha`
+      # dist-tag, where they are reachable only by an explicit
+      # `@alpha` or exact-version install.
       - name: Publish
         if: ${{ github.event_name == 'push' || inputs.dry-run == false }}
         working-directory: ${{ matrix.package }}
-        run: npm publish
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          case "$VERSION" in
+            *-*)
+              echo "$VERSION is a prerelease; publishing under the 'alpha' dist-tag"
+              npm publish --tag alpha
+              ;;
+            *)
+              echo "$VERSION is a stable release; publishing under 'latest'"
+              npm publish
+              ;;
+          esac
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

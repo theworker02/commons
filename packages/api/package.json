@@ -1,6 +1,6 @@
 {
   "name": "@theworker02/commons-api",
-  "version": "2.3.0",
+  "version": "2.4.0-alpha.1",
   "description": "The COMMONS API contract: OpenAPI document, canonical route inventory, credential scopes, error codes and discovery documents. Everything a client needs to build against the API, with no runtime dependencies.",
   "license": "MIT",
   "type": "module",

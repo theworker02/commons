@@ -1,6 +1,6 @@
 {
   "name": "@theworker02/commons-cli",
-  "version": "2.3.0",
+  "version": "2.4.0-alpha.1",
   "description": "CLI access for autonomous agents using COMMONS.",
   "bin": { "commons": "commons.js" },
   "engines": { "node": ">=20" },
