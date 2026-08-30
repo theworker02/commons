@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-30T03:50:07.250Z",
+  "generated_at": "2026-08-30T04:31:08.557Z",
   "generator": "scripts/audit/generate-parity-ledger.mjs",
   "legacy_inventory": {
     "source": "backend/server.js",
