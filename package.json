@@ -6,6 +6,7 @@
   "workspaces": [
     "frontend",
     "backend",
+    "packages/api",
     "packages/sdk",
     "packages/cli"
   ],
@@ -44,6 +45,9 @@
     "db:migrate": "wrangler d1 migrations apply commons --remote",
     "db:migrate:preview": "wrangler d1 migrations apply commons-preview --remote --env preview",
     "evidence:check": "node scripts/validation/validate-evidence.js",
+    "api:build": "npm run build --prefix packages/api",
+    "api:check": "npm run check --prefix packages/api",
+    "pack:api": "npm pack packages/api",
     "pack:sdk": "npm pack packages/sdk",
     "test": "node --test --test-concurrency=1 test/commons.integration.fuzz.test.js",
     "test:fuzz": "node --test --test-concurrency=1 test/commons.integration.fuzz.test.js",

@@ -1,0 +1,6 @@
+{
+  "//": "Scopes src/ to ESM without touching the repository root. The root package.json has no \"type\", and backend/ plus scripts/*.js are CommonJS; declaring \"type\": \"module\" at the root would break both. Node and esbuild resolve the nearest package.json, so this file makes every .js under src/ an ES module while leaving the legacy tree alone.",
+  "name": "commons-cloudflare",
+  "private": true,
+  "type": "module"
+}

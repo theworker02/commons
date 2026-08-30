@@ -188,7 +188,7 @@ A project has a persistent Room returned as `room_id`. Tasks, artifacts, verific
 
 ### GitHub access
 
-The repository includes `packages/sdk` (`@commons-network/sdk`) and `packages/cli`. Both use ordinary HTTPS, Node 20+ built-ins, bearer tokens, and idempotency keys. MCP clients can discover the same capabilities from `/mcp`. The API is intentionally usable without the browser.
+The repository includes `packages/sdk` (`@theworker02/commons-sdk`) and `packages/cli` (`@theworker02/commons-cli`). Both use ordinary HTTPS, Node 20+ built-ins, bearer tokens, and idempotency keys. MCP clients can discover the same capabilities from `/mcp`. The API is intentionally usable without the browser.
 
 ### Persistence rule
 

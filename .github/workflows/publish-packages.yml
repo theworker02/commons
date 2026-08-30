@@ -1,0 +1,182 @@
+name: Publish packages
+
+# Publishes the three public COMMONS packages to GitHub Packages:
+#
+#   @theworker02/commons-api   the API contract (generated from the implementation)
+#   @theworker02/commons-sdk   dependency-free JavaScript client
+#   @theworker02/commons-cli   command line client
+#
+# The private workspace packages (@commons-network/backend, /frontend, /config,
+# /mcp) are deliberately excluded. They are never published, so their scope does
+# not need to match the account.
+#
+# Triggers on a version tag so a publish is always a deliberate act tied to a
+# specific commit. workflow_dispatch allows a manual run and defaults to a dry
+# run, so the whole pipeline can be exercised without publishing anything.
+#
+# GitHub Packages notes that matter here:
+#   * the npm scope must equal the owning account, hence @theworker02
+#   * the package.json `repository` field is what links a package to this repo
+#   * secrets.GITHUB_TOKEN is sufficient; no long-lived PAT is required
+#   * `packages: write` is required and is NOT granted by default
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Build and pack, but do not publish'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-packages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # Version agreement and contract freshness are checked once, before anything is
+  # published. Publishing package one of three and then failing on package two
+  # would leave the registry in a state no tag describes.
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Resolve the release version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./backend/config/release.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "release version: $VERSION"
+
+      - name: Every publishable package must agree with the release version
+        run: |
+          RELEASE=$(node -p "require('./backend/config/release.json').version")
+          STATUS=0
+          for PACKAGE in packages/api packages/sdk packages/cli; do
+            NAME=$(node -p "require('./$PACKAGE/package.json').name")
+            VERSION=$(node -p "require('./$PACKAGE/package.json').version")
+            printf '%-34s %-10s' "$NAME" "$VERSION"
+            if [ "$VERSION" != "$RELEASE" ]; then
+              printf 'MISMATCH (release %s)\n' "$RELEASE"
+              echo "::error file=$PACKAGE/package.json::$NAME is $VERSION but the release is $RELEASE"
+              STATUS=1
+            else
+              printf 'ok\n'
+            fi
+            case "$NAME" in
+              @theworker02/*) ;;
+              *)
+                echo "::error file=$PACKAGE/package.json::$NAME is not under the @theworker02 scope and cannot publish to GitHub Packages"
+                STATUS=1
+                ;;
+            esac
+          done
+          exit $STATUS
+
+      - name: Verify the tag matches the release version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          RELEASE=$(node -p "require('./backend/config/release.json').version")
+          echo "tag: $TAG_VERSION  release: $RELEASE"
+          if [ "$TAG_VERSION" != "$RELEASE" ]; then
+            echo "::error::tag $GITHUB_REF_NAME does not match release version $RELEASE"
+            exit 1
+          fi
+
+      # The contract package is generated from backend/openapi.json,
+      # backend/server.js and the audit artifacts. routes.json needs the audit, so
+      # it runs first — otherwise the contract would report route_count 0.
+      - name: Generate the route inventory
+        run: npm run audit:legacy
+
+      - name: Regenerate the parity ledger
+        run: npm run parity:ledger
+
+      - name: Build the API contract
+        run: npm run api:build
+
+      - name: Verify the contract is not stale
+        run: npm run api:check
+
+      - name: Syntax check the client packages
+        run: |
+          node --check packages/sdk/index.js
+          node --check packages/cli/commons.js
+
+  publish:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      # Required for GitHub Packages. Scoped to this job rather than granted
+      # workflow-wide.
+      packages: write
+
+    strategy:
+      # Sequential, and never cancelled halfway: a partial publish across a
+      # matrix is harder to reason about than a single failed package.
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        package:
+          - packages/api
+          - packages/sdk
+          - packages/cli
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          scope: '@theworker02'
+
+      # The API contract package ships generated files that are not committed as
+      # build output of this job, so regenerate them before packing.
+      - name: Rebuild the API contract
+        if: matrix.package == 'packages/api'
+        run: |
+          npm run audit:legacy
+          npm run parity:ledger
+          npm run api:build
+
+      - name: Inspect the tarball
+        working-directory: ${{ matrix.package }}
+        run: |
+          echo "::group::$(node -p "require('./package.json').name") contents"
+          npm pack --dry-run
+          echo "::endgroup::"
+
+      - name: Publish
+        if: ${{ github.event_name == 'push' || inputs.dry-run == false }}
+        working-directory: ${{ matrix.package }}
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        working-directory: ${{ matrix.package }}
+        run: |
+          NAME=$(node -p "require('./package.json').name")
+          VERSION=$(node -p "require('./package.json').version")
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.dry-run }}" = "false" ]; then
+            echo "- \`$NAME@$VERSION\` published" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- \`$NAME@$VERSION\` packed only (dry run)" >> "$GITHUB_STEP_SUMMARY"
+          fi

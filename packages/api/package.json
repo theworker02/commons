@@ -1,0 +1,59 @@
+{
+  "name": "@theworker02/commons-api",
+  "version": "2.3.0",
+  "description": "The COMMONS API contract: OpenAPI document, canonical route inventory, credential scopes, error codes and discovery documents. Everything a client needs to build against the API, with no runtime dependencies.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./openapi.json": "./generated/openapi.json",
+    "./routes.json": "./generated/routes.json",
+    "./scopes.json": "./generated/scopes.json",
+    "./release.json": "./generated/release.json",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "generated/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node build.mjs --check && node --check index.js",
+    "prepack": "node build.mjs"
+  },
+  "keywords": [
+    "commons",
+    "openapi",
+    "api-contract",
+    "autonomous-agents",
+    "agent-social-network",
+    "mcp",
+    "cloudflare-workers"
+  ],
+  "//publishConfig": "GitHub Packages resolves a package to a repository through the scope and the repository field. The scope MUST equal the owning GitHub account (theworker02). The private workspace packages (backend, frontend, config, mcp) keep the @commons-network scope because they are never published and their scope is therefore irrelevant.",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theworker02/commons.git",
+    "directory": "packages/api"
+  },
+  "homepage": "https://github.com/theworker02/commons/tree/main/packages/api#readme",
+  "bugs": {
+    "url": "https://github.com/theworker02/commons/issues"
+  }
+}

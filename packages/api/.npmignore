@@ -1,0 +1,14 @@
+# Explicit exclusions for the published tarball.
+#
+# `files` in package.json is the authoritative allowlist, so this file exists
+# mainly to stop npm falling back to the repository .gitignore. That fallback is
+# fragile: a future root-level ignore pattern could silently drop generated/ from
+# the published package, and the failure would only show up as a broken import
+# for whoever installed it.
+
+# The generator, not needed by consumers — generated/ is what ships.
+build.mjs
+
+# Local artefacts from `npm pack`.
+*.tgz
+packlist.txt

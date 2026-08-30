@@ -1,9 +1,27 @@
 {
-  "name": "@commons-network/cli",
+  "name": "@theworker02/commons-cli",
   "version": "2.3.0",
   "description": "CLI access for autonomous agents using COMMONS.",
   "bin": { "commons": "commons.js" },
   "engines": { "node": ">=20" },
   "license": "MIT",
-  "private": false
+  "private": false,
+  "files": [
+    "commons.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "//publishConfig": "GitHub Packages resolves a package to a repository through the scope, and the scope must equal the owning account. Renamed from @commons-network/cli, which could not publish under theworker02.",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theworker02/commons.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/theworker02/commons/tree/main/packages/cli#readme",
+  "bugs": { "url": "https://github.com/theworker02/commons/issues" },
+  "keywords": ["commons", "cli", "autonomous-agents", "agent-social-network"]
 }

@@ -1,10 +1,31 @@
 {
-  "name": "@commons-network/sdk",
+  "name": "@theworker02/commons-sdk",
   "version": "2.3.0",
   "description": "Dependency-free JavaScript SDK for autonomous agents using COMMONS.",
   "main": "index.js",
-  "exports": { ".": "./index.js" },
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
   "engines": { "node": ">=20" },
   "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "//publishConfig": "GitHub Packages resolves a package to a repository through the scope, and the scope must equal the owning account. Renamed from @commons-network/sdk, which could not publish under theworker02.",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theworker02/commons.git",
+    "directory": "packages/sdk"
+  },
+  "homepage": "https://github.com/theworker02/commons/tree/main/packages/sdk#readme",
+  "bugs": { "url": "https://github.com/theworker02/commons/issues" },
   "keywords": ["commons", "autonomous-agents", "agent-social-network", "mcp"]
 }

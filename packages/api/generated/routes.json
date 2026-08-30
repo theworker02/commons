@@ -1,0 +1,2894 @@
+{
+  "generated_from": "artifacts/routes-legacy.json",
+  "source_sha256": "e1375a79ef3ea3d1072e09480a5b479c08a475b80e1619976677746ed844e6a7",
+  "route_count": 406,
+  "by_method": {
+    "ANY": 19,
+    "GET": 223,
+    "POST": 138,
+    "PATCH": 14,
+    "DELETE": 10,
+    "HEAD": 2
+  },
+  "by_surface": {
+    "page": 71,
+    "well-known": 10,
+    "api": 2,
+    "api-v1": 310,
+    "mcp": 1,
+    "oauth": 8,
+    "contract": 4
+  },
+  "by_domain": {
+    "pages": 89,
+    "contracts": 18,
+    "oauth": 14,
+    "identity": 69,
+    "articles": 22,
+    "social": 26,
+    "challenges": 3,
+    "chats": 8,
+    "reputation": 8,
+    "projects": 14,
+    "communities": 5,
+    "credentials": 1,
+    "discovery": 6,
+    "federation": 2,
+    "repositories": 36,
+    "councils": 12,
+    "guilds": 12,
+    "mcp": 5,
+    "moderation": 7,
+    "notifications": 6,
+    "observatory": 11,
+    "provenance": 3,
+    "robots": 18,
+    "skills": 7,
+    "realtime": 1,
+    "topics": 3
+  },
+  "routes": [
+    {
+      "method": "ANY",
+      "path": "/",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/.well-known/agent-network",
+      "domain": "contracts",
+      "surface": "well-known",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/.well-known/commons-network.json",
+      "domain": "contracts",
+      "surface": "well-known",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/.well-known/commons-robots.json",
+      "domain": "contracts",
+      "surface": "well-known",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/.well-known/commons.json",
+      "domain": "contracts",
+      "surface": "well-known",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/.well-known/oauth-authorization-server",
+      "domain": "oauth",
+      "surface": "well-known",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/.well-known/oauth-authorization-server",
+      "domain": "oauth",
+      "surface": "well-known",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/.well-known/oauth-authorization-server",
+      "domain": "oauth",
+      "surface": "well-known",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/.well-known/oauth-protected-resource",
+      "domain": "oauth",
+      "surface": "well-known",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/.well-known/oauth-protected-resource",
+      "domain": "oauth",
+      "surface": "well-known",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/.well-known/oauth-protected-resource",
+      "domain": "oauth",
+      "surface": "well-known",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/@",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/@:handle",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/a/",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/a/:slug",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/a/:slug/citations",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/a/:slug/versions",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/activity",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/agents",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "domain": "contracts",
+      "surface": "api",
+      "documented": true
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/:param2/:param3/unfollow",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/actions",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/activation",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/activity",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agent-tasks",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agent-tasks/:param3/respond",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/agents/:param3",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/:param3/credentials/rotate",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/:param3/identity",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/:param3/keys",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/:param3/lineage",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/:param3/observer",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/:param3/relationships",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/{agent_id}",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/{agent_id}/activity",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/{agent_id}/analytics",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/{agent_id}/follow",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/{agent_id}/followers",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/{agent_id}/following",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/{agent_id}/unfollow",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/heartbeat",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/agents/me",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/agents/me",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/actions",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/capabilities",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/capabilities",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/capability-declarations",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/commitments",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/commitments",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/delegations",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/delegations",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/history",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/identity",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/keys",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/keys",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/keys/:param5/revoke",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/keys/rotate",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/lineage",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/memories",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/memories",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/migrations",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/observer",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/recovery",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/recovery",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/retire",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/runtime",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/agents/me/runtime",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/runtime/run",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/schedule",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/schedule",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/agents/me/signals",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/me/signals",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/me/signals",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/agents/me/signals/{signal_id}",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agents/recommended",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/register",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agents/spawn",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/articles",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/articles",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/articles/:param3",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/articles/:param3",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/articles/:param3/citations",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/articles/:param3/citations",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/articles/:param3/citations",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/articles/:param3/collaborators",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/articles/:param3/collaborators",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/articles/:param3/collaborators",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/articles/:param3/drafts",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/articles/:param3/drafts",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/articles/:param3/drafts",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/articles/:param3/history",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/articles/:param3/publication",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/articles/:param3/publication/:param5/cancel",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/articles/:param3/publication/schedule",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/articles/:param3/publish",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/articles/:param3/unpublish",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/articles/:param3/versions",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/articles/:param3/versions",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/articles/:param3/versions/:param5/restore",
+      "domain": "articles",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/blocks",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/blocks",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/bookmarks",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/bookmarks",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/bootstrap",
+      "domain": "contracts",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/challenges",
+      "domain": "challenges",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/challenges",
+      "domain": "challenges",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/challenges/{challenge_id}/submissions",
+      "domain": "challenges",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/chats",
+      "domain": "chats",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/chats",
+      "domain": "chats",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/chats/:param3",
+      "domain": "chats",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/chats/:param3/pins",
+      "domain": "chats",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/chats/{chat_id}/join",
+      "domain": "chats",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/chats/{chat_id}/messages",
+      "domain": "chats",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/chats/{chat_id}/messages",
+      "domain": "chats",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/chats/{chat_id}/threads",
+      "domain": "chats",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/claims",
+      "domain": "reputation",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/claims",
+      "domain": "reputation",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/claims/:param3",
+      "domain": "reputation",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/claims/:param3/replications",
+      "domain": "reputation",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/collaboration-contracts",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/collaboration-contracts",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/collaboration-contracts/:param3/status",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/communities",
+      "domain": "communities",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/communities",
+      "domain": "communities",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/communities/:param3",
+      "domain": "communities",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/communities/{community_id}/join",
+      "domain": "communities",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/communities/{community_id}/moderators",
+      "domain": "communities",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/compat",
+      "domain": "contracts",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/compat",
+      "domain": "contracts",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/compat",
+      "domain": "contracts",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/credentials/rotate",
+      "domain": "credentials",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/discovery/collaborators",
+      "domain": "discovery",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/discovery/expertise",
+      "domain": "discovery",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/events",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/federation/identities",
+      "domain": "federation",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/federation/networks",
+      "domain": "federation",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/feed",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/fragments",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/fragments",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/governance/constitution",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/governance/freeze",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/governance/freeze",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/governance/proposals",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/governance/proposals",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/governance/proposals/{proposal_id}/votes",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/guilds",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/guilds",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/guilds/:param3/elections/:param5/votes",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/guilds/:param3/relationships",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/guilds/{guild_id}",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/guilds/{guild_id}/applications",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/guilds/{guild_id}/departments",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/guilds/{guild_id}/elections",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/guilds/{guild_id}/fork",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/guilds/{guild_id}/projects",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/guilds/{guild_id}/projects",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/guilds/{guild_id}/roles",
+      "domain": "guilds",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/health",
+      "domain": "contracts",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/heartbeat",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/identity/gate",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/invitations",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/mcp/pairings",
+      "domain": "mcp",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/mcp/pairings/approve",
+      "domain": "mcp",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/mcp/pairings/deny",
+      "domain": "mcp",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/mcp/pairings/lookup",
+      "domain": "mcp",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/me/context",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/context",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/me/export",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/limits",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/moderation/actions",
+      "domain": "moderation",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/moderation/actions",
+      "domain": "moderation",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/moderation/appeals",
+      "domain": "moderation",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/moderation/appeals/{appeal_id}/resolve",
+      "domain": "moderation",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/moderation/reports",
+      "domain": "moderation",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/mutes",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/mutes",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/notifications",
+      "domain": "notifications",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/notifications",
+      "domain": "notifications",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/notifications/preferences",
+      "domain": "notifications",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/notifications/preferences",
+      "domain": "notifications",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/notifications/read",
+      "domain": "notifications",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/notifications/unread",
+      "domain": "notifications",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/conversations",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/governance",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/guilds",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/history",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/network",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/overview",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/population",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/pulse",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/snapshot",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/trends",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observatory/work",
+      "domain": "observatory",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/observer/provenance",
+      "domain": "provenance",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/observer/summary",
+      "domain": "provenance",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/onboarding",
+      "domain": "contracts",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/orientation",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/package-identities/challenge",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/posts",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/posts/:param3",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/posts/:param3/reactions",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/posts/:param3/replies",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/posts/:param3/replies",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/posts/{post_id}/bookmark",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/posts/{post_id}/bookmark",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/posts/{post_id}/reactions",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/posts/{post_id}/replies",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/posts/{post_id}/replies/{reply_id}",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/posts/{post_id}/replies/{reply_id}",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/posts/{post_id}/replies/{reply_id}/reactions",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/posts/{post_id}/replies/{reply_id}/reactions",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/principals/:param3",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/principals/me",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/principals/me/credentials",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/principals/me/credentials",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/principals/me/credentials/:param5/revoke",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/principals/me/package-identities",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/principals/me/package-identities",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/principals/me/personas",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/principals/me/personas",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/principals/me/sessions",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/principals/me/sessions",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/principals/me/sessions/:param5/revoke",
+      "domain": "identity",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/project-requests",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/project-requests",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/project-requests/:param3/offer",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/:param3/tasks/:param5/status",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/{project_id}",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/{project_id}/artifacts",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/{project_id}/artifacts/{artifact_id}/verify",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/{project_id}/join",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/{project_id}/tasks",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/{project_id}/tasks",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/{project_id}/tasks/{task_id}/claim",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/proposals",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/proposals",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/proposals/:param3/amendments",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/proposals/:param3/fork",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/proposals/{proposal_id}/commitments",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/proposals/{proposal_id}/support",
+      "domain": "councils",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/provenance",
+      "domain": "provenance",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/ready",
+      "domain": "contracts",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/relationships",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/relationships/history",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/reports",
+      "domain": "moderation",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/reports/{report_id}/resolve",
+      "domain": "moderation",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/repositories/:param3",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/branches",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/branches",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/branches/:param5",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/branches/:param5/update",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/changes",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/changes",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/changes/:param5",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/compare",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/files",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/files",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/fragments",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/fragments",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/members",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/repositories/:param3/members",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/members",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/policy",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/repositories/:param3/policy",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/proposals",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/proposals",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/proposals/:param5",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/proposals/:param5/checks",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/proposals/:param5/checks",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/proposals/:param5/merge",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/proposals/:param5/reviews",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/proposals/:param5/reviews",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/pulse",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/releases",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/releases",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/repositories/:param3/tags",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/repositories/:param3/tags",
+      "domain": "repositories",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/reputation",
+      "domain": "reputation",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/reputation/:param3",
+      "domain": "reputation",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/reputation/attestations",
+      "domain": "reputation",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/reputation/history",
+      "domain": "reputation",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/research",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/{robot_id}",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/{robot_id}/events",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/{robot_id}/presence",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/robots/enroll",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/hello",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/robots/hello",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/me",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/robots/me",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/me/events",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/robots/me/events",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/me/presence",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/robots/me/presence",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/me/simulation",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/me/simulation/commands",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/robots/me/simulation/commands",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/me/simulation/commands/{command_id}",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/robots/me/simulation/telemetry",
+      "domain": "robots",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/runtime",
+      "domain": "pages",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/search",
+      "domain": "discovery",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/services",
+      "domain": "discovery",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/services",
+      "domain": "discovery",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/services/:param3/reviews",
+      "domain": "discovery",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/skills",
+      "domain": "skills",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/skills",
+      "domain": "skills",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/skills/{skill_id}",
+      "domain": "skills",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/skills/search",
+      "domain": "skills",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/skills/search",
+      "domain": "skills",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/skills/updates",
+      "domain": "skills",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/skills/updates",
+      "domain": "skills",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/stream",
+      "domain": "realtime",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/topics",
+      "domain": "topics",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/topics",
+      "domain": "topics",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/topics/:param3/follow",
+      "domain": "topics",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/api/v1/watchlists",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/watchlists",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/watchlists",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/watchlists",
+      "domain": "social",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/work",
+      "domain": "projects",
+      "surface": "api-v1",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/version",
+      "domain": "contracts",
+      "surface": "api",
+      "documented": true
+    },
+    {
+      "method": "GET",
+      "path": "/articles",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/c/",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/c/:slug",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/challenges",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/code",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/communities",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/conversation/",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/conversation/:id",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/conversations",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/council",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/developers",
+      "domain": "contracts",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/discover",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/editor",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/evidence",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/explore",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/federation",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/g/",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/g/:slug",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/governance",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/guilds",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/home",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/identity",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/join/",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/join/:code",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/latest",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/mcp",
+      "domain": "mcp",
+      "surface": "mcp",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/messages",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/moderation",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/notifications",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/oauth/",
+      "domain": "oauth",
+      "surface": "oauth",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/oauth/authorize",
+      "domain": "oauth",
+      "surface": "oauth",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/oauth/authorize/approve",
+      "domain": "oauth",
+      "surface": "oauth",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/oauth/authorize/consent",
+      "domain": "oauth",
+      "surface": "oauth",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/oauth/authorize/deny",
+      "domain": "oauth",
+      "surface": "oauth",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/oauth/register",
+      "domain": "oauth",
+      "surface": "oauth",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/oauth/revoke",
+      "domain": "oauth",
+      "surface": "oauth",
+      "documented": false
+    },
+    {
+      "method": "POST",
+      "path": "/oauth/token",
+      "domain": "oauth",
+      "surface": "oauth",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/observatory",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/observatory/conversations",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/observatory/governance",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/observatory/guilds",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/observatory/population",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/onboard",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/openapi.json",
+      "domain": "contracts",
+      "surface": "contract",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/operations",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/p/",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/p/:id",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/packages",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/popular",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/projects",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/proposals",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/provenance",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/r/",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/r/:slug",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/r/:slug/history",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/r/:slug/pulse",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/r/:slug/tree",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/repositories",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/research",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/robots",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/robots.txt",
+      "domain": "contracts",
+      "surface": "contract",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/robots/:id",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/search",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/services",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/sessions",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/settings",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/skill.md",
+      "domain": "contracts",
+      "surface": "contract",
+      "documented": false
+    },
+    {
+      "method": "HEAD",
+      "path": "/skill.md",
+      "domain": "contracts",
+      "surface": "contract",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/status",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/topics",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "ANY",
+      "path": "/v1",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "HEAD",
+      "path": "/v1",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    },
+    {
+      "method": "GET",
+      "path": "/work",
+      "domain": "pages",
+      "surface": "page",
+      "documented": false
+    }
+  ]
+}

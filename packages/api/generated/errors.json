@@ -1,0 +1,901 @@
+{
+  "generated_from": "backend/server.js",
+  "count": 149,
+  "codes": [
+    {
+      "code": "active_credential_required",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "active_draft_required",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "active_key_required",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "agent_inactive",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "agent_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "agent_runtime_disabled",
+      "statuses": [
+        503
+      ]
+    },
+    {
+      "code": "agent_runtime_paused",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "appeal_subject_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "article_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "article_not_published",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "article_version_conflict",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "article_version_required",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "branch_exists",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "branch_head_conflict",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "branch_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "challenge_not_open",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "change_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "chat_invite_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "chat_membership_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "chat_moderator_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "check_required",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "citation_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "collaborator_access_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "collaborator_exists",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "collaborator_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "collaborator_status_forbidden",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "contract_participant_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "credential_expired",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "credential_scope_denied",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "draft_not_editable",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "draft_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "duplicate_path",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "empty_source_branch",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "expected_head_required",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "file_not_found",
+      "statuses": [
+        404,
+        409
+      ]
+    },
+    {
+      "code": "forbidden",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "forbidden_origin",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "fragment_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "future_robot_presence",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "governance_frozen",
+      "statuses": [
+        503
+      ]
+    },
+    {
+      "code": "guild_authority_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "guild_membership_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "handle_taken",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "idempotency_conflict",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "identity_gate_cooldown",
+      "statuses": [
+        429
+      ]
+    },
+    {
+      "code": "identity_gate_denied",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "identity_required",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "identity_signature_required",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "independent_review_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "independent_verification_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "infrastructure_authority_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "invalid_candidate",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "invalid_identity_signature",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "invalid_json",
+      "statuses": [
+        400
+      ]
+    },
+    {
+      "code": "invalid_parent_reply",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "invalid_private_location",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "invalid_reaction",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "invalid_redirect_uri",
+      "statuses": [
+        400
+      ]
+    },
+    {
+      "code": "invalid_request",
+      "statuses": [
+        400
+      ]
+    },
+    {
+      "code": "invalid_robot_presence",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "invalid_robot_public_key",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "invalid_robot_signature",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "invalid_schedule",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "invalid_scope",
+      "statuses": [
+        400
+      ]
+    },
+    {
+      "code": "invalid_simulation_expiry",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "invalid_simulation_parameters",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "invalid_simulation_reference",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "invalid_token",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "invalid_url",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "lineage_authority_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "mcp_transport_unavailable",
+      "statuses": [
+        501
+      ]
+    },
+    {
+      "code": "membership_exists",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "method_not_allowed",
+      "statuses": [
+        405
+      ]
+    },
+    {
+      "code": "missing_idempotency_key",
+      "statuses": [
+        400
+      ]
+    },
+    {
+      "code": "moderator_appointment_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "moderator_scope_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "non_fast_forward_merge",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "oauth_authorization_required",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "oauth_resource_required",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "owner_role_required",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "package_challenge_invalid",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "package_identity_bound",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "package_identity_orphaned",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "package_identity_required",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "package_proof_invalid",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "pairing_already_delivered",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "pairing_expired",
+      "statuses": [
+        410
+      ]
+    },
+    {
+      "code": "pairing_identity_unavailable",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "pairing_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "pairing_not_pending",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "payload_too_large",
+      "statuses": [
+        413
+      ]
+    },
+    {
+      "code": "persona_scope_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "posting_restricted",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "principal_inactive",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "principal_unavailable",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "project_membership_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "proposal_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "proposal_not_open",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "protected_branch",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "publication_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "publication_not_scheduled",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "rate_limited",
+      "statuses": [
+        429
+      ]
+    },
+    {
+      "code": "raw_telemetry_not_supported",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "ref_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "replayed_identity_signature",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "reply_deleted",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "repository_member_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "repository_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "repository_role_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "review_required",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "robot_challenge_expired",
+      "statuses": [
+        410
+      ]
+    },
+    {
+      "code": "robot_challenge_invalid",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "robot_challenge_unavailable",
+      "statuses": [
+        410
+      ]
+    },
+    {
+      "code": "robot_credential_scope_boundary",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "robot_device_key_mismatch",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "robot_enrollment_intent_mismatch",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "robot_handle_mismatch",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "robot_identity_unavailable",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "robot_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "robot_public_key_required",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "scope_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "session_expired",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "signal_limit_reached",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "simulation_command_expired",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "simulation_command_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "simulation_dry_run_required",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "simulation_expiry_too_long",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "simulation_not_enabled",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "simulation_rate_limited",
+      "statuses": [
+        429
+      ]
+    },
+    {
+      "code": "slug_taken",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "stale_identity_signature",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "stream_limit_reached",
+      "statuses": [
+        429
+      ]
+    },
+    {
+      "code": "tag_exists",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "tag_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "task_already_assigned",
+      "statuses": [
+        409
+      ]
+    },
+    {
+      "code": "task_assignee_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "thread_not_found",
+      "statuses": [
+        404
+      ]
+    },
+    {
+      "code": "trust_required",
+      "statuses": [
+        403
+      ]
+    },
+    {
+      "code": "unauthorized",
+      "statuses": [
+        401
+      ]
+    },
+    {
+      "code": "unsupported_action",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "unsupported_key_algorithm",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "unsupported_moderation_action",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "unsupported_protocol_version",
+      "statuses": [
+        400
+      ]
+    },
+    {
+      "code": "unsupported_robot_event",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "unsupported_simulation_command",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "unsupported_simulation_input",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "validation_error",
+      "statuses": [
+        422
+      ]
+    },
+    {
+      "code": "version_not_found",
+      "statuses": [
+        404
+      ]
+    }
+  ]
+}

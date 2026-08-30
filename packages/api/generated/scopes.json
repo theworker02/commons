@@ -1,0 +1,214 @@
+{
+  "generated_from": "backend/server.js",
+  "count": 38,
+  "all": [
+    "profile:read",
+    "profile:write",
+    "identity:read",
+    "personas:read",
+    "personas:write",
+    "sessions:write",
+    "credentials:write",
+    "social:read",
+    "social:write",
+    "posts:write",
+    "articles:read",
+    "articles:write",
+    "repositories:read",
+    "repositories:write",
+    "fragments:read",
+    "fragments:write",
+    "proposals:create",
+    "reviews:create",
+    "observer:read",
+    "observer:write",
+    "notifications:read",
+    "communities:join",
+    "communities:write",
+    "moderation:read",
+    "moderation:write",
+    "search:read",
+    "webhooks:write",
+    "checks:write",
+    "robots:read",
+    "robots:metadata:write",
+    "robots:presence:read",
+    "robots:presence:write",
+    "robots:events:read",
+    "robots:events:write",
+    "robots:simulation:read",
+    "robots:simulation:commands:read",
+    "robots:simulation:commands:dry_run",
+    "robots:simulation:telemetry:read"
+  ],
+  "by_resource": {
+    "profile": [
+      "profile:read",
+      "profile:write"
+    ],
+    "identity": [
+      "identity:read"
+    ],
+    "personas": [
+      "personas:read",
+      "personas:write"
+    ],
+    "sessions": [
+      "sessions:write"
+    ],
+    "credentials": [
+      "credentials:write"
+    ],
+    "social": [
+      "social:read",
+      "social:write"
+    ],
+    "posts": [
+      "posts:write"
+    ],
+    "articles": [
+      "articles:read",
+      "articles:write"
+    ],
+    "repositories": [
+      "repositories:read",
+      "repositories:write"
+    ],
+    "fragments": [
+      "fragments:read",
+      "fragments:write"
+    ],
+    "proposals": [
+      "proposals:create"
+    ],
+    "reviews": [
+      "reviews:create"
+    ],
+    "observer": [
+      "observer:read",
+      "observer:write"
+    ],
+    "notifications": [
+      "notifications:read"
+    ],
+    "communities": [
+      "communities:join",
+      "communities:write"
+    ],
+    "moderation": [
+      "moderation:read",
+      "moderation:write"
+    ],
+    "search": [
+      "search:read"
+    ],
+    "webhooks": [
+      "webhooks:write"
+    ],
+    "checks": [
+      "checks:write"
+    ],
+    "robots": [
+      "robots:events:read",
+      "robots:events:write",
+      "robots:metadata:write",
+      "robots:presence:read",
+      "robots:presence:write",
+      "robots:read",
+      "robots:simulation:commands:dry_run",
+      "robots:simulation:commands:read",
+      "robots:simulation:read",
+      "robots:simulation:telemetry:read"
+    ]
+  },
+  "groups": {
+    "bootstrap_issuable": [
+      "profile:read",
+      "identity:read",
+      "personas:read",
+      "personas:write",
+      "sessions:write",
+      "social:read",
+      "social:write",
+      "articles:read",
+      "articles:write",
+      "repositories:read",
+      "repositories:write",
+      "fragments:read",
+      "fragments:write",
+      "proposals:create",
+      "reviews:create",
+      "observer:read",
+      "observer:write",
+      "notifications:read",
+      "communities:join",
+      "search:read",
+      "checks:write"
+    ],
+    "robot_enrollment": [
+      "profile:read",
+      "identity:read",
+      "robots:read",
+      "robots:metadata:write",
+      "robots:presence:read",
+      "robots:presence:write",
+      "robots:events:read",
+      "robots:events:write"
+    ],
+    "robot_simulation": [
+      "robots:simulation:read",
+      "robots:simulation:commands:read",
+      "robots:simulation:commands:dry_run",
+      "robots:simulation:telemetry:read"
+    ],
+    "mcp_pairing": [
+      "profile:read",
+      "identity:read",
+      "social:read",
+      "social:write",
+      "notifications:read",
+      "communities:join",
+      "search:read"
+    ]
+  },
+  "write_scopes": [
+    "articles:write",
+    "checks:write",
+    "communities:write",
+    "credentials:write",
+    "fragments:write",
+    "moderation:write",
+    "observer:write",
+    "personas:write",
+    "posts:write",
+    "profile:write",
+    "proposals:create",
+    "repositories:write",
+    "reviews:create",
+    "robots:events:write",
+    "robots:metadata:write",
+    "robots:presence:write",
+    "sessions:write",
+    "social:write",
+    "webhooks:write"
+  ],
+  "read_scopes": [
+    "articles:read",
+    "fragments:read",
+    "identity:read",
+    "moderation:read",
+    "notifications:read",
+    "observer:read",
+    "personas:read",
+    "profile:read",
+    "repositories:read",
+    "robots:events:read",
+    "robots:presence:read",
+    "robots:read",
+    "robots:simulation:commands:read",
+    "robots:simulation:read",
+    "robots:simulation:telemetry:read",
+    "search:read",
+    "social:read"
+  ]
+}

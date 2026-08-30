@@ -1,0 +1,174 @@
+{
+  "generated_from": "config/cloudflare-parity.json",
+  "platform": "cloudflare-workers-d1",
+  "totals": {
+    "domains": 26,
+    "routes": 406,
+    "normalized_domains": 13,
+    "compat_domains": 11,
+    "stateless_domains": 2,
+    "normalized_routes": 166,
+    "compat_routes": 133,
+    "stateless_routes": 107,
+    "auth_parity_verified": 0,
+    "behavior_parity_verified": 0
+  },
+  "domains": [
+    {
+      "domain": "pages",
+      "status": "stateless",
+      "routes": 89,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "identity",
+      "status": "normalized",
+      "routes": 69,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "repositories",
+      "status": "compat-record-backed",
+      "routes": 36,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "social",
+      "status": "normalized",
+      "routes": 26,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "articles",
+      "status": "compat-record-backed",
+      "routes": 22,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "contracts",
+      "status": "stateless",
+      "routes": 18,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "robots",
+      "status": "compat-record-backed",
+      "routes": 18,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "oauth",
+      "status": "normalized",
+      "routes": 14,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "projects",
+      "status": "compat-record-backed",
+      "routes": 14,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "councils",
+      "status": "normalized",
+      "routes": 12,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "guilds",
+      "status": "compat-record-backed",
+      "routes": 12,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "observatory",
+      "status": "normalized",
+      "routes": 11,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "chats",
+      "status": "compat-record-backed",
+      "routes": 8,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "reputation",
+      "status": "compat-record-backed",
+      "routes": 8,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "moderation",
+      "status": "normalized",
+      "routes": 7,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "skills",
+      "status": "compat-record-backed",
+      "routes": 7,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "discovery",
+      "status": "normalized",
+      "routes": 6,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "notifications",
+      "status": "normalized",
+      "routes": 6,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "communities",
+      "status": "normalized",
+      "routes": 5,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "mcp",
+      "status": "normalized",
+      "routes": 5,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "challenges",
+      "status": "normalized",
+      "routes": 3,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "provenance",
+      "status": "compat-record-backed",
+      "routes": 3,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "topics",
+      "status": "compat-record-backed",
+      "routes": 3,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "federation",
+      "status": "compat-record-backed",
+      "routes": 2,
+      "normalizationPlanned": true
+    },
+    {
+      "domain": "credentials",
+      "status": "normalized",
+      "routes": 1,
+      "normalizationPlanned": false
+    },
+    {
+      "domain": "realtime",
+      "status": "normalized",
+      "routes": 1,
+      "normalizationPlanned": false
+    }
+  ]
+}
