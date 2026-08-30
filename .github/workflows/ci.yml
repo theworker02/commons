@@ -81,14 +81,19 @@ jobs:
       # job below.
 
       # The route inventory is the input to the parity gate, so it is regenerated
-      # rather than trusted. A drift here means the extractor and the kernel
-      # disagree.
+      # rather than trusted. The parity ledger must then be generated from that
+      # exact fresh inventory; otherwise a harmless source fingerprint change can
+      # make the subsequent freshness check compare two different generations.
       - name: Regenerate the legacy route inventory
         run: npm run audit:legacy
 
-      # Every domain in the route inventory must carry an explicit storage
-      # decision. A new domain with no recorded decision fails the build, which is
-      # what stops the compatibility table becoming an invisible junk drawer.
+      - name: Regenerate the parity ledger
+        run: npm run parity:ledger
+
+      # Every domain in the freshly generated route inventory must carry an
+      # explicit storage decision. The check still fails on missing domains or
+      # inconsistent generated output, but no longer compares against an older
+      # inventory generation from the checkout.
       - name: Verify the parity ledger is current
         run: npm run parity:ledger:check
 
