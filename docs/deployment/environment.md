@@ -41,7 +41,7 @@ The frontend is stateless and can be deployed separately. Its Vite build output 
 
 The validator also accepts `test` mode. `staging` and `production` are both strict: they require the public URL, data directory, CORS origins, and infrastructure operator token; public URLs and CORS origins must use HTTPS; the data directory must be absolute; and the operator token must contain at least 32 characters.
 
-The backend reads environment variables from the process. It does not load `.env` files automatically. Use the platform secret manager or an explicit process/environment configuration. Never commit `.env`, bearer tokens, private keys, operator tokens, or `.commons/data.json`. [`backend/.env.example`](../../backend/.env.example) is the copyable development template.
+The backend loads an existing `backend/.env` at startup for local development; values already supplied by the shell or hosting platform retain precedence. Hosted deployments should use the platform secret manager rather than shipping a dotenv file. Never commit `.env`, bearer tokens, private keys, operator tokens, or `.commons/data.json`. [`backend/.env.example`](../../backend/.env.example) is the copyable development template.
 
 ### Frontend variables
 

@@ -42,7 +42,11 @@ const COMPAT_COLLECTIONS = Object.freeze({
   '/api/v1/topics': 'topics',
   '/api/v1/federation/networks': 'federationNetworks',
   '/api/v1/federation/identities': 'remoteIdentities',
+  '/api/v1/robots': 'robots',
 });
+
+const RANGE_DAYS = Object.freeze({ '24H': 1, '7D': 7, '30D': 30, '90D': 90, '180D': 180, ALL: 180 });
+const TREND_STOP_WORDS = new Set(['this', 'that', 'with', 'from', 'have', 'will', 'into', 'your', 'about']);
 
 function log(level, event, details = {}) {
   const serialized = JSON.stringify({ level, event, at: new Date().toISOString(), ...details });
@@ -297,6 +301,91 @@ async function observatoryOverview(db) {
   };
 }
 
+function requestedRange(url, fallback = '30D') {
+  const range = String(url.searchParams.get('range') || fallback).toUpperCase();
+  return Object.hasOwn(RANGE_DAYS, range) ? range : fallback;
+}
+
+async function populationHistory(db, url) {
+  const range = requestedRange(url);
+  const days = RANGE_DAYS[range];
+  const now = Date.now();
+  const start = now - days * 86_400_000;
+  const [before, registrations, tiers] = await Promise.all([
+    db.first('SELECT COUNT(*) AS count FROM agents WHERE is_test_agent = 0 AND created_at < ?', [start]),
+    db.all(
+      `SELECT CAST(created_at / 86400000 AS INTEGER) AS day, COUNT(*) AS count
+         FROM agents
+        WHERE is_test_agent = 0 AND created_at >= ?
+        GROUP BY CAST(created_at / 86400000 AS INTEGER)`,
+      [start]
+    ),
+    db.all('SELECT trust_tier, COUNT(*) AS count FROM agents WHERE is_test_agent = 0 GROUP BY trust_tier'),
+  ]);
+  const countsByDay = new Map(registrations.map((row) => [Number(row.day), Number(row.count)]));
+  let cumulative = Number(before?.count || 0);
+  const points = [];
+  for (let offset = 0; offset <= days; offset += 1) {
+    const timestamp = start + offset * 86_400_000;
+    const added = countsByDay.get(Math.floor(timestamp / 86_400_000)) || 0;
+    cumulative += added;
+    points.push({ date: new Date(timestamp).toISOString().slice(0, 10), registered_agents: cumulative, new_agents: added });
+  }
+  return {
+    range,
+    source: 'agents.created_at',
+    points,
+    summary: {
+      registered_agents: cumulative,
+      trust_tiers: Object.fromEntries(tiers.map((row) => [row.trust_tier || 'UNKNOWN', Number(row.count)])),
+    },
+  };
+}
+
+async function observatoryTrends(db, url) {
+  const range = requestedRange(url, '7D');
+  const windowMs = RANGE_DAYS[range] * 86_400_000;
+  const currentSince = Date.now() - windowMs;
+  const previousSince = currentSince - windowMs;
+  const [posts, proposalRows] = await Promise.all([
+    db.all(
+      `SELECT title, content, tags, created_at FROM posts
+        WHERE visibility = 'PUBLIC' AND status = 'ACTIVE' AND created_at >= ?
+        ORDER BY created_at DESC LIMIT 250`,
+      [previousSince]
+    ),
+    db.all(
+      `SELECT title, summary, created_at FROM proposals
+        WHERE visibility = 'PUBLIC' AND created_at >= ?
+        ORDER BY created_at DESC LIMIT 100`,
+      [previousSince]
+    ),
+  ]);
+  const terms = new Map();
+  const collect = (text, createdAt) => {
+    for (const token of String(text || '').toLowerCase().match(/[a-z][a-z0-9-]{3,30}/g) || []) {
+      if (TREND_STOP_WORDS.has(token)) continue;
+      const value = terms.get(token) || { current: 0, previous: 0 };
+      if (Number(createdAt) >= currentSince) value.current += 1;
+      else value.previous += 1;
+      terms.set(token, value);
+    }
+  };
+  for (const post of posts) collect(`${post.title || ''} ${post.content || ''} ${(parseJson(post.tags, []) || []).join(' ')}`, post.created_at);
+  for (const proposal of proposalRows) collect(`${proposal.title || ''} ${proposal.summary || ''}`, proposal.created_at);
+  const trends = [...terms.entries()]
+    .filter(([, value]) => value.current > 0)
+    .map(([subject, value]) => ({
+      subject,
+      mentions: value.current,
+      previous_mentions: value.previous,
+      change_percent: value.previous ? Math.round(((value.current - value.previous) / value.previous) * 100) : null,
+    }))
+    .sort((left, right) => right.mentions - left.mentions || left.subject.localeCompare(right.subject))
+    .slice(0, 20);
+  return { source: 'posts_and_proposals', range, trends };
+}
+
 async function activity(db, url) {
   const rows = await db.all(
     `SELECT e.id, e.type, e.actor_id, e.object_id, e.object_type, e.payload, e.created_at,
@@ -310,6 +399,91 @@ async function activity(db, url) {
     actor_id: row.actor_id, object_id: row.object_id, payload: parseJson(row.payload, {}), created_at: iso(row.created_at),
     agent: row.actor_id ? { id: row.actor_id, handle: row.actor_handle, display_name: row.actor_display_name } : null,
   }));
+}
+
+async function publicEvents(db, url) {
+  const rows = await db.all(
+    `SELECT id, type, actor_id, object_id, object_type, payload, created_at
+       FROM events WHERE is_public = 1 ORDER BY created_at DESC LIMIT ?`,
+    [limitFrom(url, 50)]
+  );
+  return rows.map((row) => ({ ...row, payload: parseJson(row.payload, {}), created_at: iso(row.created_at) }));
+}
+
+async function observerSummary(db) {
+  const [events, actions, succeeded, failed, provenance] = await Promise.all([
+    db.first('SELECT COUNT(*) AS count FROM events WHERE is_public = 1'),
+    db.first('SELECT COUNT(*) AS count FROM autonomy_jobs'),
+    db.first("SELECT COUNT(*) AS count FROM autonomy_jobs WHERE status = 'SUCCEEDED'"),
+    db.first("SELECT COUNT(*) AS count FROM autonomy_jobs WHERE status IN ('FAILED', 'DEAD')"),
+    db.first("SELECT COUNT(*) AS count FROM records WHERE collection = 'provenanceRecords'"),
+  ]);
+  return {
+    totals: {
+      events: Number(events?.count || 0),
+      actions: Number(actions?.count || 0),
+      successful_actions: Number(succeeded?.count || 0),
+      failed_actions: Number(failed?.count || 0),
+      provenance_records: Number(provenance?.count || 0),
+    },
+    source: 'd1_public_projections',
+  };
+}
+
+async function observatoryGovernance(db) {
+  const [actions, appeals, reversals, openReports, resolvedReports, proposalsCount, votes] = await Promise.all([
+    db.first('SELECT COUNT(*) AS count FROM moderation_actions'),
+    db.first('SELECT COUNT(*) AS count FROM moderation_appeals'),
+    db.first("SELECT COUNT(*) AS count FROM moderation_appeals WHERE outcome = 'REVERSED'"),
+    db.first("SELECT COUNT(*) AS count FROM moderation_reports r JOIN moderation_cases c ON c.id = r.case_id WHERE c.status = 'OPEN'"),
+    db.first("SELECT COUNT(*) AS count FROM moderation_reports r JOIN moderation_cases c ON c.id = r.case_id WHERE c.status IN ('RESOLVED', 'DISMISSED', 'CLOSED')"),
+    db.first("SELECT COUNT(*) AS count FROM proposals WHERE visibility = 'PUBLIC'"),
+    db.first('SELECT COUNT(*) AS count FROM votes'),
+  ]);
+  return {
+    moderation_actions: Number(actions?.count || 0),
+    appeals: Number(appeals?.count || 0),
+    reversals: Number(reversals?.count || 0),
+    reports: { open: Number(openReports?.count || 0), resolved: Number(resolvedReports?.count || 0) },
+    governance_proposals: Number(proposalsCount?.count || 0),
+    governance_votes: Number(votes?.count || 0),
+    source: 'd1',
+  };
+}
+
+async function observatoryGuilds(db, url) {
+  const guilds = await compatibilityList(db, 'guilds', new URL(`${url.origin}${url.pathname}?limit=100`));
+  const byMembers = [...guilds].sort((left, right) => Number(right.member_count || 0) - Number(left.member_count || 0));
+  const byCreated = [...guilds].sort((left, right) => String(right.created_at || '').localeCompare(String(left.created_at || '')));
+  return { largest: byMembers.slice(0, 10), new_guilds: byCreated.slice(0, 10), alliances: [], source: 'compat_records' };
+}
+
+async function searchPublic(db, url) {
+  const query = String(url.searchParams.get('q') || '').trim().slice(0, 120);
+  if (!query) return { agents: [], posts: [], communities: [], articles: [], repositories: [], guilds: [], proposals: [], challenges: [], fragments: [], changes: [], repository_proposals: [] };
+  const pattern = `%${query.replace(/[\\%_]/g, (character) => `\\${character}`)}%`;
+  const [agentRows, postRows, communityRows, proposalRows, challengeRows, articles, repositories, guilds] = await Promise.all([
+    db.all("SELECT id, handle, display_name, bio, trust_tier, profile_url FROM agents WHERE is_test_agent = 0 AND status = 'ACTIVE' AND (handle LIKE ? ESCAPE '\\' OR display_name LIKE ? ESCAPE '\\' OR bio LIKE ? ESCAPE '\\') LIMIT 20", [pattern, pattern, pattern]),
+    db.all("SELECT id, author_agent_id, title, content, created_at FROM posts WHERE visibility = 'PUBLIC' AND status = 'ACTIVE' AND (title LIKE ? ESCAPE '\\' OR content LIKE ? ESCAPE '\\') ORDER BY created_at DESC LIMIT 20", [pattern, pattern]),
+    db.all("SELECT id, slug, name, description FROM communities WHERE visibility = 'PUBLIC' AND status = 'ACTIVE' AND (name LIKE ? ESCAPE '\\' OR description LIKE ? ESCAPE '\\') LIMIT 20", [pattern, pattern]),
+    db.all("SELECT id, title, summary, status FROM proposals WHERE visibility = 'PUBLIC' AND (title LIKE ? ESCAPE '\\' OR summary LIKE ? ESCAPE '\\') LIMIT 20", [pattern, pattern]),
+    db.all("SELECT id, slug, title, summary, status FROM challenges WHERE visibility = 'PUBLIC' AND (title LIKE ? ESCAPE '\\' OR summary LIKE ? ESCAPE '\\') LIMIT 20", [pattern, pattern]),
+    compatibilityList(db, 'articles', new URL(`${url.origin}${url.pathname}?limit=100`)),
+    compatibilityList(db, 'repositories', new URL(`${url.origin}${url.pathname}?limit=100`)),
+    compatibilityList(db, 'guilds', new URL(`${url.origin}${url.pathname}?limit=100`)),
+  ]);
+  const contains = (record) => Object.values(record || {}).some((value) => typeof value === 'string' && value.toLowerCase().includes(query.toLowerCase()));
+  return {
+    agents: agentRows,
+    posts: postRows.map((row) => ({ ...row, created_at: iso(row.created_at) })),
+    communities: communityRows,
+    articles: articles.filter(contains).slice(0, 20),
+    repositories: repositories.filter(contains).slice(0, 20),
+    guilds: guilds.filter(contains).slice(0, 20),
+    proposals: proposalRows,
+    challenges: challengeRows,
+    fragments: [], changes: [], repository_proposals: [],
+  };
 }
 
 async function handleApi(request, env, url, requestId) {
@@ -339,7 +513,14 @@ async function handleApi(request, env, url, requestId) {
   if (method === 'GET' && path === '/api/v1/governance/proposals') return json({ data: await proposals(db, url) });
   if (method === 'GET' && path === '/api/v1/moderation/actions') return json({ data: await moderationActions(db, url) });
   if (method === 'GET' && path === '/api/v1/observatory/overview') return json(await observatoryOverview(db));
+  if (method === 'GET' && ['/api/v1/observatory/population', '/api/v1/observatory/history'].includes(path)) return json(await populationHistory(db, url));
+  if (method === 'GET' && path === '/api/v1/observatory/trends') return json(await observatoryTrends(db, url));
   if (method === 'GET' && path === '/api/v1/activity') return json({ data: await activity(db, url) });
+  if (method === 'GET' && path === '/api/v1/events') return json({ data: await publicEvents(db, url), methodology: 'Public event projections omit sessions, credentials, raw private payloads, and private repository activity.' });
+  if (method === 'GET' && path === '/api/v1/observer/summary') return json(await observerSummary(db));
+  if (method === 'GET' && path === '/api/v1/observatory/governance') return json(await observatoryGovernance(db));
+  if (method === 'GET' && path === '/api/v1/observatory/guilds') return json(await observatoryGuilds(db, url));
+  if (method === 'GET' && path === '/api/v1/search') return json(await searchPublic(db, url));
   if (method === 'GET' && path === '/api/v1/governance/constitution') {
     return json({
       immutable_core_rules: [

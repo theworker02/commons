@@ -1,10 +1,9 @@
 import fs from 'node:fs';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
-const backendTarget = process.env.COMMONS_FRONTEND_BACKEND || 'http://127.0.0.1:4173';
 const pageAliases = {
   '/': '/index.html',
   '/observatory': '/index.html',
@@ -22,7 +21,6 @@ const backendPaths = [
   '/communities', '/guilds', '/moderation', '/governance', '/council', '/settings', '^/@', '^/a/', '^/r/', '^/c/', '^/g/',
   '^/conversation/', '^/p/', '^/join/'
 ];
-const proxy = Object.fromEntries(backendPaths.map((path) => [path, { target: backendTarget, changeOrigin: true }]));
 const runtimeAssets = [
   ...[
     'app.js', 'styles.css', 'analytics.js', 'navigation-shared.js', 'navigation.js', 'navigation.css',
@@ -70,28 +68,36 @@ function runtimeAssetsPlugin() {
   };
 }
 
-export default defineConfig({
-  root,
-  plugins: [pageAliasesPlugin(), runtimeAssetsPlugin()],
-  server: {
-    host: process.env.VITE_HOST || '127.0.0.1',
-    port: Number(process.env.VITE_PORT || 5173),
-    proxy
-  },
-  preview: {
-    host: process.env.VITE_HOST || '127.0.0.1',
-    port: Number(process.env.VITE_PREVIEW_PORT || 4174)
-  },
-  build: {
-    outDir: resolve(root, 'dist'),
-    emptyOutDir: true,
-    rollupOptions: {
-      input: {
-        index: resolve(root, 'index.html'),
-        onboard: resolve(root, 'onboard.html'),
-        population: resolve(root, 'population.html'),
-        robots: resolve(root, 'robots.html')
+export default defineConfig(({ mode }) => {
+  // Vite does not inject .env values into process.env while its config file is
+  // being evaluated, so load them explicitly for the dev proxy and bind ports.
+  const env = { ...process.env, ...loadEnv(mode, root, '') };
+  const backendTarget = env.COMMONS_FRONTEND_BACKEND || 'http://127.0.0.1:4173';
+  const proxy = Object.fromEntries(backendPaths.map((path) => [path, { target: backendTarget, changeOrigin: true }]));
+
+  return {
+    root,
+    plugins: [pageAliasesPlugin(), runtimeAssetsPlugin()],
+    server: {
+      host: env.VITE_HOST || '127.0.0.1',
+      port: Number(env.VITE_PORT || 5173),
+      proxy
+    },
+    preview: {
+      host: env.VITE_HOST || '127.0.0.1',
+      port: Number(env.VITE_PREVIEW_PORT || 4174)
+    },
+    build: {
+      outDir: resolve(root, 'dist'),
+      emptyOutDir: true,
+      rollupOptions: {
+        input: {
+          index: resolve(root, 'index.html'),
+          onboard: resolve(root, 'onboard.html'),
+          population: resolve(root, 'population.html'),
+          robots: resolve(root, 'robots.html')
+        }
       }
     }
-  }
+  };
 });

@@ -5,6 +5,13 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const { AsyncLocalStorage } = require('node:async_hooks');
 const { URL } = require('node:url');
+
+// Node does not load dotenv files implicitly. Load the ignored local file
+// before configuration is validated, while preserving values already supplied
+// by the shell or hosting platform.
+const localEnvironmentPath = path.join(__dirname, '.env');
+if (fs.existsSync(localEnvironmentPath)) process.loadEnvFile(localEnvironmentPath);
+
 const recommendations = require('./packages/recommendations');
 const routeMetadata = require('./routes.json');
 const { RELEASE, RELEASE_VERSION, validateEnvironment } = require('./packages/config');
