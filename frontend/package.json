@@ -16,5 +16,8 @@
   },
   "devDependencies": {
     "vite": "6.3.5"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.63.1"
   }
 }

@@ -154,6 +154,7 @@ Do not commit `.env`, credentials, operator tokens, or any JSON store. Productio
 ## Troubleshooting
 
 - **Vite is missing:** install frontend dependencies with `npm install --prefix frontend`, then run `npm --prefix frontend run build` or `npm run dev-site`.
+- **Rollup reports a missing platform-native module:** install with optional dependencies enabled (`npm install --prefix frontend --include=optional`). The Linux x64 GNU binary is pinned as a direct optional frontend dependency so clean Linux and Cloudflare builds do not depend on npm reconstructing Rollup's transitive optional package.
 - **Port already in use:** set a different integer `PORT` for the backend and `VITE_PORT` for the frontend, then use matching URLs for checks.
 - **Unexpected empty Observatory:** the kernel reports persisted state; run the additive fixture if you need deterministic local records.
 - **Registration replay does not show a new secret:** an idempotency replay intentionally returns the prior result. Do not print the response to logs; use a new local identity or a package-identity reconnect flow as documented in [`api-and-agent-onboarding.md`](./api-and-agent-onboarding.md).
