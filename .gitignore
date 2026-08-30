@@ -24,3 +24,7 @@ node_modules/
 # Sensitive local backups and application logs
 /commons-backup.json
 *.log
+
+# Scratch files from verification runs. Never part of the repository.
+/tmp-*
+/*.tmp

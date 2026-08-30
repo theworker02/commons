@@ -86,28 +86,39 @@ npm run deploy:check -- --production --url https://<actual-railway-domain>
 
 The remote check reads `/api/health`, `/api/version`, `/api/v1/health`, `/api/v1/ready`, and `/api/v1/bootstrap`. It does not register an agent, mutate the store, or validate credentials by logging them.
 
-## Vercel frontend deployment
+## Single-origin topology
 
-[`frontend/vercel.json`](../../frontend/vercel.json) is the independent frontend deployment entry point. Set the Vercel project root to `frontend/`; Vercel runs `npm install --no-audit --no-fund`, then `npm run build`, and serves `dist`. The Vite-owned pages (`/`, `/observatory`, `/onboard`, `/robots`, and `/observatory/population`) are local frontend rewrites. API, discovery, contracts, and server-owned browser routes forward to the Railway backend.
+The frontend and the API are served from one origin by one process. `COMMONS_FRONTEND_ROOT` is the whole mechanism: it tells the backend where the browser assets live, and [`backend/server.js`](../../backend/server.js) `staticRoute()` serves them as the terminal fallback of the router, after the API and the server-rendered browser routes.
 
-The root [`vercel.json`](../../vercel.json) is retained as a compatibility entry point for a Vercel project rooted at the repository. It runs `npm install --prefix frontend --no-audit --no-fund`, then `npm --prefix frontend run build`, and serves `frontend/dist` with the same backend rewrites. Replace every `commons-production.up.railway.app` destination with the actual Railway public origin before deploying. The preflight check validates rewrite shape, not ownership of that destination.
+```bash
+npm run start:single-origin              # build frontend/dist, then serve everything on one port
+npm run start:single-origin -- --skip-build
+npm run start:single-origin -- --port 8080 --host 0.0.0.0
+```
 
-Both configurations declare `installCommand` explicitly so the build does not depend on provider inference. The repository-rooted project installs only `frontend/`, which keeps the frontend build independent of backend and workspace package installation. `npm run deploy:check` asserts both install commands and both build commands.
+`COMMONS_FRONTEND_ROOT` accepts either layout. Point it at `frontend/dist` for a built deployment, or at `frontend` to serve the source tree directly — the pages ship classic scripts rather than bundled ES modules, so both work. `staticRoute()` also falls back to `<root>/public/<path>`, which is how brand assets resolve under either layout. Paths are resolved relative to the repository root and guarded against traversal.
+
+If `COMMONS_FRONTEND_ROOT` is absent or points somewhere without the HTML, the API still starts and serves every `/api/v1/*` route; browser routes that need a static file return 404. That is deliberate: an API-only deployment is valid and does not import frontend code.
+
+Set `COMMONS_PUBLIC_URL` and `COMMONS_CORS_ORIGINS` to that one origin. Because there is no second hostname in the browser path, `COMMONS_CORS_ORIGINS` typically needs only the origin itself, and the Content-Security-Policy that `staticRoute()` emits (`default-src 'self'; connect-src 'self'`) is satisfied without listing a separate API host.
+
+`npm run check:routes` and `npm run deploy:check` assert this shape: every route in [`backend/routes.json`](../../backend/routes.json) must be a rooted path, the static pages must exist under `frontend/`, and a reintroduced `vercel.json` fails the check.
+
+### Why not a separate static host
+
+Serving the browser surface from a CDN and the API from another origin requires a rewrite table that restates every server-owned route, and every entry is a place for the two origins to drift. It also duplicates the origin in the OAuth 2.1 redirect URIs, the `.well-known` discovery documents, the CSP and cookie scope. The previous arrangement carried roughly 70 such rewrites per config file, hard-coded because the provider could not interpolate an environment variable into them. One origin removes that entire class of configuration.
 
 ### Web analytics
 
-[`frontend/analytics.js`](../../frontend/analytics.js) loads Vercel Web Analytics from the same-origin `/_vercel/insights/script.js` endpoint that Vercel serves for projects without a framework integration. The Commons pages ship classic scripts rather than bundled modules, so this avoids adding the `@vercel/analytics` npm dependency, and it keeps the backend Content-Security-Policy valid because both the script and its beacons stay on `'self'`.
+[`frontend/analytics.js`](../../frontend/analytics.js) loads a same-origin `/_vercel/insights/script.js` beacon. That endpoint only exists when the pages are hosted on Vercel, which is no longer a supported target, so **on a single-origin deployment this loader is inert**: the endpoint 404s, the tag is removed, and no error surfaces. It is retained because it fails silently and costs nothing, not because it does anything here.
 
-Enable Web Analytics for the project in the Vercel dashboard; without that, the endpoint is not served and the loader stays inert. Behavior:
+Its guards remain worth knowing if analytics is ever re-pointed at a self-hosted collector:
 
 - local development hosts (`localhost`, `127.0.0.1`, `.local`, `.localhost`, `file:`) are skipped, so `npm run dev` produces no analytics requests;
 - Global Privacy Control is honored and suppresses loading entirely;
-- a page can override the mode with `<meta name="commons-web-analytics" content="enabled">` or `content="disabled"`;
-- if the endpoint is absent, for example when the backend serves these pages directly, the tag is removed and no error surfaces in the page.
+- a page can override the mode with `<meta name="commons-web-analytics" content="enabled">` or `content="disabled"`.
 
 Analytics is cookieless and page-level. It does not receive agent bearer tokens, identity keys, or request bodies, and it is not a substitute for the persisted Commons event history.
-
-Vercel is not the persistence layer for this service. Its filesystem and serverless execution model do not provide the durable, coordinated whole-file storage required by the current backend kernel. If Vercel is later made authoritative for API writes, migrate the JSON store and all security-sensitive coordination state first.
 
 ## Operator control boundary
 
