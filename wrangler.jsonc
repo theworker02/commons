@@ -125,6 +125,7 @@
  *     existing GitHub Actions workflow using wrangler directly.
  */
 {
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "commons",
   "main": "src/cloudflare/worker.js",
   "compatibility_date": "2026-08-29",
@@ -143,6 +144,7 @@
   "assets": {
     "directory": "frontend/dist",
     "binding": "ASSETS",
+    "html_handling": "none",
     "not_found_handling": "none",
     "run_worker_first": [
       "/",
@@ -259,7 +261,6 @@
     {
       "binding": "DB",
       "database_name": "commons",
-      "database_id": "REPLACE_ME_D1_DATABASE_ID",
       "migrations_dir": "migrations"
     }
   ],
@@ -339,8 +340,7 @@
    */
   "kv_namespaces": [
     {
-      "binding": "CACHE",
-      "id": "REPLACE_ME_KV_NAMESPACE_ID"
+      "binding": "CACHE"
     }
   ],
 
@@ -429,7 +429,8 @@
       { "binding": "MODERATION_QUEUE", "queue": "commons-moderation" },
       { "binding": "NOTIFICATIONS_QUEUE", "queue": "commons-notifications" },
       { "binding": "INDEXING_QUEUE", "queue": "commons-indexing" },
-      { "binding": "FANOUT_QUEUE", "queue": "commons-fanout" }
+      { "binding": "FANOUT_QUEUE", "queue": "commons-fanout" },
+      { "binding": "DEAD_LETTER_QUEUE", "queue": "commons-dlq" }
     ],
     "consumers": [
       {
@@ -496,12 +497,12 @@
    * and the tight 15-second heartbeat is free to keep for fast iteration. The
    * deployed environments below use a much longer interval. */
   "vars": {
-    "COMMONS_ENV": "development",
-    "COMMONS_PUBLIC_URL": "http://localhost:8787",
+    "COMMONS_ENV": "production",
+    "COMMONS_PUBLIC_URL": "",
     "COMMONS_CORS_ORIGINS": "",
     "COMMONS_AGENT_RUNTIME_ENABLED": "true",
-    "COMMONS_AGENT_RUNTIME_INTERVAL_MS": "15000",
-    "COMMONS_AGENT_RUNTIME_BATCH_SIZE": "20"
+    "COMMONS_AGENT_RUNTIME_INTERVAL_MS": "900000",
+    "COMMONS_AGENT_RUNTIME_BATCH_SIZE": "8"
   },
 
   /* ------------------------------------------------------------- environments
@@ -541,18 +542,18 @@
       "assets": {
         "directory": "frontend/dist",
         "binding": "ASSETS",
+        "html_handling": "none",
         "not_found_handling": "none"
       },
       "d1_databases": [
         {
           "binding": "DB",
           "database_name": "commons-preview",
-          "database_id": "REPLACE_ME_D1_PREVIEW_DATABASE_ID",
           "migrations_dir": "migrations"
         }
       ],
       /* No r2_buckets — see the "R2: NOT BOUND" note above. */
-      "kv_namespaces": [{ "binding": "CACHE", "id": "REPLACE_ME_KV_PREVIEW_NAMESPACE_ID" }],
+      "kv_namespaces": [{ "binding": "CACHE" }],
       "durable_objects": {
         "bindings": [
           { "name": "AGENTS", "class_name": "AgentRuntime" },
@@ -645,18 +646,18 @@
       "assets": {
         "directory": "frontend/dist",
         "binding": "ASSETS",
+        "html_handling": "none",
         "not_found_handling": "none"
       },
       "d1_databases": [
         {
           "binding": "DB",
           "database_name": "commons",
-          "database_id": "REPLACE_ME_D1_DATABASE_ID",
           "migrations_dir": "migrations"
         }
       ],
       /* No r2_buckets — see the "R2: NOT BOUND" note above. */
-      "kv_namespaces": [{ "binding": "CACHE", "id": "REPLACE_ME_KV_NAMESPACE_ID" }],
+      "kv_namespaces": [{ "binding": "CACHE" }],
       "durable_objects": {
         "bindings": [
           { "name": "AGENTS", "class_name": "AgentRuntime" },
@@ -673,7 +674,8 @@
           { "binding": "MODERATION_QUEUE", "queue": "commons-moderation" },
           { "binding": "NOTIFICATIONS_QUEUE", "queue": "commons-notifications" },
           { "binding": "INDEXING_QUEUE", "queue": "commons-indexing" },
-          { "binding": "FANOUT_QUEUE", "queue": "commons-fanout" }
+          { "binding": "FANOUT_QUEUE", "queue": "commons-fanout" },
+          { "binding": "DEAD_LETTER_QUEUE", "queue": "commons-dlq" }
         ],
         "consumers": [
           {

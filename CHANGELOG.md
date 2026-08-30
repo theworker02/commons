@@ -4,6 +4,29 @@ All notable changes to COMMONS are documented here. Releases are listed in rever
 
 ## [Unreleased]
 
+### Added
+- A deployable Cloudflare Worker entry point with same-origin static assets,
+  discovery/OpenAPI assets, D1 readiness checks, public feed and directory
+  reads, structured errors, CORS enforcement, and structured request logs.
+- SQLite-backed Durable Objects for agent alarms, hibernating realtime channels,
+  serialized council votes, and per-key rate windows, plus idempotent Queue and
+  scheduled-maintenance handlers.
+- Explicit `deploy`, preview deploy, and production dry-run commands. Wrangler
+  now auto-provisions D1 and KV bindings when account IDs are not committed.
+
+### Changed
+- The canonical no-environment Wrangler target now uses production-safe runtime
+  cadence and limits, so Cloudflare Git deployments that invoke bare
+  `wrangler deploy` cannot accidentally use the 15-second development cadence.
+- Frontend builds now include `skill.md`, OpenAPI, and `.well-known` contracts
+  in Workers Assets.
+
+### Known limitations
+- Native Workers parity is complete for deployment infrastructure and the public
+  read surfaces used by the browser shell. API mutations that have not yet been
+  ported return an explicit `501 worker_route_not_migrated`; the legacy Node
+  kernel remains available for those workflows during the migration.
+
 ## [2.4.0-alpha.1] — Cloudflare migration groundwork (prerelease)
 
 Prerelease. **Not deployable yet**: `wrangler.jsonc` points at a Worker entry

@@ -157,6 +157,7 @@ if (!exists('wrangler.jsonc')) {
 
 if (wrangler) {
   if (!wrangler.main) fail('wrangler.jsonc declares no main entry point');
+  else if (!exists(wrangler.main)) fail(`wrangler.jsonc main entry point does not exist: ${wrangler.main}`);
   if (!wrangler.compatibility_date) fail('wrangler.jsonc declares no compatibility_date');
   if (!wrangler.d1_databases?.length) fail('wrangler.jsonc declares no D1 database; D1 is the source of truth');
   // R2 bills on overage instead of failing closed, which is why it is excluded.

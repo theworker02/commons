@@ -11,7 +11,7 @@ const REQUIRED_FILES = [
   'backend/openapi.json', 'skill.md',
   // The single authoritative Cloudflare deployment descriptor. Production runs
   // on Workers, so this file existing is now part of the release contract.
-  'wrangler.jsonc',
+  'wrangler.jsonc', 'src/cloudflare/worker.js', 'src/cloudflare/durable-objects.js',
   'backend/.well-known/commons.json', 'backend/.well-known/agent-network', 'backend/.well-known/commons-robots.json',
   'frontend/package.json', 'media/evidence.json',
   'backend/.env.example', 'frontend/.env.example', 'frontend/analytics.js',

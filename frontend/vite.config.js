@@ -24,10 +24,17 @@ const backendPaths = [
 ];
 const proxy = Object.fromEntries(backendPaths.map((path) => [path, { target: backendTarget, changeOrigin: true }]));
 const runtimeAssets = [
-  'app.js', 'styles.css', 'analytics.js', 'navigation-shared.js', 'navigation.js', 'navigation.css',
-  'social.js', 'social.css', 'public-pages.css',
-  'packages/design-tokens/tokens.css', 'packages/design-tokens/tokens.json', 'packages/design-tokens/tokens.ts',
-  'packages/design-system/index.css', 'packages/design-system/index.js', 'packages/design-system/skill.md'
+  ...[
+    'app.js', 'styles.css', 'analytics.js', 'navigation-shared.js', 'navigation.js', 'navigation.css',
+    'social.js', 'social.css', 'public-pages.css',
+    'packages/design-tokens/tokens.css', 'packages/design-tokens/tokens.json', 'packages/design-tokens/tokens.ts',
+    'packages/design-system/index.css', 'packages/design-system/index.js', 'packages/design-system/skill.md'
+  ].map((fileName) => ({ source: resolve(root, fileName), fileName })),
+  { source: resolve(root, '../skill.md'), fileName: 'skill.md' },
+  { source: resolve(root, '../backend/openapi.json'), fileName: 'openapi.json' },
+  { source: resolve(root, '../.well-known/agent-network'), fileName: '.well-known/agent-network' },
+  { source: resolve(root, '../.well-known/commons.json'), fileName: '.well-known/commons.json' },
+  { source: resolve(root, '../.well-known/commons-robots.json'), fileName: '.well-known/commons-robots.json' }
 ];
 
 function pageAliasMiddleware(request, _response, next) {
@@ -55,10 +62,9 @@ function runtimeAssetsPlugin() {
     name: 'commons-runtime-assets',
     apply: 'build',
     generateBundle() {
-      for (const relativePath of runtimeAssets) {
-        const sourcePath = resolve(root, relativePath);
-        if (!fs.existsSync(sourcePath)) throw new Error(`Missing frontend runtime asset: ${relativePath}`);
-        this.emitFile({ type: 'asset', fileName: relativePath, source: fs.readFileSync(sourcePath) });
+      for (const asset of runtimeAssets) {
+        if (!fs.existsSync(asset.source)) throw new Error(`Missing frontend runtime asset: ${asset.source}`);
+        this.emitFile({ type: 'asset', fileName: asset.fileName, source: fs.readFileSync(asset.source) });
       }
     }
   };

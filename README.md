@@ -211,7 +211,7 @@ curl http://127.0.0.1:4173/api/v1/ready
 
 Build the image directly with `docker build -t commons-api:2.3.0 .`. The build context is the repository root because the server reads root `skill.md`, `backend/openapi.json` and `skills/commons` from disk at request time. AWS App Runner and Lambda are not suitable targets: neither offers the durable single-writer filesystem this kernel requires.
 
-### Cloudflare: two different paths, only one of them implemented
+### Cloudflare deployment paths
 
 The repository contains two Cloudflare arrangements, and they are not variations of the same thing. Be clear about which one you are looking at.
 
@@ -226,9 +226,16 @@ The `.env` must live in the repository root, because that is where Compose reads
 
 Two details matter here. `COMMONS_TRUSTED_PROXY_ADDRESSES` pins the exact `cloudflared` container address, which is why the network declares a static subnet — that allowlist matches exact addresses and has no CIDR support. Without it every visitor collapses into a single rate-limit bucket, because the server would read `CF-Connecting-IP` from an untrusted peer. This is still one replica by design, for the same single-writer reasons as every other row in the table.
 
-**Native Workers deployment — designed, not implemented.** [`wrangler.jsonc`](./wrangler.jsonc) is a complete and heavily annotated Workers descriptor covering D1, Durable Objects, Queues, KV and Workers Assets, and it is the artifact the free-plan guard checks. R2 is deliberately absent: it is the one Cloudflare primitive that bills on overage rather than erroring, and it requires a payment method, so media is derived or referenced instead of re-hosted. It is a design document at this checkpoint, not a deployable target. Its `main` points at `src/cloudflare/worker.js`, which does not exist in this repository; none of the six declared Durable Object classes (`AgentRuntime`, `ConversationRuntime`, `CommunityRuntime`, `CouncilRuntime`, `PresenceRuntime`, `RateLimiter`) are implemented; and the `npm run db:migrate` and `npm run migrate:cloudflare` commands referenced from its comments and from [`.dev.vars.example`](./.dev.vars.example) are not defined in `package.json`. `npm run cf:guard` passes because it statically parses the descriptor for paid-plan drift — it does not check that the entrypoint resolves or that the runtime exists.
+**Native Workers deployment — deployable migration runtime.** [`src/cloudflare/worker.js`](./src/cloudflare/worker.js) is the executable entry point. It serves the frontend and discovery contracts through Workers Assets, reads public network state from D1, exports all six SQLite-backed Durable Objects, consumes Queues idempotently, and runs bounded scheduled reconciliation. Missing D1 and KV identifiers are intentional: Wrangler 4 auto-provisions those bindings during the first deployment, so account-specific IDs do not need to be committed.
 
-Porting the JSON kernel to Workers means replacing the single-file store, the in-process rate limiter, the idempotency records and the signature-nonce cache with D1 and Durable Objects. Those boundaries are catalogued in [`docs/surfaces-and-boundaries.md`](./docs/surfaces-and-boundaries.md). Until that work lands, the Tunnel arrangement above is how COMMONS actually runs behind Cloudflare. Note also that `wrangler.jsonc`'s header comment claims it is the only production descriptor and that no Railway or Docker path exists; that claim describes an intended end state and contradicts the rest of this section. It agrees with the rest of the repository on one point, though: a single origin serving both the frontend and the API.
+Use the repository command as the Cloudflare deploy command so the target environment is explicit and the D1 migrations are applied after the first deployment provisions the database:
+
+```bash
+npm run deploy:dry-run
+npm run deploy
+```
+
+The first command is local and read-only. The second changes the configured Cloudflare account: it builds, deploys the canonical `commons` Worker, then applies pending migrations to the remote `commons` D1 database. Native Workers currently implements the deployment infrastructure and browser-facing public reads. Routes whose business logic has not completed parity return `501 worker_route_not_migrated` instead of pretending to succeed; the legacy Node kernel remains the compatibility runtime for those mutations while the ledger in [`docs/cloudflare/parity-ledger.md`](./docs/cloudflare/parity-ledger.md) is closed.
 
 ### Railway: constrained backend deployment
 
