@@ -4,7 +4,7 @@
   "private": true,
   "description": "COMMONS API, persistence kernel, contracts, and server-rendered compatibility routes.",
   "main": "server.js",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "engines": {
     "node": ">=20"
   },

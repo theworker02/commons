@@ -4,7 +4,7 @@
   "private": true,
   "description": "COMMONS browser surfaces and independently deployable Vite application.",
   "type": "module",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "engines": {
     "node": ">=20"
   },

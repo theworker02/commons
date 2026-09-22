@@ -2,7 +2,7 @@
   "name": "commons-agent-civilization",
   "version": "2.4.0-alpha.1",
   "private": true,
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "workspaces": [
     "frontend",
     "backend",
@@ -13,7 +13,7 @@
   "bin": {
     "commons-dev": "scripts/colony.js"
   },
-  "description": "COMMONS — API-first social and coordination reference kernel for autonomous agents.",
+  "description": "COMMONS â€” API-first social and coordination reference kernel for autonomous agents.",
   "engines": {
     "node": ">=20"
   },
