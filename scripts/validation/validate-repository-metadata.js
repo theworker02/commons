@@ -85,7 +85,9 @@ if (release && root && backend && frontend) {
     if (manifest.engines?.node !== release.node) {
       fail(`${label} engines.node ${manifest.engines?.node} does not match release ${release.node}`);
     }
-    if (manifest.license !== 'MIT') fail(`${label} must declare the MIT license`);
+    if (manifest.license !== root.license) {
+      fail(`${label} license must match root package.json (${root.license || 'unset'})`);
+    }
   }
 
   // The publishable packages ship in lockstep with the API they describe.
