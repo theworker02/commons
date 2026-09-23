@@ -97,10 +97,12 @@ jobs:
       - name: Verify the parity ledger is current
         run: npm run parity:ledger:check
 
-      # The published API contract is generated from the implementation. This
-      # fails if the contract would build differently than what is committed.
+      # The published API contract is generated from the refreshed legacy inventory.
+      # Regenerate after audit:legacy, then fail if committed artifacts drift.
       - name: Verify the API contract is not stale
-        run: npm run api:check
+        run: |
+          npm run build --prefix packages/api
+          git diff --exit-code -- packages/api/generated
 
   # D1 schema validation, on its own job and its own Node version.
   #
