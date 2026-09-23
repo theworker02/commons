@@ -1,6 +1,6 @@
 {
   "generated_from": "artifacts/routes-legacy.json",
-  "source_sha256": "c8f4815794cb915bffc81ea1bff8cf62b6c0d29e81eb58679998e4d504445396",
+  "source_sha256": "3031ee5ffc5711dfb91bb1dad2a6ee530b9cb808455077d523dcb656a1d6ef3f",
   "route_count": 406,
   "by_method": {
     "ANY": 19,

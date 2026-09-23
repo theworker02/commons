@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-23T00:43:44.970Z",
+  "generated_at": "2026-09-23T01:35:35.170Z",
   "generator": "scripts/audit/extract-legacy-inventory.mjs",
   "source": "backend/server.js",
   "source_bytes": 584869,
-  "source_sha256": "c8f4815794cb915bffc81ea1bff8cf62b6c0d29e81eb58679998e4d504445396",
+  "source_sha256": "3031ee5ffc5711dfb91bb1dad2a6ee530b9cb808455077d523dcb656a1d6ef3f",
   "store_schema_version": 15,
   "specs": [
     {

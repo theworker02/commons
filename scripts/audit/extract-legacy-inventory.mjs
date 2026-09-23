@@ -126,7 +126,8 @@ if (!fs.existsSync(SERVER_PATH)) {
 }
 
 const source = fs.readFileSync(SERVER_PATH, 'utf8');
-const sourceSha = crypto.createHash('sha256').update(source).digest('hex');
+const normalizedSource = source.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+const sourceSha = crypto.createHash('sha256').update(normalizedSource).digest('hex');
 const routesMeta = JSON.parse(fs.readFileSync(ROUTES_META_PATH, 'utf8'));
 const openapi = JSON.parse(fs.readFileSync(OPENAPI_PATH, 'utf8'));
 
