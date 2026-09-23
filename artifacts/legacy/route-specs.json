@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-30T03:50:06.978Z",
+  "generated_at": "2026-09-23T00:36:00.807Z",
   "generator": "scripts/audit/extract-legacy-inventory.mjs",
   "source": "backend/server.js",
-  "source_bytes": 581235,
-  "source_sha256": "e1375a79ef3ea3d1072e09480a5b479c08a475b80e1619976677746ed844e6a7",
+  "source_bytes": 584869,
+  "source_sha256": "c8f4815794cb915bffc81ea1bff8cf62b6c0d29e81eb58679998e4d504445396",
   "store_schema_version": 15,
   "specs": [
     {
@@ -12,7 +12,7 @@
       "matchKind": "exact",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 104946,
+      "sourceIndex": 106417,
       "windowChars": 22,
       "auth": {
         "helpers": [],
@@ -38,7 +38,7 @@
       "matchKind": "prefix",
       "surface": "api-v1-alias",
       "domain": "pages",
-      "sourceIndex": 104968,
+      "sourceIndex": 106439,
       "windowChars": 8000,
       "auth": {
         "helpers": [
@@ -74,8 +74,8 @@
       "matchKind": "exact",
       "surface": "well-known",
       "domain": "oauth",
-      "sourceIndex": 217665,
-      "windowChars": 142,
+      "sourceIndex": 220202,
+      "windowChars": 143,
       "auth": {
         "helpers": [
           "oauthMetadata"
@@ -107,8 +107,8 @@
       "matchKind": "exact",
       "surface": "well-known",
       "domain": "oauth",
-      "sourceIndex": 217807,
-      "windowChars": 158,
+      "sourceIndex": 220345,
+      "windowChars": 159,
       "auth": {
         "helpers": [
           "oauthProtectedResourceMetadata"
@@ -137,8 +137,8 @@
       "matchKind": "exact",
       "surface": "oauth",
       "domain": "oauth",
-      "sourceIndex": 217965,
-      "windowChars": 1058,
+      "sourceIndex": 220504,
+      "windowChars": 1065,
       "auth": {
         "helpers": [
           "oauthClientPublic",
@@ -171,8 +171,8 @@
       "matchKind": "exact",
       "surface": "oauth",
       "domain": "oauth",
-      "sourceIndex": 219023,
-      "windowChars": 1712,
+      "sourceIndex": 221569,
+      "windowChars": 1722,
       "auth": {
         "helpers": [
           "oauthClientForId",
@@ -207,8 +207,8 @@
       "matchKind": "exact",
       "surface": "oauth",
       "domain": "oauth",
-      "sourceIndex": 220735,
-      "windowChars": 912,
+      "sourceIndex": 223291,
+      "windowChars": 919,
       "auth": {
         "helpers": [
           "oauthClientForId",
@@ -241,7 +241,7 @@
       "matchKind": "exact",
       "surface": "oauth",
       "domain": "oauth",
-      "sourceIndex": 221647,
+      "sourceIndex": 224210,
       "windowChars": 43,
       "auth": {
         "helpers": [],
@@ -267,8 +267,8 @@
       "matchKind": "exact",
       "surface": "oauth",
       "domain": "oauth",
-      "sourceIndex": 221690,
-      "windowChars": 1649,
+      "sourceIndex": 224253,
+      "windowChars": 1658,
       "auth": {
         "helpers": [
           "authenticate",
@@ -303,8 +303,8 @@
       "matchKind": "exact",
       "surface": "oauth",
       "domain": "oauth",
-      "sourceIndex": 223339,
-      "windowChars": 2416,
+      "sourceIndex": 225911,
+      "windowChars": 2432,
       "auth": {
         "helpers": [
           "oauthClientForId",
@@ -340,7 +340,7 @@
       "matchKind": "exact",
       "surface": "oauth",
       "domain": "oauth",
-      "sourceIndex": 225755,
+      "sourceIndex": 228343,
       "windowChars": 8000,
       "auth": {
         "helpers": [
@@ -374,8 +374,8 @@
       "matchKind": "exact",
       "surface": "api",
       "domain": "contracts",
-      "sourceIndex": 263805,
-      "windowChars": 185,
+      "sourceIndex": 266576,
+      "windowChars": 186,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -402,8 +402,8 @@
       "matchKind": "exact",
       "surface": "api",
       "domain": "contracts",
-      "sourceIndex": 263990,
-      "windowChars": 306,
+      "sourceIndex": 266762,
+      "windowChars": 307,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -430,8 +430,8 @@
       "matchKind": "exact",
       "surface": "well-known",
       "domain": "contracts",
-      "sourceIndex": 264296,
-      "windowChars": 684,
+      "sourceIndex": 267069,
+      "windowChars": 685,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -458,8 +458,8 @@
       "matchKind": "exact",
       "surface": "well-known",
       "domain": "contracts",
-      "sourceIndex": 264980,
-      "windowChars": 630,
+      "sourceIndex": 267754,
+      "windowChars": 631,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -486,8 +486,8 @@
       "matchKind": "exact",
       "surface": "well-known",
       "domain": "contracts",
-      "sourceIndex": 265610,
-      "windowChars": 136,
+      "sourceIndex": 268385,
+      "windowChars": 137,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -514,8 +514,8 @@
       "matchKind": "exact",
       "surface": "well-known",
       "domain": "contracts",
-      "sourceIndex": 265746,
-      "windowChars": 425,
+      "sourceIndex": 268522,
+      "windowChars": 426,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -542,7 +542,7 @@
       "matchKind": "exact",
       "surface": "well-known",
       "domain": "oauth",
-      "sourceIndex": 266171,
+      "sourceIndex": 268948,
       "windowChars": 58,
       "auth": {
         "helpers": [],
@@ -568,7 +568,7 @@
       "matchKind": "exact",
       "surface": "well-known",
       "domain": "oauth",
-      "sourceIndex": 266229,
+      "sourceIndex": 269006,
       "windowChars": 56,
       "auth": {
         "helpers": [],
@@ -594,8 +594,8 @@
       "matchKind": "prefix",
       "surface": "oauth",
       "domain": "oauth",
-      "sourceIndex": 266285,
-      "windowChars": 84,
+      "sourceIndex": 269062,
+      "windowChars": 85,
       "auth": {
         "helpers": [
           "oauthRoute"
@@ -622,8 +622,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "contracts",
-      "sourceIndex": 266369,
-      "windowChars": 133,
+      "sourceIndex": 269147,
+      "windowChars": 134,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -650,8 +650,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "contracts",
-      "sourceIndex": 266502,
-      "windowChars": 669,
+      "sourceIndex": 269281,
+      "windowChars": 670,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -678,8 +678,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "contracts",
-      "sourceIndex": 267171,
-      "windowChars": 132,
+      "sourceIndex": 269951,
+      "windowChars": 133,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -706,8 +706,8 @@
       "matchKind": "exact",
       "surface": "contract",
       "domain": "contracts",
-      "sourceIndex": 267303,
-      "windowChars": 130,
+      "sourceIndex": 270084,
+      "windowChars": 131,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -734,8 +734,8 @@
       "matchKind": "exact",
       "surface": "page",
       "domain": "contracts",
-      "sourceIndex": 267433,
-      "windowChars": 228,
+      "sourceIndex": 270215,
+      "windowChars": 231,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -762,8 +762,8 @@
       "matchKind": "exact",
       "surface": "mcp",
       "domain": "mcp",
-      "sourceIndex": 267661,
-      "windowChars": 965,
+      "sourceIndex": 270446,
+      "windowChars": 977,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -792,8 +792,8 @@
       "matchKind": "exact",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 268626,
-      "windowChars": 152,
+      "sourceIndex": 271423,
+      "windowChars": 153,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -818,8 +818,8 @@
       "matchKind": "prefix",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 268778,
-      "windowChars": 250,
+      "sourceIndex": 271576,
+      "windowChars": 251,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -848,8 +848,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "realtime",
-      "sourceIndex": 269028,
-      "windowChars": 281,
+      "sourceIndex": 271827,
+      "windowChars": 284,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -876,8 +876,8 @@
       "matchKind": "exact",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 269309,
-      "windowChars": 144,
+      "sourceIndex": 272111,
+      "windowChars": 145,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -902,8 +902,8 @@
       "matchKind": "prefix",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 269453,
-      "windowChars": 814,
+      "sourceIndex": 272256,
+      "windowChars": 815,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -934,8 +934,8 @@
       "matchKind": "prefix",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 270267,
-      "windowChars": 679,
+      "sourceIndex": 273071,
+      "windowChars": 680,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -966,8 +966,8 @@
       "matchKind": "prefix",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 270946,
-      "windowChars": 706,
+      "sourceIndex": 273751,
+      "windowChars": 707,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -998,8 +998,8 @@
       "matchKind": "prefix",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 271652,
-      "windowChars": 319,
+      "sourceIndex": 274458,
+      "windowChars": 320,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1028,8 +1028,8 @@
       "matchKind": "prefix",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 271971,
-      "windowChars": 264,
+      "sourceIndex": 274778,
+      "windowChars": 265,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1060,8 +1060,8 @@
       "matchKind": "prefix",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 272235,
-      "windowChars": 306,
+      "sourceIndex": 275043,
+      "windowChars": 307,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1092,8 +1092,8 @@
       "matchKind": "prefix",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 272541,
-      "windowChars": 281,
+      "sourceIndex": 275350,
+      "windowChars": 282,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1124,8 +1124,8 @@
       "matchKind": "prefix",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 272822,
-      "windowChars": 238,
+      "sourceIndex": 275632,
+      "windowChars": 239,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1157,7 +1157,7 @@
       "matchKind": "exact",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 273060,
+      "sourceIndex": 275871,
       "windowChars": 22,
       "auth": {
         "helpers": [],
@@ -1186,8 +1186,8 @@
       "matchKind": "prefix",
       "surface": "api-v1-alias",
       "domain": "pages",
-      "sourceIndex": 273082,
-      "windowChars": 95,
+      "sourceIndex": 275893,
+      "windowChars": 97,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1215,8 +1215,8 @@
       "matchKind": "exact",
       "surface": "contract",
       "domain": "contracts",
-      "sourceIndex": 273177,
-      "windowChars": 236,
+      "sourceIndex": 275990,
+      "windowChars": 237,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1245,8 +1245,8 @@
       "matchKind": "exact",
       "surface": "contract",
       "domain": "contracts",
-      "sourceIndex": 273413,
-      "windowChars": 206,
+      "sourceIndex": 276227,
+      "windowChars": 207,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1275,7 +1275,7 @@
       "matchKind": "exact",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 273619,
+      "sourceIndex": 276434,
       "windowChars": 27,
       "auth": {
         "helpers": [],
@@ -1301,8 +1301,8 @@
       "matchKind": "exact",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 273646,
-      "windowChars": 117,
+      "sourceIndex": 276461,
+      "windowChars": 118,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1327,8 +1327,8 @@
       "matchKind": "prefix",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 273763,
-      "windowChars": 418,
+      "sourceIndex": 276579,
+      "windowChars": 424,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1353,8 +1353,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "contracts",
-      "sourceIndex": 274181,
-      "windowChars": 180,
+      "sourceIndex": 277003,
+      "windowChars": 181,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1381,8 +1381,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "contracts",
-      "sourceIndex": 274361,
-      "windowChars": 209,
+      "sourceIndex": 277184,
+      "windowChars": 210,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1409,8 +1409,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 274570,
-      "windowChars": 497,
+      "sourceIndex": 277394,
+      "windowChars": 498,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1437,8 +1437,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 275067,
-      "windowChars": 1381,
+      "sourceIndex": 277892,
+      "windowChars": 1382,
       "auth": {
         "helpers": [
           "enforceAnonymous",
@@ -1473,8 +1473,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "contracts",
-      "sourceIndex": 276448,
-      "windowChars": 153,
+      "sourceIndex": 279274,
+      "windowChars": 154,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1504,8 +1504,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "contracts",
-      "sourceIndex": 276601,
-      "windowChars": 152,
+      "sourceIndex": 279428,
+      "windowChars": 153,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1535,8 +1535,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 276753,
-      "windowChars": 117,
+      "sourceIndex": 279581,
+      "windowChars": 118,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1563,8 +1563,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 276870,
-      "windowChars": 1359,
+      "sourceIndex": 279699,
+      "windowChars": 1371,
       "auth": {
         "helpers": [
           "enforceAnonymous",
@@ -1596,8 +1596,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 278229,
-      "windowChars": 1074,
+      "sourceIndex": 281070,
+      "windowChars": 1081,
       "auth": {
         "helpers": [
           "enforceAnonymous"
@@ -1624,8 +1624,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 279303,
-      "windowChars": 1924,
+      "sourceIndex": 282151,
+      "windowChars": 1928,
       "auth": {
         "helpers": [
           "enforceAnonymous",
@@ -1653,8 +1653,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "mcp",
-      "sourceIndex": 281227,
-      "windowChars": 1252,
+      "sourceIndex": 284079,
+      "windowChars": 1262,
       "auth": {
         "helpers": [
           "enforceAnonymous"
@@ -1685,8 +1685,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "mcp",
-      "sourceIndex": 282479,
-      "windowChars": 358,
+      "sourceIndex": 285341,
+      "windowChars": 364,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1715,8 +1715,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "mcp",
-      "sourceIndex": 282837,
-      "windowChars": 2016,
+      "sourceIndex": 285705,
+      "windowChars": 2036,
       "auth": {
         "helpers": [
           "authenticate"
@@ -1752,8 +1752,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "mcp",
-      "sourceIndex": 284853,
-      "windowChars": 2747,
+      "sourceIndex": 287741,
+      "windowChars": 2776,
       "auth": {
         "helpers": [
           "authenticate",
@@ -1788,8 +1788,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 287600,
-      "windowChars": 1348,
+      "sourceIndex": 290517,
+      "windowChars": 1358,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -1819,8 +1819,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 288948,
-      "windowChars": 513,
+      "sourceIndex": 291875,
+      "windowChars": 517,
       "auth": {
         "helpers": [
           "requireScope"
@@ -1854,8 +1854,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 289461,
-      "windowChars": 721,
+      "sourceIndex": 292392,
+      "windowChars": 724,
       "auth": {
         "helpers": [
           "requireScope"
@@ -1891,8 +1891,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 290182,
-      "windowChars": 493,
+      "sourceIndex": 293116,
+      "windowChars": 496,
       "auth": {
         "helpers": [
           "requireScope"
@@ -1926,8 +1926,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 290675,
-      "windowChars": 813,
+      "sourceIndex": 293612,
+      "windowChars": 816,
       "auth": {
         "helpers": [
           "requireScope"
@@ -1963,8 +1963,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 291488,
-      "windowChars": 624,
+      "sourceIndex": 294428,
+      "windowChars": 627,
       "auth": {
         "helpers": [
           "requireScope"
@@ -2000,8 +2000,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 292112,
-      "windowChars": 744,
+      "sourceIndex": 295055,
+      "windowChars": 747,
       "auth": {
         "helpers": [
           "requireScope"
@@ -2037,8 +2037,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 292856,
-      "windowChars": 652,
+      "sourceIndex": 295802,
+      "windowChars": 655,
       "auth": {
         "helpers": [
           "requireScope"
@@ -2072,8 +2072,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 293508,
-      "windowChars": 1669,
+      "sourceIndex": 296457,
+      "windowChars": 1675,
       "auth": {
         "helpers": [
           "requireScope"
@@ -2109,8 +2109,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 295177,
-      "windowChars": 941,
+      "sourceIndex": 298132,
+      "windowChars": 944,
       "auth": {
         "helpers": [
           "requireScope"
@@ -2146,8 +2146,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 296118,
-      "windowChars": 1145,
+      "sourceIndex": 299076,
+      "windowChars": 1149,
       "auth": {
         "helpers": [
           "enforceSimulationCommandRate",
@@ -2182,8 +2182,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 297263,
-      "windowChars": 282,
+      "sourceIndex": 300225,
+      "windowChars": 285,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2212,8 +2212,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 297545,
-      "windowChars": 396,
+      "sourceIndex": 300510,
+      "windowChars": 399,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2242,8 +2242,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "robots",
-      "sourceIndex": 297941,
-      "windowChars": 600,
+      "sourceIndex": 300909,
+      "windowChars": 603,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2274,7 +2274,7 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "skills",
-      "sourceIndex": 298541,
+      "sourceIndex": 301512,
       "windowChars": 25,
       "auth": {
         "helpers": [],
@@ -2300,7 +2300,7 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "skills",
-      "sourceIndex": 298566,
+      "sourceIndex": 301537,
       "windowChars": 33,
       "auth": {
         "helpers": [],
@@ -2326,7 +2326,7 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "skills",
-      "sourceIndex": 298599,
+      "sourceIndex": 301570,
       "windowChars": 40,
       "auth": {
         "helpers": [],
@@ -2352,8 +2352,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "skills",
-      "sourceIndex": 298639,
-      "windowChars": 350,
+      "sourceIndex": 301610,
+      "windowChars": 355,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2381,8 +2381,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "skills",
-      "sourceIndex": 298989,
-      "windowChars": 235,
+      "sourceIndex": 301965,
+      "windowChars": 236,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2407,8 +2407,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "skills",
-      "sourceIndex": 299224,
-      "windowChars": 196,
+      "sourceIndex": 302201,
+      "windowChars": 197,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2433,8 +2433,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "skills",
-      "sourceIndex": 299420,
-      "windowChars": 1040,
+      "sourceIndex": 302398,
+      "windowChars": 1051,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2465,8 +2465,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "provenance",
-      "sourceIndex": 300460,
-      "windowChars": 1166,
+      "sourceIndex": 303449,
+      "windowChars": 1167,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2498,8 +2498,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "provenance",
-      "sourceIndex": 301626,
-      "windowChars": 486,
+      "sourceIndex": 304616,
+      "windowChars": 487,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2528,8 +2528,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "provenance",
-      "sourceIndex": 302112,
-      "windowChars": 735,
+      "sourceIndex": 305103,
+      "windowChars": 736,
       "auth": {
         "helpers": [
           "requireScope",
@@ -2565,8 +2565,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 302847,
-      "windowChars": 1190,
+      "sourceIndex": 305839,
+      "windowChars": 1191,
       "auth": {
         "helpers": [
           "publicPrincipal"
@@ -2601,8 +2601,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 304037,
-      "windowChars": 1298,
+      "sourceIndex": 307030,
+      "windowChars": 1299,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2635,8 +2635,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 305335,
-      "windowChars": 321,
+      "sourceIndex": 308329,
+      "windowChars": 322,
       "auth": {
         "helpers": [
           "publicPrincipal"
@@ -2667,8 +2667,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 305656,
-      "windowChars": 904,
+      "sourceIndex": 308651,
+      "windowChars": 905,
       "auth": {
         "helpers": [
           "publicPrincipal"
@@ -2702,8 +2702,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 306560,
-      "windowChars": 561,
+      "sourceIndex": 309556,
+      "windowChars": 562,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2734,8 +2734,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 307121,
-      "windowChars": 1492,
+      "sourceIndex": 310118,
+      "windowChars": 1493,
       "auth": {
         "helpers": [
           "identityGate",
@@ -2775,8 +2775,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 308613,
-      "windowChars": 361,
+      "sourceIndex": 311611,
+      "windowChars": 362,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2807,8 +2807,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 308974,
-      "windowChars": 2128,
+      "sourceIndex": 311973,
+      "windowChars": 2129,
       "auth": {
         "helpers": [
           "createCredential",
@@ -2848,8 +2848,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 311102,
-      "windowChars": 1010,
+      "sourceIndex": 314102,
+      "windowChars": 1011,
       "auth": {
         "helpers": [
           "requireScope"
@@ -2886,8 +2886,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 312112,
-      "windowChars": 375,
+      "sourceIndex": 315113,
+      "windowChars": 376,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -2918,8 +2918,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 312487,
-      "windowChars": 1397,
+      "sourceIndex": 315489,
+      "windowChars": 1398,
       "auth": {
         "helpers": [
           "requireScope"
@@ -2957,8 +2957,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 313884,
-      "windowChars": 983,
+      "sourceIndex": 316887,
+      "windowChars": 984,
       "auth": {
         "helpers": [
           "requireScope"
@@ -2996,8 +2996,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 314867,
-      "windowChars": 372,
+      "sourceIndex": 317871,
+      "windowChars": 373,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -3028,8 +3028,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 315239,
-      "windowChars": 1776,
+      "sourceIndex": 318244,
+      "windowChars": 1777,
       "auth": {
         "helpers": [
           "normalizePackageIdentity",
@@ -3070,7 +3070,7 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 317015,
+      "sourceIndex": 320021,
       "windowChars": 37,
       "auth": {
         "helpers": [],
@@ -3096,7 +3096,7 @@
       "matchKind": "prefix",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 317052,
+      "sourceIndex": 320058,
       "windowChars": 44,
       "auth": {
         "helpers": [],
@@ -3122,7 +3122,7 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "notifications",
-      "sourceIndex": 317096,
+      "sourceIndex": 320102,
       "windowChars": 40,
       "auth": {
         "helpers": [],
@@ -3148,7 +3148,7 @@
       "matchKind": "prefix",
       "surface": "api-v1",
       "domain": "notifications",
-      "sourceIndex": 317136,
+      "sourceIndex": 320142,
       "windowChars": 49,
       "auth": {
         "helpers": [],
@@ -3174,7 +3174,7 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 317185,
+      "sourceIndex": 320191,
       "windowChars": 36,
       "auth": {
         "helpers": [],
@@ -3200,8 +3200,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 317221,
-      "windowChars": 542,
+      "sourceIndex": 320227,
+      "windowChars": 546,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -3229,8 +3229,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 317763,
-      "windowChars": 1103,
+      "sourceIndex": 320773,
+      "windowChars": 1114,
       "auth": {
         "helpers": [
           "requireArticleReadScope"
@@ -3261,8 +3261,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 318866,
-      "windowChars": 984,
+      "sourceIndex": 321887,
+      "windowChars": 991,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -3294,8 +3294,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 319850,
-      "windowChars": 458,
+      "sourceIndex": 322878,
+      "windowChars": 462,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3327,8 +3327,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 320308,
-      "windowChars": 515,
+      "sourceIndex": 323340,
+      "windowChars": 520,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3360,8 +3360,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 320823,
-      "windowChars": 793,
+      "sourceIndex": 323860,
+      "windowChars": 799,
       "auth": {
         "helpers": [
           "requireArticleAccess"
@@ -3394,8 +3394,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 321616,
-      "windowChars": 758,
+      "sourceIndex": 324659,
+      "windowChars": 764,
       "auth": {
         "helpers": [
           "requireArticleAccess"
@@ -3426,8 +3426,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 322374,
-      "windowChars": 653,
+      "sourceIndex": 325423,
+      "windowChars": 658,
       "auth": {
         "helpers": [
           "requireArticleAccess"
@@ -3460,8 +3460,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 323027,
-      "windowChars": 722,
+      "sourceIndex": 326081,
+      "windowChars": 728,
       "auth": {
         "helpers": [
           "requireArticleAccess"
@@ -3494,8 +3494,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 323749,
-      "windowChars": 695,
+      "sourceIndex": 326809,
+      "windowChars": 700,
       "auth": {
         "helpers": [
           "requireArticleAccess"
@@ -3528,8 +3528,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 324444,
-      "windowChars": 614,
+      "sourceIndex": 327509,
+      "windowChars": 618,
       "auth": {
         "helpers": [
           "requireArticleAccess"
@@ -3562,8 +3562,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 325058,
-      "windowChars": 2691,
+      "sourceIndex": 328127,
+      "windowChars": 2700,
       "auth": {
         "helpers": [
           "requireScope",
@@ -3603,8 +3603,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 327749,
-      "windowChars": 1907,
+      "sourceIndex": 330827,
+      "windowChars": 1918,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3642,8 +3642,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 329656,
-      "windowChars": 1889,
+      "sourceIndex": 332745,
+      "windowChars": 1895,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3682,8 +3682,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 331545,
-      "windowChars": 1938,
+      "sourceIndex": 334640,
+      "windowChars": 1944,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3721,8 +3721,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 333483,
-      "windowChars": 2867,
+      "sourceIndex": 336584,
+      "windowChars": 2873,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3762,8 +3762,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 336350,
-      "windowChars": 1877,
+      "sourceIndex": 339457,
+      "windowChars": 1880,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3801,8 +3801,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 338227,
-      "windowChars": 1500,
+      "sourceIndex": 341337,
+      "windowChars": 1503,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3841,8 +3841,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 339727,
-      "windowChars": 1206,
+      "sourceIndex": 342840,
+      "windowChars": 1209,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3878,8 +3878,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 340933,
-      "windowChars": 2352,
+      "sourceIndex": 344049,
+      "windowChars": 2355,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3920,8 +3920,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 343285,
-      "windowChars": 2090,
+      "sourceIndex": 346404,
+      "windowChars": 2093,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -3959,8 +3959,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 345375,
-      "windowChars": 2052,
+      "sourceIndex": 348497,
+      "windowChars": 2056,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -4000,8 +4000,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 347427,
-      "windowChars": 2446,
+      "sourceIndex": 350553,
+      "windowChars": 2451,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -4042,8 +4042,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 349873,
-      "windowChars": 1059,
+      "sourceIndex": 353004,
+      "windowChars": 1062,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -4080,8 +4080,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "articles",
-      "sourceIndex": 350932,
-      "windowChars": 1377,
+      "sourceIndex": 354066,
+      "windowChars": 1381,
       "auth": {
         "helpers": [
           "requireArticleAccess",
@@ -4118,8 +4118,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 352309,
-      "windowChars": 910,
+      "sourceIndex": 355447,
+      "windowChars": 911,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4148,8 +4148,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 353219,
-      "windowChars": 1094,
+      "sourceIndex": 356358,
+      "windowChars": 1095,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4180,8 +4180,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 354313,
-      "windowChars": 1018,
+      "sourceIndex": 357453,
+      "windowChars": 1019,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4213,8 +4213,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 355331,
-      "windowChars": 1410,
+      "sourceIndex": 358472,
+      "windowChars": 1411,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4249,8 +4249,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 356741,
-      "windowChars": 368,
+      "sourceIndex": 359883,
+      "windowChars": 369,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4281,8 +4281,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 357109,
-      "windowChars": 995,
+      "sourceIndex": 360252,
+      "windowChars": 996,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4314,8 +4314,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 358104,
-      "windowChars": 589,
+      "sourceIndex": 361248,
+      "windowChars": 590,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4345,8 +4345,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 358693,
-      "windowChars": 202,
+      "sourceIndex": 361838,
+      "windowChars": 203,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4375,8 +4375,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 358895,
-      "windowChars": 379,
+      "sourceIndex": 362041,
+      "windowChars": 380,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4407,8 +4407,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 359274,
-      "windowChars": 1227,
+      "sourceIndex": 362421,
+      "windowChars": 1228,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4439,8 +4439,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 360501,
-      "windowChars": 332,
+      "sourceIndex": 363649,
+      "windowChars": 333,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4471,8 +4471,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 360833,
-      "windowChars": 1085,
+      "sourceIndex": 363982,
+      "windowChars": 1086,
       "auth": {
         "helpers": [
           "required"
@@ -4505,8 +4505,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 361918,
-      "windowChars": 500,
+      "sourceIndex": 365068,
+      "windowChars": 501,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4537,8 +4537,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 362418,
-      "windowChars": 1040,
+      "sourceIndex": 365569,
+      "windowChars": 1041,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4572,8 +4572,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 363458,
-      "windowChars": 726,
+      "sourceIndex": 366610,
+      "windowChars": 727,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4606,8 +4606,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "notifications",
-      "sourceIndex": 364184,
-      "windowChars": 295,
+      "sourceIndex": 367337,
+      "windowChars": 296,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4638,8 +4638,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "notifications",
-      "sourceIndex": 364479,
-      "windowChars": 371,
+      "sourceIndex": 367633,
+      "windowChars": 372,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4670,8 +4670,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "notifications",
-      "sourceIndex": 364850,
-      "windowChars": 842,
+      "sourceIndex": 368005,
+      "windowChars": 843,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4702,8 +4702,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 365692,
-      "windowChars": 394,
+      "sourceIndex": 368848,
+      "windowChars": 395,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4734,8 +4734,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 366086,
-      "windowChars": 699,
+      "sourceIndex": 369243,
+      "windowChars": 700,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4768,8 +4768,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 366785,
-      "windowChars": 490,
+      "sourceIndex": 369943,
+      "windowChars": 491,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4800,8 +4800,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 367275,
-      "windowChars": 948,
+      "sourceIndex": 370434,
+      "windowChars": 949,
       "auth": {
         "helpers": [
           "required"
@@ -4839,8 +4839,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 368223,
-      "windowChars": 229,
+      "sourceIndex": 371383,
+      "windowChars": 230,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4871,8 +4871,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 368452,
-      "windowChars": 530,
+      "sourceIndex": 371613,
+      "windowChars": 531,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4905,8 +4905,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 368982,
-      "windowChars": 860,
+      "sourceIndex": 372144,
+      "windowChars": 861,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4936,8 +4936,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 369842,
-      "windowChars": 278,
+      "sourceIndex": 373005,
+      "windowChars": 279,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -4966,8 +4966,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 370120,
-      "windowChars": 1209,
+      "sourceIndex": 373284,
+      "windowChars": 1214,
       "auth": {
         "helpers": [
           "required"
@@ -5000,8 +5000,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "communities",
-      "sourceIndex": 371329,
-      "windowChars": 2664,
+      "sourceIndex": 374498,
+      "windowChars": 2676,
       "auth": {
         "helpers": [
           "required"
@@ -5040,8 +5040,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "moderation",
-      "sourceIndex": 373993,
-      "windowChars": 759,
+      "sourceIndex": 377174,
+      "windowChars": 764,
       "auth": {
         "helpers": [
           "moderatorAuthority"
@@ -5075,8 +5075,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "moderation",
-      "sourceIndex": 374752,
-      "windowChars": 247,
+      "sourceIndex": 377938,
+      "windowChars": 248,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5105,8 +5105,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "moderation",
-      "sourceIndex": 374999,
-      "windowChars": 3078,
+      "sourceIndex": 378186,
+      "windowChars": 3093,
       "auth": {
         "helpers": [
           "moderatorAuthority",
@@ -5145,8 +5145,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "moderation",
-      "sourceIndex": 378077,
-      "windowChars": 1202,
+      "sourceIndex": 381279,
+      "windowChars": 1205,
       "auth": {
         "helpers": [
           "moderatorAuthority",
@@ -5181,8 +5181,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "moderation",
-      "sourceIndex": 379279,
-      "windowChars": 1204,
+      "sourceIndex": 382484,
+      "windowChars": 1207,
       "auth": {
         "helpers": [
           "required"
@@ -5218,8 +5218,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "moderation",
-      "sourceIndex": 380483,
-      "windowChars": 2252,
+      "sourceIndex": 383691,
+      "windowChars": 2255,
       "auth": {
         "helpers": [
           "moderatorAuthority",
@@ -5259,8 +5259,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 382735,
-      "windowChars": 120,
+      "sourceIndex": 385946,
+      "windowChars": 121,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5287,8 +5287,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 382855,
-      "windowChars": 812,
+      "sourceIndex": 386067,
+      "windowChars": 813,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5322,8 +5322,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 383667,
-      "windowChars": 708,
+      "sourceIndex": 386880,
+      "windowChars": 709,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5357,8 +5357,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 384375,
-      "windowChars": 388,
+      "sourceIndex": 387589,
+      "windowChars": 389,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5388,8 +5388,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 384763,
-      "windowChars": 224,
+      "sourceIndex": 387978,
+      "windowChars": 225,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5416,8 +5416,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 384987,
-      "windowChars": 283,
+      "sourceIndex": 388203,
+      "windowChars": 284,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5444,8 +5444,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 385270,
-      "windowChars": 195,
+      "sourceIndex": 388487,
+      "windowChars": 196,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5472,8 +5472,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 385465,
-      "windowChars": 114,
+      "sourceIndex": 388683,
+      "windowChars": 115,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5500,8 +5500,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 385579,
-      "windowChars": 182,
+      "sourceIndex": 388798,
+      "windowChars": 183,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5528,8 +5528,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 385761,
-      "windowChars": 416,
+      "sourceIndex": 388981,
+      "windowChars": 417,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5558,8 +5558,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 386177,
-      "windowChars": 353,
+      "sourceIndex": 389398,
+      "windowChars": 355,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5588,8 +5588,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 386530,
-      "windowChars": 1300,
+      "sourceIndex": 389753,
+      "windowChars": 1309,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5619,8 +5619,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 387830,
-      "windowChars": 948,
+      "sourceIndex": 391062,
+      "windowChars": 952,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5652,8 +5652,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 388778,
-      "windowChars": 172,
+      "sourceIndex": 392014,
+      "windowChars": 173,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5680,8 +5680,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 388950,
-      "windowChars": 282,
+      "sourceIndex": 392187,
+      "windowChars": 283,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5710,8 +5710,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 389232,
-      "windowChars": 865,
+      "sourceIndex": 392470,
+      "windowChars": 866,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5742,8 +5742,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 390097,
-      "windowChars": 507,
+      "sourceIndex": 393336,
+      "windowChars": 508,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5774,8 +5774,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 390604,
-      "windowChars": 840,
+      "sourceIndex": 393844,
+      "windowChars": 841,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5806,8 +5806,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 391444,
-      "windowChars": 992,
+      "sourceIndex": 394685,
+      "windowChars": 993,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5852,8 +5852,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 392436,
-      "windowChars": 814,
+      "sourceIndex": 395678,
+      "windowChars": 816,
       "auth": {
         "helpers": [
           "required"
@@ -5888,8 +5888,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 393250,
-      "windowChars": 1075,
+      "sourceIndex": 396494,
+      "windowChars": 1076,
       "auth": {
         "helpers": [
           "publicPrincipal"
@@ -5923,8 +5923,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 394325,
-      "windowChars": 756,
+      "sourceIndex": 397570,
+      "windowChars": 757,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5959,8 +5959,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 395081,
-      "windowChars": 267,
+      "sourceIndex": 398327,
+      "windowChars": 268,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -5989,8 +5989,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 395348,
-      "windowChars": 1407,
+      "sourceIndex": 398595,
+      "windowChars": 1408,
       "auth": {
         "helpers": [
           "activeIdentityKey",
@@ -6028,8 +6028,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 396755,
-      "windowChars": 773,
+      "sourceIndex": 400003,
+      "windowChars": 774,
       "auth": {
         "helpers": [
           "requireIdentitySignature"
@@ -6066,8 +6066,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 397528,
-      "windowChars": 267,
+      "sourceIndex": 400777,
+      "windowChars": 268,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6096,8 +6096,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 397795,
-      "windowChars": 940,
+      "sourceIndex": 401045,
+      "windowChars": 941,
       "auth": {
         "helpers": [
           "requireIdentitySignature",
@@ -6131,8 +6131,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 398735,
-      "windowChars": 1432,
+      "sourceIndex": 401986,
+      "windowChars": 1433,
       "auth": {
         "helpers": [
           "requireIdentitySignature",
@@ -6177,8 +6177,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 400167,
-      "windowChars": 378,
+      "sourceIndex": 403419,
+      "windowChars": 379,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6207,8 +6207,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 400545,
-      "windowChars": 1016,
+      "sourceIndex": 403798,
+      "windowChars": 1017,
       "auth": {
         "helpers": [
           "requireIdentitySignature"
@@ -6241,8 +6241,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 401561,
-      "windowChars": 524,
+      "sourceIndex": 404815,
+      "windowChars": 525,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6273,8 +6273,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 402085,
-      "windowChars": 1118,
+      "sourceIndex": 405340,
+      "windowChars": 1119,
       "auth": {
         "helpers": [
           "required"
@@ -6310,8 +6310,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 403203,
-      "windowChars": 1176,
+      "sourceIndex": 406459,
+      "windowChars": 1177,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6345,8 +6345,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 404379,
-      "windowChars": 1820,
+      "sourceIndex": 407636,
+      "windowChars": 1821,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6383,8 +6383,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 406199,
-      "windowChars": 1141,
+      "sourceIndex": 409457,
+      "windowChars": 1142,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6416,8 +6416,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 407340,
-      "windowChars": 291,
+      "sourceIndex": 410599,
+      "windowChars": 292,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6446,8 +6446,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 407631,
-      "windowChars": 611,
+      "sourceIndex": 410891,
+      "windowChars": 612,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6478,8 +6478,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 408242,
-      "windowChars": 1249,
+      "sourceIndex": 411503,
+      "windowChars": 1251,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6517,8 +6517,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 409491,
-      "windowChars": 562,
+      "sourceIndex": 412754,
+      "windowChars": 563,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6547,8 +6547,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 410053,
-      "windowChars": 858,
+      "sourceIndex": 413317,
+      "windowChars": 859,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6579,8 +6579,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "credentials",
-      "sourceIndex": 410911,
-      "windowChars": 784,
+      "sourceIndex": 414176,
+      "windowChars": 785,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6622,8 +6622,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 411695,
-      "windowChars": 509,
+      "sourceIndex": 414961,
+      "windowChars": 510,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6654,8 +6654,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 412204,
-      "windowChars": 1013,
+      "sourceIndex": 415471,
+      "windowChars": 1014,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6696,8 +6696,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 413217,
-      "windowChars": 747,
+      "sourceIndex": 416485,
+      "windowChars": 748,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6728,8 +6728,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "moderation",
-      "sourceIndex": 413964,
-      "windowChars": 673,
+      "sourceIndex": 417233,
+      "windowChars": 675,
       "auth": {
         "helpers": [
           "required"
@@ -6762,8 +6762,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 414637,
-      "windowChars": 1364,
+      "sourceIndex": 417908,
+      "windowChars": 1365,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6793,8 +6793,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 416001,
-      "windowChars": 1201,
+      "sourceIndex": 419273,
+      "windowChars": 1202,
       "auth": {
         "helpers": [
           "required"
@@ -6829,8 +6829,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 417202,
-      "windowChars": 576,
+      "sourceIndex": 420475,
+      "windowChars": 577,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6862,8 +6862,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 417778,
-      "windowChars": 1353,
+      "sourceIndex": 421052,
+      "windowChars": 1354,
       "auth": {
         "helpers": [
           "required"
@@ -6899,8 +6899,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 419131,
-      "windowChars": 1078,
+      "sourceIndex": 422406,
+      "windowChars": 1079,
       "auth": {
         "helpers": [
           "required"
@@ -6937,8 +6937,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 420209,
-      "windowChars": 836,
+      "sourceIndex": 423485,
+      "windowChars": 837,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -6972,8 +6972,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 421045,
-      "windowChars": 971,
+      "sourceIndex": 424322,
+      "windowChars": 972,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7007,8 +7007,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 422016,
-      "windowChars": 558,
+      "sourceIndex": 425294,
+      "windowChars": 559,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7039,8 +7039,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 422574,
-      "windowChars": 1060,
+      "sourceIndex": 425853,
+      "windowChars": 1061,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7074,8 +7074,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 423634,
-      "windowChars": 624,
+      "sourceIndex": 426914,
+      "windowChars": 626,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7109,8 +7109,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "communities",
-      "sourceIndex": 424258,
-      "windowChars": 164,
+      "sourceIndex": 427540,
+      "windowChars": 165,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7139,8 +7139,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "communities",
-      "sourceIndex": 424422,
-      "windowChars": 1304,
+      "sourceIndex": 427705,
+      "windowChars": 1305,
       "auth": {
         "helpers": [
           "required"
@@ -7177,8 +7177,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "communities",
-      "sourceIndex": 425726,
-      "windowChars": 971,
+      "sourceIndex": 429010,
+      "windowChars": 972,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7212,8 +7212,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "communities",
-      "sourceIndex": 426697,
-      "windowChars": 464,
+      "sourceIndex": 429982,
+      "windowChars": 466,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7244,8 +7244,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 427161,
-      "windowChars": 646,
+      "sourceIndex": 430448,
+      "windowChars": 647,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7279,8 +7279,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 427807,
-      "windowChars": 728,
+      "sourceIndex": 431095,
+      "windowChars": 729,
       "auth": {
         "helpers": [
           "guildAuthority",
@@ -7316,8 +7316,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 428535,
-      "windowChars": 742,
+      "sourceIndex": 431824,
+      "windowChars": 743,
       "auth": {
         "helpers": [
           "guildAuthority",
@@ -7353,8 +7353,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 429277,
-      "windowChars": 1097,
+      "sourceIndex": 432567,
+      "windowChars": 1098,
       "auth": {
         "helpers": [
           "guildAuthority",
@@ -7390,8 +7390,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 430374,
-      "windowChars": 222,
+      "sourceIndex": 433665,
+      "windowChars": 223,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7420,8 +7420,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 430596,
-      "windowChars": 872,
+      "sourceIndex": 433888,
+      "windowChars": 873,
       "auth": {
         "helpers": [
           "guildAuthority",
@@ -7457,8 +7457,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 431468,
-      "windowChars": 1338,
+      "sourceIndex": 434761,
+      "windowChars": 1339,
       "auth": {
         "helpers": [
           "required"
@@ -7497,8 +7497,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 432806,
-      "windowChars": 902,
+      "sourceIndex": 436100,
+      "windowChars": 903,
       "auth": {
         "helpers": [
           "guildAuthority",
@@ -7535,8 +7535,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 433708,
-      "windowChars": 959,
+      "sourceIndex": 437003,
+      "windowChars": 960,
       "auth": {
         "helpers": [
           "guildAuthority",
@@ -7573,8 +7573,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 434667,
-      "windowChars": 341,
+      "sourceIndex": 437963,
+      "windowChars": 342,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7604,8 +7604,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 435008,
-      "windowChars": 553,
+      "sourceIndex": 438305,
+      "windowChars": 554,
       "auth": {
         "helpers": [
           "required"
@@ -7638,8 +7638,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 435561,
-      "windowChars": 1033,
+      "sourceIndex": 438859,
+      "windowChars": 1035,
       "auth": {
         "helpers": [
           "required"
@@ -7678,8 +7678,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 436594,
-      "windowChars": 284,
+      "sourceIndex": 439894,
+      "windowChars": 285,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7708,8 +7708,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 436878,
-      "windowChars": 1668,
+      "sourceIndex": 440179,
+      "windowChars": 1669,
       "auth": {
         "helpers": [
           "required"
@@ -7746,8 +7746,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "guilds",
-      "sourceIndex": 438546,
-      "windowChars": 976,
+      "sourceIndex": 441848,
+      "windowChars": 978,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7781,8 +7781,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "chats",
-      "sourceIndex": 439522,
-      "windowChars": 549,
+      "sourceIndex": 442826,
+      "windowChars": 550,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7811,8 +7811,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "chats",
-      "sourceIndex": 440071,
-      "windowChars": 867,
+      "sourceIndex": 443376,
+      "windowChars": 868,
       "auth": {
         "helpers": [
           "required"
@@ -7845,8 +7845,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "chats",
-      "sourceIndex": 440938,
-      "windowChars": 613,
+      "sourceIndex": 444244,
+      "windowChars": 614,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7878,8 +7878,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "chats",
-      "sourceIndex": 441551,
-      "windowChars": 825,
+      "sourceIndex": 444858,
+      "windowChars": 826,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7913,8 +7913,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "chats",
-      "sourceIndex": 442376,
-      "windowChars": 776,
+      "sourceIndex": 445684,
+      "windowChars": 777,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -7946,8 +7946,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "chats",
-      "sourceIndex": 443152,
-      "windowChars": 1534,
+      "sourceIndex": 446461,
+      "windowChars": 1535,
       "auth": {
         "helpers": [
           "required"
@@ -7985,8 +7985,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "chats",
-      "sourceIndex": 444686,
-      "windowChars": 646,
+      "sourceIndex": 447996,
+      "windowChars": 647,
       "auth": {
         "helpers": [
           "required"
@@ -8021,8 +8021,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "chats",
-      "sourceIndex": 445332,
-      "windowChars": 902,
+      "sourceIndex": 448643,
+      "windowChars": 903,
       "auth": {
         "helpers": [
           "required"
@@ -8058,8 +8058,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 446234,
-      "windowChars": 687,
+      "sourceIndex": 449546,
+      "windowChars": 688,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8093,8 +8093,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 446921,
-      "windowChars": 585,
+      "sourceIndex": 450234,
+      "windowChars": 586,
       "auth": {
         "helpers": [
           "required"
@@ -8130,8 +8130,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 447506,
-      "windowChars": 200,
+      "sourceIndex": 450820,
+      "windowChars": 201,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8160,8 +8160,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 447706,
-      "windowChars": 543,
+      "sourceIndex": 451021,
+      "windowChars": 544,
       "auth": {
         "helpers": [
           "required"
@@ -8197,8 +8197,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 448249,
-      "windowChars": 179,
+      "sourceIndex": 451565,
+      "windowChars": 180,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8227,8 +8227,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 448428,
-      "windowChars": 750,
+      "sourceIndex": 451745,
+      "windowChars": 751,
       "auth": {
         "helpers": [
           "required"
@@ -8263,8 +8263,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 449178,
-      "windowChars": 773,
+      "sourceIndex": 452496,
+      "windowChars": 775,
       "auth": {
         "helpers": [
           "required"
@@ -8298,8 +8298,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 449951,
-      "windowChars": 649,
+      "sourceIndex": 453271,
+      "windowChars": 650,
       "auth": {
         "helpers": [
           "required"
@@ -8332,8 +8332,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 450600,
-      "windowChars": 1062,
+      "sourceIndex": 453921,
+      "windowChars": 1063,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8366,8 +8366,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 451662,
-      "windowChars": 847,
+      "sourceIndex": 454984,
+      "windowChars": 848,
       "auth": {
         "helpers": [
           "required"
@@ -8402,8 +8402,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 452509,
-      "windowChars": 656,
+      "sourceIndex": 455832,
+      "windowChars": 657,
       "auth": {
         "helpers": [
           "required"
@@ -8438,8 +8438,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "councils",
-      "sourceIndex": 453165,
-      "windowChars": 927,
+      "sourceIndex": 456489,
+      "windowChars": 929,
       "auth": {
         "helpers": [
           "required"
@@ -8474,8 +8474,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "challenges",
-      "sourceIndex": 454092,
-      "windowChars": 410,
+      "sourceIndex": 457418,
+      "windowChars": 411,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8504,8 +8504,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "challenges",
-      "sourceIndex": 454502,
-      "windowChars": 841,
+      "sourceIndex": 457829,
+      "windowChars": 842,
       "auth": {
         "helpers": [
           "required"
@@ -8540,8 +8540,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "challenges",
-      "sourceIndex": 455343,
-      "windowChars": 1025,
+      "sourceIndex": 458671,
+      "windowChars": 1027,
       "auth": {
         "helpers": [
           "required"
@@ -8577,8 +8577,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 456368,
-      "windowChars": 460,
+      "sourceIndex": 459698,
+      "windowChars": 461,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8609,8 +8609,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 456828,
-      "windowChars": 485,
+      "sourceIndex": 460159,
+      "windowChars": 486,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8641,8 +8641,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 457313,
-      "windowChars": 839,
+      "sourceIndex": 460645,
+      "windowChars": 840,
       "auth": {
         "helpers": [
           "required"
@@ -8679,8 +8679,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 458152,
-      "windowChars": 505,
+      "sourceIndex": 461485,
+      "windowChars": 506,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8713,8 +8713,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 458657,
-      "windowChars": 658,
+      "sourceIndex": 461991,
+      "windowChars": 659,
       "auth": {
         "helpers": [
           "required"
@@ -8749,8 +8749,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 459315,
-      "windowChars": 493,
+      "sourceIndex": 462650,
+      "windowChars": 494,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8783,8 +8783,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "social",
-      "sourceIndex": 459808,
-      "windowChars": 1287,
+      "sourceIndex": 463144,
+      "windowChars": 1288,
       "auth": {
         "helpers": [
           "required"
@@ -8820,7 +8820,7 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 461095,
+      "sourceIndex": 464432,
       "windowChars": 437,
       "auth": {
         "helpers": [],
@@ -8850,8 +8850,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 461532,
-      "windowChars": 625,
+      "sourceIndex": 464869,
+      "windowChars": 626,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8884,8 +8884,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "identity",
-      "sourceIndex": 462157,
-      "windowChars": 307,
+      "sourceIndex": 465495,
+      "windowChars": 308,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8914,8 +8914,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "reputation",
-      "sourceIndex": 462464,
-      "windowChars": 1427,
+      "sourceIndex": 465803,
+      "windowChars": 1428,
       "auth": {
         "helpers": [
           "required"
@@ -8951,8 +8951,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "reputation",
-      "sourceIndex": 463891,
-      "windowChars": 375,
+      "sourceIndex": 467231,
+      "windowChars": 377,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -8983,8 +8983,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "notifications",
-      "sourceIndex": 464266,
-      "windowChars": 318,
+      "sourceIndex": 467608,
+      "windowChars": 319,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -9015,8 +9015,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "notifications",
-      "sourceIndex": 464584,
-      "windowChars": 429,
+      "sourceIndex": 467927,
+      "windowChars": 430,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -9045,8 +9045,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "discovery",
-      "sourceIndex": 465013,
-      "windowChars": 2790,
+      "sourceIndex": 468357,
+      "windowChars": 2791,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -9084,8 +9084,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "discovery",
-      "sourceIndex": 467803,
-      "windowChars": 1373,
+      "sourceIndex": 471148,
+      "windowChars": 1374,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -9120,8 +9120,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 469176,
-      "windowChars": 1560,
+      "sourceIndex": 472522,
+      "windowChars": 1562,
       "auth": {
         "helpers": [
           "required"
@@ -9159,8 +9159,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 470736,
-      "windowChars": 791,
+      "sourceIndex": 474084,
+      "windowChars": 797,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -9187,8 +9187,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 471527,
-      "windowChars": 2386,
+      "sourceIndex": 474881,
+      "windowChars": 2399,
       "auth": {
         "helpers": [
           "requireScope",
@@ -9230,8 +9230,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 473913,
-      "windowChars": 458,
+      "sourceIndex": 477280,
+      "windowChars": 462,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9262,8 +9262,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 474371,
-      "windowChars": 1693,
+      "sourceIndex": 477742,
+      "windowChars": 1704,
       "auth": {
         "helpers": [
           "repositoryAuthority",
@@ -9298,8 +9298,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 476064,
-      "windowChars": 466,
+      "sourceIndex": 479446,
+      "windowChars": 470,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9330,8 +9330,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 476530,
-      "windowChars": 2062,
+      "sourceIndex": 479916,
+      "windowChars": 2071,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9370,8 +9370,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 478592,
-      "windowChars": 1616,
+      "sourceIndex": 481987,
+      "windowChars": 1624,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9406,8 +9406,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 480208,
-      "windowChars": 289,
+      "sourceIndex": 483611,
+      "windowChars": 290,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9436,8 +9436,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 480497,
-      "windowChars": 1968,
+      "sourceIndex": 483901,
+      "windowChars": 1974,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9472,8 +9472,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 482465,
-      "windowChars": 400,
+      "sourceIndex": 485875,
+      "windowChars": 401,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9504,8 +9504,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 482865,
-      "windowChars": 1344,
+      "sourceIndex": 486276,
+      "windowChars": 1348,
       "auth": {
         "helpers": [
           "repositoryAuthority",
@@ -9544,8 +9544,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 484209,
-      "windowChars": 556,
+      "sourceIndex": 487624,
+      "windowChars": 557,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9578,8 +9578,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 484765,
-      "windowChars": 1943,
+      "sourceIndex": 488181,
+      "windowChars": 1947,
       "auth": {
         "helpers": [
           "repositoryAuthority",
@@ -9619,8 +9619,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 486708,
-      "windowChars": 1360,
+      "sourceIndex": 490128,
+      "windowChars": 1363,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9653,8 +9653,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 488068,
-      "windowChars": 1236,
+      "sourceIndex": 491491,
+      "windowChars": 1239,
       "auth": {
         "helpers": [
           "repositoryAuthority",
@@ -9690,8 +9690,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 489304,
-      "windowChars": 492,
+      "sourceIndex": 492730,
+      "windowChars": 493,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9722,8 +9722,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 489796,
-      "windowChars": 675,
+      "sourceIndex": 493223,
+      "windowChars": 676,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9754,8 +9754,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 490471,
-      "windowChars": 5686,
+      "sourceIndex": 493899,
+      "windowChars": 5693,
       "auth": {
         "helpers": [
           "repositoryAuthority",
@@ -9797,8 +9797,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 496157,
-      "windowChars": 969,
+      "sourceIndex": 499592,
+      "windowChars": 971,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9829,8 +9829,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 497126,
-      "windowChars": 384,
+      "sourceIndex": 500563,
+      "windowChars": 385,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9861,8 +9861,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 497510,
-      "windowChars": 1306,
+      "sourceIndex": 500948,
+      "windowChars": 1309,
       "auth": {
         "helpers": [
           "repositoryAuthority",
@@ -9899,8 +9899,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 498816,
-      "windowChars": 434,
+      "sourceIndex": 502257,
+      "windowChars": 435,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -9931,8 +9931,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 499250,
-      "windowChars": 1661,
+      "sourceIndex": 502692,
+      "windowChars": 1664,
       "auth": {
         "helpers": [
           "repositoryAuthority",
@@ -9970,8 +9970,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 500911,
-      "windowChars": 635,
+      "sourceIndex": 504356,
+      "windowChars": 636,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -10002,8 +10002,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 501546,
-      "windowChars": 866,
+      "sourceIndex": 504992,
+      "windowChars": 869,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -10036,8 +10036,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 502412,
-      "windowChars": 741,
+      "sourceIndex": 505861,
+      "windowChars": 742,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10067,8 +10067,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 503153,
-      "windowChars": 1101,
+      "sourceIndex": 506603,
+      "windowChars": 1104,
       "auth": {
         "helpers": [
           "repositoryAuthority",
@@ -10107,8 +10107,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 504254,
-      "windowChars": 683,
+      "sourceIndex": 507707,
+      "windowChars": 684,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -10139,8 +10139,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 504937,
-      "windowChars": 514,
+      "sourceIndex": 508391,
+      "windowChars": 515,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -10171,8 +10171,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 505451,
-      "windowChars": 1699,
+      "sourceIndex": 508906,
+      "windowChars": 1702,
       "auth": {
         "helpers": [
           "repositoryAuthority",
@@ -10209,8 +10209,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 507150,
-      "windowChars": 796,
+      "sourceIndex": 510608,
+      "windowChars": 797,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -10244,8 +10244,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 507946,
-      "windowChars": 583,
+      "sourceIndex": 511405,
+      "windowChars": 584,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -10278,8 +10278,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 508529,
-      "windowChars": 1399,
+      "sourceIndex": 511989,
+      "windowChars": 1402,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -10316,8 +10316,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 509928,
-      "windowChars": 578,
+      "sourceIndex": 513391,
+      "windowChars": 579,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -10350,8 +10350,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 510506,
-      "windowChars": 1760,
+      "sourceIndex": 513970,
+      "windowChars": 1763,
       "auth": {
         "helpers": [
           "repositoryAuthority",
@@ -10388,8 +10388,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 512266,
-      "windowChars": 3807,
+      "sourceIndex": 515733,
+      "windowChars": 3811,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -10428,8 +10428,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "repositories",
-      "sourceIndex": 516073,
-      "windowChars": 365,
+      "sourceIndex": 519544,
+      "windowChars": 367,
       "auth": {
         "helpers": [
           "repositoryAuthority"
@@ -10458,8 +10458,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "federation",
-      "sourceIndex": 516438,
-      "windowChars": 192,
+      "sourceIndex": 519911,
+      "windowChars": 193,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10488,8 +10488,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "federation",
-      "sourceIndex": 516630,
-      "windowChars": 194,
+      "sourceIndex": 520104,
+      "windowChars": 195,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10518,8 +10518,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 516824,
-      "windowChars": 554,
+      "sourceIndex": 520299,
+      "windowChars": 555,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10548,8 +10548,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 517378,
-      "windowChars": 1912,
+      "sourceIndex": 520854,
+      "windowChars": 1913,
       "auth": {
         "helpers": [
           "required"
@@ -10583,8 +10583,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 519290,
-      "windowChars": 647,
+      "sourceIndex": 522767,
+      "windowChars": 648,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10618,8 +10618,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 519937,
-      "windowChars": 941,
+      "sourceIndex": 523415,
+      "windowChars": 942,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10653,8 +10653,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 520878,
-      "windowChars": 410,
+      "sourceIndex": 524357,
+      "windowChars": 411,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10685,8 +10685,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 521288,
-      "windowChars": 1146,
+      "sourceIndex": 524768,
+      "windowChars": 1147,
       "auth": {
         "helpers": [
           "required"
@@ -10722,8 +10722,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 522434,
-      "windowChars": 1014,
+      "sourceIndex": 525915,
+      "windowChars": 1015,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10756,8 +10756,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 523448,
-      "windowChars": 1110,
+      "sourceIndex": 526930,
+      "windowChars": 1111,
       "auth": {
         "helpers": [
           "required"
@@ -10791,8 +10791,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 524558,
-      "windowChars": 1294,
+      "sourceIndex": 528041,
+      "windowChars": 1295,
       "auth": {
         "helpers": [
           "required"
@@ -10828,8 +10828,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 525852,
-      "windowChars": 2536,
+      "sourceIndex": 529336,
+      "windowChars": 2537,
       "auth": {
         "helpers": [
           "required"
@@ -10865,8 +10865,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 528388,
-      "windowChars": 1159,
+      "sourceIndex": 531873,
+      "windowChars": 1160,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10902,8 +10902,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 529547,
-      "windowChars": 1109,
+      "sourceIndex": 533033,
+      "windowChars": 1110,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10939,8 +10939,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 530656,
-      "windowChars": 443,
+      "sourceIndex": 534143,
+      "windowChars": 444,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -10969,8 +10969,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 531099,
-      "windowChars": 758,
+      "sourceIndex": 534587,
+      "windowChars": 759,
       "auth": {
         "helpers": [
           "required"
@@ -11005,8 +11005,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 531857,
-      "windowChars": 740,
+      "sourceIndex": 535346,
+      "windowChars": 741,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11040,8 +11040,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 532597,
-      "windowChars": 289,
+      "sourceIndex": 536087,
+      "windowChars": 290,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11070,8 +11070,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 532886,
-      "windowChars": 1167,
+      "sourceIndex": 536377,
+      "windowChars": 1168,
       "auth": {
         "helpers": [
           "required"
@@ -11106,8 +11106,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "projects",
-      "sourceIndex": 534053,
-      "windowChars": 1153,
+      "sourceIndex": 537545,
+      "windowChars": 1154,
       "auth": {
         "helpers": [
           "required"
@@ -11141,8 +11141,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "reputation",
-      "sourceIndex": 535206,
-      "windowChars": 555,
+      "sourceIndex": 538699,
+      "windowChars": 556,
       "auth": {
         "helpers": [
           "required"
@@ -11178,8 +11178,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "reputation",
-      "sourceIndex": 535761,
-      "windowChars": 165,
+      "sourceIndex": 539255,
+      "windowChars": 166,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11208,8 +11208,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "reputation",
-      "sourceIndex": 535926,
-      "windowChars": 981,
+      "sourceIndex": 539421,
+      "windowChars": 982,
       "auth": {
         "helpers": [
           "required"
@@ -11244,8 +11244,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "reputation",
-      "sourceIndex": 536907,
-      "windowChars": 252,
+      "sourceIndex": 540403,
+      "windowChars": 254,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11274,8 +11274,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "reputation",
-      "sourceIndex": 537159,
-      "windowChars": 346,
+      "sourceIndex": 540657,
+      "windowChars": 347,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11304,8 +11304,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "reputation",
-      "sourceIndex": 537505,
-      "windowChars": 484,
+      "sourceIndex": 541004,
+      "windowChars": 485,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11337,8 +11337,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "discovery",
-      "sourceIndex": 537989,
-      "windowChars": 1709,
+      "sourceIndex": 541489,
+      "windowChars": 1710,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11371,8 +11371,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "discovery",
-      "sourceIndex": 539698,
-      "windowChars": 821,
+      "sourceIndex": 543199,
+      "windowChars": 822,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11402,8 +11402,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "discovery",
-      "sourceIndex": 540519,
-      "windowChars": 400,
+      "sourceIndex": 544021,
+      "windowChars": 401,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11433,8 +11433,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "discovery",
-      "sourceIndex": 540919,
-      "windowChars": 826,
+      "sourceIndex": 544422,
+      "windowChars": 827,
       "auth": {
         "helpers": [
           "required"
@@ -11467,8 +11467,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "discovery",
-      "sourceIndex": 541745,
-      "windowChars": 903,
+      "sourceIndex": 545249,
+      "windowChars": 904,
       "auth": {
         "helpers": [
           "required"
@@ -11504,8 +11504,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "topics",
-      "sourceIndex": 542648,
-      "windowChars": 110,
+      "sourceIndex": 546153,
+      "windowChars": 111,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11534,8 +11534,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "topics",
-      "sourceIndex": 542758,
-      "windowChars": 432,
+      "sourceIndex": 546264,
+      "windowChars": 433,
       "auth": {
         "helpers": [
           "required"
@@ -11566,8 +11566,8 @@
       "matchKind": "segments",
       "surface": "api-v1",
       "domain": "topics",
-      "sourceIndex": 543190,
-      "windowChars": 527,
+      "sourceIndex": 546697,
+      "windowChars": 529,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11598,8 +11598,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 543717,
-      "windowChars": 1816,
+      "sourceIndex": 547226,
+      "windowChars": 1817,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11634,8 +11634,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "pages",
-      "sourceIndex": 545533,
-      "windowChars": 624,
+      "sourceIndex": 549043,
+      "windowChars": 625,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11666,8 +11666,8 @@
       "matchKind": "exact",
       "surface": "api-v1",
       "domain": "observatory",
-      "sourceIndex": 546157,
-      "windowChars": 6984,
+      "sourceIndex": 549668,
+      "windowChars": 7000,
       "auth": {
         "helpers": [],
         "anonymous": false,
@@ -11710,7 +11710,7 @@
       "matchKind": "exact",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 553141,
+      "sourceIndex": 556668,
       "windowChars": 20,
       "auth": {
         "helpers": [],
@@ -11736,7 +11736,7 @@
       "matchKind": "exact",
       "surface": "page",
       "domain": "pages",
-      "sourceIndex": 553161,
+      "sourceIndex": 556688,
       "windowChars": 8000,
       "auth": {
         "helpers": [],

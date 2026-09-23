@@ -1,1405 +1,1405 @@
 {
-  "generated_at": "2026-08-30T03:50:06.978Z",
+  "generated_at": "2026-09-23T00:36:00.807Z",
   "generator": "scripts/audit/extract-legacy-inventory.mjs",
   "source": "backend/server.js",
-  "source_bytes": 581235,
-  "source_sha256": "e1375a79ef3ea3d1072e09480a5b479c08a475b80e1619976677746ed844e6a7",
+  "source_bytes": 584869,
+  "source_sha256": "c8f4815794cb915bffc81ea1bff8cf62b6c0d29e81eb58679998e4d504445396",
   "store_schema_version": 15,
   "segment_tests": [
     {
       "position": 2,
       "value": "robots",
-      "index": 297287
+      "index": 300249
     },
     {
       "position": 2,
       "value": "robots",
-      "index": 297569
+      "index": 300534
     },
     {
       "position": 4,
       "value": "presence",
-      "index": 297606
+      "index": 300571
     },
     {
       "position": 2,
       "value": "robots",
-      "index": 297965
+      "index": 300933
     },
     {
       "position": 4,
       "value": "events",
-      "index": 298002
+      "index": 300970
     },
     {
       "position": 2,
       "value": "skills",
-      "index": 298681
+      "index": 301652
     },
     {
       "position": 2,
       "value": "provenance",
-      "index": 301650
+      "index": 304640
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 304061
+      "index": 307054
     },
     {
       "position": 4,
       "value": "observer",
-      "index": 304098
+      "index": 307091
     },
     {
       "position": 2,
       "value": "principals",
-      "index": 305359
+      "index": 308353
     },
     {
       "position": 2,
       "value": "principals",
-      "index": 311127
+      "index": 314127
     },
     {
       "position": 3,
       "value": "me",
-      "index": 311156
+      "index": 314156
     },
     {
       "position": 4,
       "value": "credentials",
-      "index": 311177
+      "index": 314177
     },
     {
       "position": 6,
       "value": "revoke",
-      "index": 311219
+      "index": 314219
     },
     {
       "position": 2,
       "value": "principals",
-      "index": 313909
+      "index": 316912
     },
     {
       "position": 3,
       "value": "me",
-      "index": 313938
+      "index": 316941
     },
     {
       "position": 4,
       "value": "sessions",
-      "index": 313959
+      "index": 316962
     },
     {
       "position": 6,
       "value": "revoke",
-      "index": 313998
+      "index": 317001
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 318890
+      "index": 321911
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 319874
+      "index": 322902
     },
     {
       "position": 4,
       "value": "drafts",
-      "index": 319913
+      "index": 322941
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 320332
+      "index": 323364
     },
     {
       "position": 4,
       "value": "drafts",
-      "index": 320371
+      "index": 323403
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 320847
+      "index": 323884
     },
     {
       "position": 4,
       "value": "versions",
-      "index": 320886
+      "index": 323923
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 321640
+      "index": 324683
     },
     {
       "position": 4,
       "value": "versions",
-      "index": 321679
+      "index": 324722
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 322398
+      "index": 325447
     },
     {
       "position": 4,
       "value": "citations",
-      "index": 322437
+      "index": 325486
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 323051
+      "index": 326105
     },
     {
       "position": 4,
       "value": "collaborators",
-      "index": 323090
+      "index": 326144
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 323773
+      "index": 326833
     },
     {
       "position": 4,
       "value": "history",
-      "index": 323812
+      "index": 326872
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 324468
+      "index": 327533
     },
     {
       "position": 4,
       "value": "publication",
-      "index": 324507
+      "index": 327572
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 327775
+      "index": 330853
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 329681
+      "index": 332770
     },
     {
       "position": 4,
       "value": "drafts",
-      "index": 329720
+      "index": 332809
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 331571
+      "index": 334666
     },
     {
       "position": 4,
       "value": "drafts",
-      "index": 331610
+      "index": 334705
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 333508
+      "index": 336609
     },
     {
       "position": 4,
       "value": "versions",
-      "index": 333547
+      "index": 336648
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 336375
+      "index": 339482
     },
     {
       "position": 4,
       "value": "versions",
-      "index": 336414
+      "index": 339521
     },
     {
       "position": 6,
       "value": "restore",
-      "index": 336453
+      "index": 339560
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 338252
+      "index": 341362
     },
     {
       "position": 4,
       "value": "citations",
-      "index": 338291
+      "index": 341401
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 339753
+      "index": 342866
     },
     {
       "position": 4,
       "value": "citations",
-      "index": 339792
+      "index": 342905
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 340958
+      "index": 344074
     },
     {
       "position": 4,
       "value": "collaborators",
-      "index": 340997
+      "index": 344113
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 343311
+      "index": 346430
     },
     {
       "position": 4,
       "value": "collaborators",
-      "index": 343350
+      "index": 346469
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 345400
+      "index": 348522
     },
     {
       "position": 4,
       "value": "schedule",
-      "index": 345441
+      "index": 348563
     },
     {
       "position": 4,
       "value": "publication",
-      "index": 345483
+      "index": 348605
     },
     {
       "position": 5,
       "value": "schedule",
-      "index": 345513
+      "index": 348635
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 347452
+      "index": 350578
     },
     {
       "position": 4,
       "value": "publish",
-      "index": 347491
+      "index": 350617
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 349898
+      "index": 353029
     },
     {
       "position": 4,
       "value": "unpublish",
-      "index": 349937
+      "index": 353068
     },
     {
       "position": 2,
       "value": "articles",
-      "index": 350957
+      "index": 354091
     },
     {
       "position": 4,
       "value": "publication",
-      "index": 350996
+      "index": 354130
     },
     {
       "position": 6,
       "value": "cancel",
-      "index": 351038
+      "index": 354172
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 354337
+      "index": 357477
     },
     {
       "position": 4,
       "value": "activity",
-      "index": 354374
+      "index": 357514
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 355355
+      "index": 358496
     },
     {
       "position": 4,
       "value": "analytics",
-      "index": 355392
+      "index": 358533
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 363485
+      "index": 366637
     },
     {
       "position": 3,
       "value": "me",
-      "index": 363510
+      "index": 366662
     },
     {
       "position": 4,
       "value": "signals",
-      "index": 363531
+      "index": 366683
     },
     {
       "position": 2,
       "value": "posts",
-      "index": 366111
+      "index": 369268
     },
     {
       "position": 4,
       "value": "bookmark",
-      "index": 366147
+      "index": 369304
     },
     {
       "position": 2,
       "value": "posts",
-      "index": 366812
+      "index": 369970
     },
     {
       "position": 4,
       "value": "bookmark",
-      "index": 366848
+      "index": 370006
     },
     {
       "position": 2,
       "value": "watchlists",
-      "index": 368479
+      "index": 371640
     },
     {
       "position": 2,
       "value": "communities",
-      "index": 371354
+      "index": 374523
     },
     {
       "position": 4,
       "value": "moderators",
-      "index": 371396
+      "index": 374565
     },
     {
       "position": 2,
       "value": "reports",
-      "index": 378102
+      "index": 381304
     },
     {
       "position": 4,
       "value": "resolve",
-      "index": 378140
+      "index": 381342
     },
     {
       "position": 2,
       "value": "moderation",
-      "index": 380508
+      "index": 383716
     },
     {
       "position": 3,
       "value": "appeals",
-      "index": 380537
+      "index": 383745
     },
     {
       "position": 5,
       "value": "resolve",
-      "index": 380575
+      "index": 383783
     },
     {
       "position": 0,
       "value": "api",
-      "index": 388802
+      "index": 392038
     },
     {
       "position": 1,
       "value": "v1",
-      "index": 388824
+      "index": 392060
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 388845
+      "index": 392081
     },
     {
       "position": 3,
       "value": "me",
-      "index": 388870
+      "index": 392106
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 388974
+      "index": 392211
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 390123
+      "index": 393362
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 391469
+      "index": 394710
     },
     {
       "position": 4,
       "value": "credentials",
-      "index": 391506
+      "index": 394747
     },
     {
       "position": 5,
       "value": "rotate",
-      "index": 391536
+      "index": 394777
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 392461
+      "index": 395703
     },
     {
       "position": 4,
       "value": "keys",
-      "index": 392498
+      "index": 395740
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 394349
+      "index": 397594
     },
     {
       "position": 4,
       "value": "identity",
-      "index": 394386
+      "index": 397631
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 396780
+      "index": 400028
     },
     {
       "position": 3,
       "value": "me",
-      "index": 396805
+      "index": 400053
     },
     {
       "position": 4,
       "value": "keys",
-      "index": 396826
+      "index": 400074
     },
     {
       "position": 6,
       "value": "revoke",
-      "index": 396861
+      "index": 400109
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 401585
+      "index": 404839
     },
     {
       "position": 4,
       "value": "lineage",
-      "index": 401622
+      "index": 404876
     },
     {
       "position": 2,
       "value": "posts",
-      "index": 417226
+      "index": 420499
     },
     {
       "position": 2,
       "value": "posts",
-      "index": 417803
+      "index": 421077
     },
     {
       "position": 4,
       "value": "replies",
-      "index": 417839
+      "index": 421113
     },
     {
       "position": 2,
       "value": "posts",
-      "index": 419157
+      "index": 422432
     },
     {
       "position": 4,
       "value": "replies",
-      "index": 419193
+      "index": 422468
     },
     {
       "position": 2,
       "value": "posts",
-      "index": 420236
+      "index": 423512
     },
     {
       "position": 4,
       "value": "replies",
-      "index": 420272
+      "index": 423548
     },
     {
       "position": 2,
       "value": "posts",
-      "index": 421070
+      "index": 424347
     },
     {
       "position": 4,
       "value": "reactions",
-      "index": 421106
+      "index": 424383
     },
     {
       "position": 2,
       "value": "posts",
-      "index": 422043
+      "index": 425321
     },
     {
       "position": 4,
       "value": "reactions",
-      "index": 422079
+      "index": 425357
     },
     {
       "position": 2,
       "value": "posts",
-      "index": 422599
+      "index": 425878
     },
     {
       "position": 4,
       "value": "replies",
-      "index": 422635
+      "index": 425914
     },
     {
       "position": 6,
       "value": "reactions",
-      "index": 422673
+      "index": 425952
     },
     {
       "position": 2,
       "value": "posts",
-      "index": 423661
+      "index": 426941
     },
     {
       "position": 4,
       "value": "replies",
-      "index": 423697
+      "index": 426977
     },
     {
       "position": 6,
       "value": "reactions",
-      "index": 423735
+      "index": 427015
     },
     {
       "position": 2,
       "value": "communities",
-      "index": 425751
+      "index": 429035
     },
     {
       "position": 4,
       "value": "join",
-      "index": 425793
+      "index": 429077
     },
     {
       "position": 2,
       "value": "communities",
-      "index": 426721
+      "index": 430006
     },
     {
       "position": 2,
       "value": "guilds",
-      "index": 427185
+      "index": 430472
     },
     {
       "position": 2,
       "value": "guilds",
-      "index": 427832
+      "index": 431120
     },
     {
       "position": 4,
       "value": "roles",
-      "index": 427869
+      "index": 431157
     },
     {
       "position": 2,
       "value": "guilds",
-      "index": 428560
+      "index": 431849
     },
     {
       "position": 4,
       "value": "departments",
-      "index": 428597
+      "index": 431886
     },
     {
       "position": 2,
       "value": "guilds",
-      "index": 429302
+      "index": 432592
     },
     {
       "position": 4,
       "value": "projects",
-      "index": 429339
+      "index": 432629
     },
     {
       "position": 2,
       "value": "guilds",
-      "index": 430398
+      "index": 433689
     },
     {
       "position": 4,
       "value": "projects",
-      "index": 430435
+      "index": 433726
     },
     {
       "position": 2,
       "value": "guilds",
-      "index": 430621
+      "index": 433913
     },
     {
       "position": 4,
       "value": "elections",
-      "index": 430658
+      "index": 433950
     },
     {
       "position": 2,
       "value": "guilds",
-      "index": 431493
+      "index": 434786
     },
     {
       "position": 4,
       "value": "elections",
-      "index": 431530
+      "index": 434823
     },
     {
       "position": 6,
       "value": "votes",
-      "index": 431570
+      "index": 434863
     },
     {
       "position": 2,
       "value": "guilds",
-      "index": 432831
+      "index": 436125
     },
     {
       "position": 4,
       "value": "relationships",
-      "index": 432868
+      "index": 436162
     },
     {
       "position": 2,
       "value": "guilds",
-      "index": 433733
+      "index": 437028
     },
     {
       "position": 4,
       "value": "fork",
-      "index": 433770
+      "index": 437065
     },
     {
       "position": 2,
       "value": "governance",
-      "index": 435586
+      "index": 438884
     },
     {
       "position": 3,
       "value": "proposals",
-      "index": 435615
+      "index": 438913
     },
     {
       "position": 5,
       "value": "votes",
-      "index": 435655
+      "index": 438953
     },
     {
       "position": 2,
       "value": "guilds",
-      "index": 438571
+      "index": 441873
     },
     {
       "position": 4,
       "value": "applications",
-      "index": 438608
+      "index": 441910
     },
     {
       "position": 2,
       "value": "chats",
-      "index": 440962
+      "index": 444268
     },
     {
       "position": 2,
       "value": "chats",
-      "index": 441576
+      "index": 444883
     },
     {
       "position": 4,
       "value": "join",
-      "index": 441612
+      "index": 444919
     },
     {
       "position": 2,
       "value": "chats",
-      "index": 442400
+      "index": 445708
     },
     {
       "position": 4,
       "value": "messages",
-      "index": 442436
+      "index": 445744
     },
     {
       "position": 2,
       "value": "chats",
-      "index": 443177
+      "index": 446486
     },
     {
       "position": 4,
       "value": "messages",
-      "index": 443213
+      "index": 446522
     },
     {
       "position": 2,
       "value": "chats",
-      "index": 444711
+      "index": 448021
     },
     {
       "position": 4,
       "value": "threads",
-      "index": 444747
+      "index": 448057
     },
     {
       "position": 2,
       "value": "chats",
-      "index": 445357
+      "index": 448668
     },
     {
       "position": 4,
       "value": "pins",
-      "index": 445393
+      "index": 448704
     },
     {
       "position": 2,
       "value": "agent-tasks",
-      "index": 449203
+      "index": 452521
     },
     {
       "position": 4,
       "value": "respond",
-      "index": 449245
+      "index": 452563
     },
     {
       "position": 2,
       "value": "proposals",
-      "index": 450625
+      "index": 453946
     },
     {
       "position": 4,
       "value": "support",
-      "index": 450905
+      "index": 454226
     },
     {
       "position": 2,
       "value": "proposals",
-      "index": 451687
+      "index": 455009
     },
     {
       "position": 4,
       "value": "commitments",
-      "index": 451727
+      "index": 455049
     },
     {
       "position": 2,
       "value": "proposals",
-      "index": 452534
+      "index": 455857
     },
     {
       "position": 4,
       "value": "amendments",
-      "index": 452574
+      "index": 455897
     },
     {
       "position": 2,
       "value": "proposals",
-      "index": 453190
+      "index": 456514
     },
     {
       "position": 4,
       "value": "fork",
-      "index": 453230
+      "index": 456554
     },
     {
       "position": 2,
       "value": "challenges",
-      "index": 455368
+      "index": 458696
     },
     {
       "position": 4,
       "value": "submissions",
-      "index": 455409
+      "index": 458737
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 456392
+      "index": 459722
     },
     {
       "position": 4,
       "value": "followers",
-      "index": 456429
+      "index": 459759
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 456852
+      "index": 460183
     },
     {
       "position": 4,
       "value": "following",
-      "index": 456889
+      "index": 460220
     },
     {
       "position": 2,
       "value": "blocks",
-      "index": 458179
+      "index": 461512
     },
     {
       "position": 2,
       "value": "mutes",
-      "index": 459342
+      "index": 462677
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 461120
+      "index": 464457
     },
     {
       "position": 4,
       "value": "unfollow",
-      "index": 461536
+      "index": 464873
     },
     {
       "position": 2,
       "value": "agents",
-      "index": 462181
+      "index": 465519
     },
     {
       "position": 4,
       "value": "relationships",
-      "index": 462218
+      "index": 465556
     },
     {
       "position": 2,
       "value": "reputation",
-      "index": 463915
+      "index": 467255
     },
     {
       "position": 2,
       "value": "notifications",
-      "index": 464609
+      "index": 467952
     },
     {
       "position": 3,
       "value": "read",
-      "index": 464641
+      "index": 467984
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 473937
+      "index": 477304
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 474397
+      "index": 477768
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 476088
+      "index": 479470
     },
     {
       "position": 4,
       "value": "members",
-      "index": 476131
+      "index": 479513
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 476555
+      "index": 479941
     },
     {
       "position": 4,
       "value": "members",
-      "index": 476598
+      "index": 479984
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 478618
+      "index": 482013
     },
     {
       "position": 4,
       "value": "members",
-      "index": 478661
+      "index": 482056
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 480232
+      "index": 483635
     },
     {
       "position": 4,
       "value": "policy",
-      "index": 480275
+      "index": 483678
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 480523
+      "index": 483927
     },
     {
       "position": 4,
       "value": "policy",
-      "index": 480566
+      "index": 483970
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 482489
+      "index": 485899
     },
     {
       "position": 4,
       "value": "branches",
-      "index": 482532
+      "index": 485942
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 482890
+      "index": 486301
     },
     {
       "position": 4,
       "value": "branches",
-      "index": 482933
+      "index": 486344
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 484233
+      "index": 487648
     },
     {
       "position": 4,
       "value": "branches",
-      "index": 484276
+      "index": 487691
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 484790
+      "index": 488206
     },
     {
       "position": 4,
       "value": "branches",
-      "index": 484833
+      "index": 488249
     },
     {
       "position": 6,
       "value": "update",
-      "index": 484872
+      "index": 488288
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 486732
+      "index": 490152
     },
     {
       "position": 4,
       "value": "files",
-      "index": 486775
+      "index": 490195
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 488093
+      "index": 491516
     },
     {
       "position": 4,
       "value": "files",
-      "index": 488136
+      "index": 491559
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 489328
+      "index": 492754
     },
     {
       "position": 4,
       "value": "changes",
-      "index": 489371
+      "index": 492797
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 489820
+      "index": 493247
     },
     {
       "position": 4,
       "value": "changes",
-      "index": 489863
+      "index": 493290
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 490496
+      "index": 493924
     },
     {
       "position": 4,
       "value": "changes",
-      "index": 490539
+      "index": 493967
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 496181
+      "index": 499616
     },
     {
       "position": 4,
       "value": "compare",
-      "index": 496224
+      "index": 499659
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 497150
+      "index": 500587
     },
     {
       "position": 4,
       "value": "tags",
-      "index": 497193
+      "index": 500630
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 497535
+      "index": 500973
     },
     {
       "position": 4,
       "value": "tags",
-      "index": 497578
+      "index": 501016
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 498840
+      "index": 502281
     },
     {
       "position": 4,
       "value": "releases",
-      "index": 498883
+      "index": 502324
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 499275
+      "index": 502717
     },
     {
       "position": 4,
       "value": "releases",
-      "index": 499318
+      "index": 502760
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 500935
+      "index": 504380
     },
     {
       "position": 4,
       "value": "fragments",
-      "index": 500978
+      "index": 504423
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 501571
+      "index": 505017
     },
     {
       "position": 4,
       "value": "fragments",
-      "index": 501614
+      "index": 505060
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 504961
+      "index": 508415
     },
     {
       "position": 4,
       "value": "proposals",
-      "index": 505004
+      "index": 508458
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 505476
+      "index": 508931
     },
     {
       "position": 4,
       "value": "proposals",
-      "index": 505519
+      "index": 508974
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 507174
+      "index": 510632
     },
     {
       "position": 4,
       "value": "proposals",
-      "index": 507217
+      "index": 510675
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 507970
+      "index": 511429
     },
     {
       "position": 4,
       "value": "proposals",
-      "index": 508013
+      "index": 511472
     },
     {
       "position": 6,
       "value": "reviews",
-      "index": 508053
+      "index": 511512
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 508554
+      "index": 512014
     },
     {
       "position": 4,
       "value": "proposals",
-      "index": 508597
+      "index": 512057
     },
     {
       "position": 6,
       "value": "reviews",
-      "index": 508637
+      "index": 512097
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 509952
+      "index": 513415
     },
     {
       "position": 4,
       "value": "proposals",
-      "index": 509995
+      "index": 513458
     },
     {
       "position": 6,
       "value": "checks",
-      "index": 510035
+      "index": 513498
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 510531
+      "index": 513995
     },
     {
       "position": 4,
       "value": "proposals",
-      "index": 510574
+      "index": 514038
     },
     {
       "position": 6,
       "value": "checks",
-      "index": 510614
+      "index": 514078
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 512291
+      "index": 515758
     },
     {
       "position": 4,
       "value": "proposals",
-      "index": 512334
+      "index": 515801
     },
     {
       "position": 6,
       "value": "merge",
-      "index": 512374
+      "index": 515841
     },
     {
       "position": 2,
       "value": "repositories",
-      "index": 516097
+      "index": 519568
     },
     {
       "position": 4,
       "value": "pulse",
-      "index": 516140
+      "index": 519611
     },
     {
       "position": 2,
       "value": "projects",
-      "index": 519314
+      "index": 522791
     },
     {
       "position": 2,
       "value": "projects",
-      "index": 519962
+      "index": 523440
     },
     {
       "position": 4,
       "value": "join",
-      "index": 520001
+      "index": 523479
     },
     {
       "position": 2,
       "value": "projects",
-      "index": 520902
+      "index": 524381
     },
     {
       "position": 4,
       "value": "tasks",
-      "index": 520941
+      "index": 524420
     },
     {
       "position": 2,
       "value": "projects",
-      "index": 521313
+      "index": 524793
     },
     {
       "position": 4,
       "value": "tasks",
-      "index": 521352
+      "index": 524832
     },
     {
       "position": 2,
       "value": "projects",
-      "index": 522459
+      "index": 525940
     },
     {
       "position": 4,
       "value": "tasks",
-      "index": 522498
+      "index": 525979
     },
     {
       "position": 6,
       "value": "claim",
-      "index": 522534
+      "index": 526015
     },
     {
       "position": 2,
       "value": "projects",
-      "index": 523473
+      "index": 526955
     },
     {
       "position": 4,
       "value": "tasks",
-      "index": 523512
+      "index": 526994
     },
     {
       "position": 6,
       "value": "status",
-      "index": 523548
+      "index": 527030
     },
     {
       "position": 2,
       "value": "projects",
-      "index": 524583
+      "index": 528066
     },
     {
       "position": 4,
       "value": "artifacts",
-      "index": 524622
+      "index": 528105
     },
     {
       "position": 2,
       "value": "projects",
-      "index": 525877
+      "index": 529361
     },
     {
       "position": 4,
       "value": "artifacts",
-      "index": 525916
+      "index": 529400
     },
     {
       "position": 6,
       "value": "verify",
-      "index": 525956
+      "index": 529440
     },
     {
       "position": 2,
       "value": "project-requests",
-      "index": 531882
+      "index": 535371
     },
     {
       "position": 4,
       "value": "offer",
-      "index": 531929
+      "index": 535418
     },
     {
       "position": 2,
       "value": "collaboration-contracts",
-      "index": 534078
+      "index": 537570
     },
     {
       "position": 4,
       "value": "status",
-      "index": 534132
+      "index": 537624
     },
     {
       "position": 2,
       "value": "claims",
-      "index": 535951
+      "index": 539446
     },
     {
       "position": 4,
       "value": "replications",
-      "index": 535988
+      "index": 539483
     },
     {
       "position": 2,
       "value": "claims",
-      "index": 536931
+      "index": 540427
     },
     {
       "position": 2,
       "value": "reputation",
-      "index": 537529
+      "index": 541028
     },
     {
       "position": 2,
       "value": "services",
-      "index": 541770
+      "index": 545274
     },
     {
       "position": 4,
       "value": "reviews",
-      "index": 541809
+      "index": 545313
     },
     {
       "position": 2,
       "value": "topics",
-      "index": 543215
+      "index": 546722
     },
     {
       "position": 4,
       "value": "follow",
-      "index": 543252
+      "index": 546759
     }
   ],
   "reconstructed_routes": [
@@ -1412,7 +1412,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 297263
+      "sourceIndex": 300225
     },
     {
       "path": "/api/v1/robots/:param3/presence",
@@ -1423,7 +1423,7 @@
         "length": 5,
         "kind": "exact"
       },
-      "sourceIndex": 297545
+      "sourceIndex": 300510
     },
     {
       "path": "/api/v1/robots/:param3/events",
@@ -1434,7 +1434,7 @@
         "length": 5,
         "kind": "exact"
       },
-      "sourceIndex": 297941
+      "sourceIndex": 300909
     },
     {
       "path": "/api/v1/skills/:param3",
@@ -1445,7 +1445,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 298541
+      "sourceIndex": 301512
     },
     {
       "path": "/api/v1/provenance",
@@ -1456,7 +1456,7 @@
         "length": 3,
         "kind": "inferred"
       },
-      "sourceIndex": 301626
+      "sourceIndex": 304616
     },
     {
       "path": "/api/v1/agents/:param3/observer",
@@ -1467,7 +1467,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 304037
+      "sourceIndex": 307030
     },
     {
       "path": "/api/v1/principals/:param3",
@@ -1478,7 +1478,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 305335
+      "sourceIndex": 308329
     },
     {
       "path": "/api/v1/principals/me/credentials/:param5/revoke",
@@ -1489,7 +1489,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 311102
+      "sourceIndex": 314102
     },
     {
       "path": "/api/v1/principals/me/sessions/:param5/revoke",
@@ -1500,7 +1500,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 313884
+      "sourceIndex": 316887
     },
     {
       "path": "/api/v1/articles/:param3",
@@ -1511,7 +1511,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 318866
+      "sourceIndex": 321887
     },
     {
       "path": "/api/v1/articles/:param3/drafts",
@@ -1522,7 +1522,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 319850
+      "sourceIndex": 322878
     },
     {
       "path": "/api/v1/articles/:param3/drafts",
@@ -1533,7 +1533,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 320308
+      "sourceIndex": 323340
     },
     {
       "path": "/api/v1/articles/:param3/versions",
@@ -1544,7 +1544,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 320823
+      "sourceIndex": 323860
     },
     {
       "path": "/api/v1/articles/:param3/versions",
@@ -1555,7 +1555,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 321616
+      "sourceIndex": 324659
     },
     {
       "path": "/api/v1/articles/:param3/citations",
@@ -1566,7 +1566,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 322374
+      "sourceIndex": 325423
     },
     {
       "path": "/api/v1/articles/:param3/collaborators",
@@ -1577,7 +1577,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 323027
+      "sourceIndex": 326081
     },
     {
       "path": "/api/v1/articles/:param3/history",
@@ -1588,7 +1588,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 323749
+      "sourceIndex": 326809
     },
     {
       "path": "/api/v1/articles/:param3/publication",
@@ -1599,7 +1599,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 324444
+      "sourceIndex": 327509
     },
     {
       "path": "/api/v1/articles/:param3",
@@ -1610,7 +1610,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 327749
+      "sourceIndex": 330827
     },
     {
       "path": "/api/v1/articles/:param3/drafts",
@@ -1621,7 +1621,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 329656
+      "sourceIndex": 332745
     },
     {
       "path": "/api/v1/articles/:param3/drafts",
@@ -1632,7 +1632,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 331545
+      "sourceIndex": 334640
     },
     {
       "path": "/api/v1/articles/:param3/versions",
@@ -1643,7 +1643,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 333483
+      "sourceIndex": 336584
     },
     {
       "path": "/api/v1/articles/:param3/versions/:param5/restore",
@@ -1654,7 +1654,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 336350
+      "sourceIndex": 339457
     },
     {
       "path": "/api/v1/articles/:param3/citations",
@@ -1665,7 +1665,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 338227
+      "sourceIndex": 341337
     },
     {
       "path": "/api/v1/articles/:param3/citations",
@@ -1676,7 +1676,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 339727
+      "sourceIndex": 342840
     },
     {
       "path": "/api/v1/articles/:param3/collaborators",
@@ -1687,7 +1687,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 340933
+      "sourceIndex": 344049
     },
     {
       "path": "/api/v1/articles/:param3/collaborators",
@@ -1698,7 +1698,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 343285
+      "sourceIndex": 346404
     },
     {
       "path": "/api/v1/articles/:param3/publication/schedule",
@@ -1709,7 +1709,7 @@
         "length": 6,
         "kind": "inferred"
       },
-      "sourceIndex": 345375
+      "sourceIndex": 348497
     },
     {
       "path": "/api/v1/articles/:param3/publish",
@@ -1720,7 +1720,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 347427
+      "sourceIndex": 350553
     },
     {
       "path": "/api/v1/articles/:param3/unpublish",
@@ -1731,7 +1731,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 349873
+      "sourceIndex": 353004
     },
     {
       "path": "/api/v1/articles/:param3/publication/:param5/cancel",
@@ -1742,7 +1742,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 350932
+      "sourceIndex": 354066
     },
     {
       "path": "/api/v1/agents/:param3/activity",
@@ -1753,7 +1753,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 354313
+      "sourceIndex": 357453
     },
     {
       "path": "/api/v1/agents/:param3/analytics",
@@ -1764,7 +1764,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 355331
+      "sourceIndex": 358472
     },
     {
       "path": "/api/v1/agents/me/signals",
@@ -1775,7 +1775,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 363458
+      "sourceIndex": 366610
     },
     {
       "path": "/api/v1/posts/:param3/bookmark",
@@ -1786,7 +1786,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 366086
+      "sourceIndex": 369243
     },
     {
       "path": "/api/v1/posts/:param3/bookmark",
@@ -1797,7 +1797,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 366785
+      "sourceIndex": 369943
     },
     {
       "path": "/api/v1/watchlists",
@@ -1808,7 +1808,7 @@
         "length": 3,
         "kind": "inferred"
       },
-      "sourceIndex": 368452
+      "sourceIndex": 371613
     },
     {
       "path": "/api/v1/communities/:param3/moderators",
@@ -1819,7 +1819,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 371329
+      "sourceIndex": 374498
     },
     {
       "path": "/api/v1/reports/:param3/resolve",
@@ -1830,7 +1830,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 378077
+      "sourceIndex": 381279
     },
     {
       "path": "/api/v1/moderation/appeals/:param4/resolve",
@@ -1841,7 +1841,7 @@
         "length": 6,
         "kind": "inferred"
       },
-      "sourceIndex": 380483
+      "sourceIndex": 383691
     },
     {
       "path": "/api/v1/agents/me",
@@ -1852,7 +1852,7 @@
         "length": 4,
         "kind": "inferred"
       },
-      "sourceIndex": 388778
+      "sourceIndex": 392014
     },
     {
       "path": "/api/v1/agents/:param3",
@@ -1863,7 +1863,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 388950
+      "sourceIndex": 392187
     },
     {
       "path": "/api/v1/agents/:param3",
@@ -1874,7 +1874,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 390097
+      "sourceIndex": 393336
     },
     {
       "path": "/api/v1/agents/:param3/credentials/rotate",
@@ -1885,7 +1885,7 @@
         "length": 6,
         "kind": "inferred"
       },
-      "sourceIndex": 391444
+      "sourceIndex": 394685
     },
     {
       "path": "/api/v1/agents/:param3/keys",
@@ -1896,7 +1896,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 392436
+      "sourceIndex": 395678
     },
     {
       "path": "/api/v1/agents/:param3/identity",
@@ -1907,7 +1907,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 394325
+      "sourceIndex": 397570
     },
     {
       "path": "/api/v1/agents/me/keys/:param5/revoke",
@@ -1918,7 +1918,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 396755
+      "sourceIndex": 400003
     },
     {
       "path": "/api/v1/agents/:param3/lineage",
@@ -1929,7 +1929,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 401561
+      "sourceIndex": 404815
     },
     {
       "path": "/api/v1/posts/:param3",
@@ -1940,7 +1940,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 417202
+      "sourceIndex": 420475
     },
     {
       "path": "/api/v1/posts/:param3/replies",
@@ -1951,7 +1951,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 417778
+      "sourceIndex": 421052
     },
     {
       "path": "/api/v1/posts/:param3/replies",
@@ -1962,7 +1962,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 419131
+      "sourceIndex": 422406
     },
     {
       "path": "/api/v1/posts/:param3/replies",
@@ -1973,7 +1973,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 420209
+      "sourceIndex": 423485
     },
     {
       "path": "/api/v1/posts/:param3/reactions",
@@ -1984,7 +1984,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 421045
+      "sourceIndex": 424322
     },
     {
       "path": "/api/v1/posts/:param3/reactions",
@@ -1995,7 +1995,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 422016
+      "sourceIndex": 425294
     },
     {
       "path": "/api/v1/posts/:param3/replies/:param5/reactions",
@@ -2006,7 +2006,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 422574
+      "sourceIndex": 425853
     },
     {
       "path": "/api/v1/posts/:param3/replies/:param5/reactions",
@@ -2017,7 +2017,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 423634
+      "sourceIndex": 426914
     },
     {
       "path": "/api/v1/communities/:param3/join",
@@ -2028,7 +2028,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 425726
+      "sourceIndex": 429010
     },
     {
       "path": "/api/v1/communities/:param3",
@@ -2039,7 +2039,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 426697
+      "sourceIndex": 429982
     },
     {
       "path": "/api/v1/guilds/:param3",
@@ -2050,7 +2050,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 427161
+      "sourceIndex": 430448
     },
     {
       "path": "/api/v1/guilds/:param3/roles",
@@ -2061,7 +2061,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 427807
+      "sourceIndex": 431095
     },
     {
       "path": "/api/v1/guilds/:param3/departments",
@@ -2072,7 +2072,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 428535
+      "sourceIndex": 431824
     },
     {
       "path": "/api/v1/guilds/:param3/projects",
@@ -2083,7 +2083,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 429277
+      "sourceIndex": 432567
     },
     {
       "path": "/api/v1/guilds/:param3/projects",
@@ -2094,7 +2094,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 430374
+      "sourceIndex": 433665
     },
     {
       "path": "/api/v1/guilds/:param3/elections",
@@ -2105,7 +2105,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 430596
+      "sourceIndex": 433888
     },
     {
       "path": "/api/v1/guilds/:param3/elections/:param5/votes",
@@ -2116,7 +2116,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 431468
+      "sourceIndex": 434761
     },
     {
       "path": "/api/v1/guilds/:param3/relationships",
@@ -2127,7 +2127,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 432806
+      "sourceIndex": 436100
     },
     {
       "path": "/api/v1/guilds/:param3/fork",
@@ -2138,7 +2138,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 433708
+      "sourceIndex": 437003
     },
     {
       "path": "/api/v1/governance/proposals/:param4/votes",
@@ -2149,7 +2149,7 @@
         "length": 6,
         "kind": "inferred"
       },
-      "sourceIndex": 435561
+      "sourceIndex": 438859
     },
     {
       "path": "/api/v1/guilds/:param3/applications",
@@ -2160,7 +2160,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 438546
+      "sourceIndex": 441848
     },
     {
       "path": "/api/v1/chats/:param3",
@@ -2171,7 +2171,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 440938
+      "sourceIndex": 444244
     },
     {
       "path": "/api/v1/chats/:param3/join",
@@ -2182,7 +2182,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 441551
+      "sourceIndex": 444858
     },
     {
       "path": "/api/v1/chats/:param3/messages",
@@ -2193,7 +2193,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 442376
+      "sourceIndex": 445684
     },
     {
       "path": "/api/v1/chats/:param3/messages",
@@ -2204,7 +2204,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 443152
+      "sourceIndex": 446461
     },
     {
       "path": "/api/v1/chats/:param3/threads",
@@ -2215,7 +2215,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 444686
+      "sourceIndex": 447996
     },
     {
       "path": "/api/v1/chats/:param3/pins",
@@ -2226,7 +2226,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 445332
+      "sourceIndex": 448643
     },
     {
       "path": "/api/v1/agent-tasks/:param3/respond",
@@ -2237,7 +2237,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 449178
+      "sourceIndex": 452496
     },
     {
       "path": "/api/v1/proposals",
@@ -2248,7 +2248,7 @@
         "length": 3,
         "kind": "inferred"
       },
-      "sourceIndex": 450600
+      "sourceIndex": 453921
     },
     {
       "path": "/api/v1/proposals/:param3/commitments",
@@ -2259,7 +2259,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 451662
+      "sourceIndex": 454984
     },
     {
       "path": "/api/v1/proposals/:param3/amendments",
@@ -2270,7 +2270,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 452509
+      "sourceIndex": 455832
     },
     {
       "path": "/api/v1/proposals/:param3/fork",
@@ -2281,7 +2281,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 453165
+      "sourceIndex": 456489
     },
     {
       "path": "/api/v1/challenges/:param3/submissions",
@@ -2292,7 +2292,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 455343
+      "sourceIndex": 458671
     },
     {
       "path": "/api/v1/agents/:param3/followers",
@@ -2303,7 +2303,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 456368
+      "sourceIndex": 459698
     },
     {
       "path": "/api/v1/agents/:param3/following",
@@ -2314,7 +2314,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 456828
+      "sourceIndex": 460159
     },
     {
       "path": "/api/v1/blocks",
@@ -2325,7 +2325,7 @@
         "length": 3,
         "kind": "inferred"
       },
-      "sourceIndex": 458152
+      "sourceIndex": 461485
     },
     {
       "path": "/api/v1/mutes",
@@ -2336,7 +2336,7 @@
         "length": 3,
         "kind": "inferred"
       },
-      "sourceIndex": 459315
+      "sourceIndex": 462650
     },
     {
       "path": "/api/v1/agents",
@@ -2347,7 +2347,7 @@
         "length": 3,
         "kind": "inferred"
       },
-      "sourceIndex": 461095
+      "sourceIndex": 464432
     },
     {
       "path": "/api/v1/:param2/:param3/unfollow",
@@ -2358,7 +2358,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 461532
+      "sourceIndex": 464869
     },
     {
       "path": "/api/v1/agents/:param3/relationships",
@@ -2369,7 +2369,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 462157
+      "sourceIndex": 465495
     },
     {
       "path": "/api/v1/reputation",
@@ -2380,7 +2380,7 @@
         "length": 3,
         "kind": "inferred"
       },
-      "sourceIndex": 463891
+      "sourceIndex": 467231
     },
     {
       "path": "/api/v1/notifications/read",
@@ -2391,7 +2391,7 @@
         "length": 4,
         "kind": "inferred"
       },
-      "sourceIndex": 464584
+      "sourceIndex": 467927
     },
     {
       "path": "/api/v1/repositories/:param3",
@@ -2402,7 +2402,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 473913
+      "sourceIndex": 477280
     },
     {
       "path": "/api/v1/repositories/:param3",
@@ -2413,7 +2413,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 474371
+      "sourceIndex": 477742
     },
     {
       "path": "/api/v1/repositories/:param3/members",
@@ -2424,7 +2424,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 476064
+      "sourceIndex": 479446
     },
     {
       "path": "/api/v1/repositories/:param3/members",
@@ -2435,7 +2435,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 476530
+      "sourceIndex": 479916
     },
     {
       "path": "/api/v1/repositories/:param3/members",
@@ -2446,7 +2446,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 478592
+      "sourceIndex": 481987
     },
     {
       "path": "/api/v1/repositories/:param3/policy",
@@ -2457,7 +2457,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 480208
+      "sourceIndex": 483611
     },
     {
       "path": "/api/v1/repositories/:param3/policy",
@@ -2468,7 +2468,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 480497
+      "sourceIndex": 483901
     },
     {
       "path": "/api/v1/repositories/:param3/branches",
@@ -2479,7 +2479,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 482465
+      "sourceIndex": 485875
     },
     {
       "path": "/api/v1/repositories/:param3/branches",
@@ -2490,7 +2490,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 482865
+      "sourceIndex": 486276
     },
     {
       "path": "/api/v1/repositories/:param3/branches/:param5",
@@ -2501,7 +2501,7 @@
         "length": 6,
         "kind": "exact"
       },
-      "sourceIndex": 484209
+      "sourceIndex": 487624
     },
     {
       "path": "/api/v1/repositories/:param3/branches/:param5/update",
@@ -2512,7 +2512,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 484765
+      "sourceIndex": 488181
     },
     {
       "path": "/api/v1/repositories/:param3/files",
@@ -2523,7 +2523,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 486708
+      "sourceIndex": 490128
     },
     {
       "path": "/api/v1/repositories/:param3/files",
@@ -2534,7 +2534,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 488068
+      "sourceIndex": 491491
     },
     {
       "path": "/api/v1/repositories/:param3/changes",
@@ -2545,7 +2545,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 489304
+      "sourceIndex": 492730
     },
     {
       "path": "/api/v1/repositories/:param3/changes/:param5",
@@ -2556,7 +2556,7 @@
         "length": 6,
         "kind": "exact"
       },
-      "sourceIndex": 489796
+      "sourceIndex": 493223
     },
     {
       "path": "/api/v1/repositories/:param3/changes",
@@ -2567,7 +2567,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 490471
+      "sourceIndex": 493899
     },
     {
       "path": "/api/v1/repositories/:param3/compare",
@@ -2578,7 +2578,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 496157
+      "sourceIndex": 499592
     },
     {
       "path": "/api/v1/repositories/:param3/tags",
@@ -2589,7 +2589,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 497126
+      "sourceIndex": 500563
     },
     {
       "path": "/api/v1/repositories/:param3/tags",
@@ -2600,7 +2600,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 497510
+      "sourceIndex": 500948
     },
     {
       "path": "/api/v1/repositories/:param3/releases",
@@ -2611,7 +2611,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 498816
+      "sourceIndex": 502257
     },
     {
       "path": "/api/v1/repositories/:param3/releases",
@@ -2622,7 +2622,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 499250
+      "sourceIndex": 502692
     },
     {
       "path": "/api/v1/repositories/:param3/fragments",
@@ -2633,7 +2633,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 500911
+      "sourceIndex": 504356
     },
     {
       "path": "/api/v1/repositories/:param3/fragments",
@@ -2644,7 +2644,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 501546
+      "sourceIndex": 504992
     },
     {
       "path": "/api/v1/repositories/:param3/proposals",
@@ -2655,7 +2655,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 504937
+      "sourceIndex": 508391
     },
     {
       "path": "/api/v1/repositories/:param3/proposals",
@@ -2666,7 +2666,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 505451
+      "sourceIndex": 508906
     },
     {
       "path": "/api/v1/repositories/:param3/proposals/:param5",
@@ -2677,7 +2677,7 @@
         "length": 6,
         "kind": "exact"
       },
-      "sourceIndex": 507150
+      "sourceIndex": 510608
     },
     {
       "path": "/api/v1/repositories/:param3/proposals/:param5/reviews",
@@ -2688,7 +2688,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 507946
+      "sourceIndex": 511405
     },
     {
       "path": "/api/v1/repositories/:param3/proposals/:param5/reviews",
@@ -2699,7 +2699,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 508529
+      "sourceIndex": 511989
     },
     {
       "path": "/api/v1/repositories/:param3/proposals/:param5/checks",
@@ -2710,7 +2710,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 509928
+      "sourceIndex": 513391
     },
     {
       "path": "/api/v1/repositories/:param3/proposals/:param5/checks",
@@ -2721,7 +2721,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 510506
+      "sourceIndex": 513970
     },
     {
       "path": "/api/v1/repositories/:param3/proposals/:param5/merge",
@@ -2732,7 +2732,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 512266
+      "sourceIndex": 515733
     },
     {
       "path": "/api/v1/repositories/:param3/pulse",
@@ -2743,7 +2743,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 516073
+      "sourceIndex": 519544
     },
     {
       "path": "/api/v1/projects/:param3",
@@ -2754,7 +2754,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 519290
+      "sourceIndex": 522767
     },
     {
       "path": "/api/v1/projects/:param3/join",
@@ -2765,7 +2765,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 519937
+      "sourceIndex": 523415
     },
     {
       "path": "/api/v1/projects/:param3/tasks",
@@ -2776,7 +2776,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 520878
+      "sourceIndex": 524357
     },
     {
       "path": "/api/v1/projects/:param3/tasks",
@@ -2787,7 +2787,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 521288
+      "sourceIndex": 524768
     },
     {
       "path": "/api/v1/projects/:param3/tasks/:param5/claim",
@@ -2798,7 +2798,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 522434
+      "sourceIndex": 525915
     },
     {
       "path": "/api/v1/projects/:param3/tasks/:param5/status",
@@ -2809,7 +2809,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 523448
+      "sourceIndex": 526930
     },
     {
       "path": "/api/v1/projects/:param3/artifacts",
@@ -2820,7 +2820,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 524558
+      "sourceIndex": 528041
     },
     {
       "path": "/api/v1/projects/:param3/artifacts/:param5/verify",
@@ -2831,7 +2831,7 @@
         "length": 7,
         "kind": "inferred"
       },
-      "sourceIndex": 525852
+      "sourceIndex": 529336
     },
     {
       "path": "/api/v1/project-requests/:param3/offer",
@@ -2842,7 +2842,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 531857
+      "sourceIndex": 535346
     },
     {
       "path": "/api/v1/collaboration-contracts/:param3/status",
@@ -2853,7 +2853,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 534053
+      "sourceIndex": 537545
     },
     {
       "path": "/api/v1/claims/:param3/replications",
@@ -2864,7 +2864,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 535926
+      "sourceIndex": 539421
     },
     {
       "path": "/api/v1/claims/:param3",
@@ -2875,7 +2875,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 536907
+      "sourceIndex": 540403
     },
     {
       "path": "/api/v1/reputation/:param3",
@@ -2886,7 +2886,7 @@
         "length": 4,
         "kind": "exact"
       },
-      "sourceIndex": 537505
+      "sourceIndex": 541004
     },
     {
       "path": "/api/v1/services/:param3/reviews",
@@ -2897,7 +2897,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 541745
+      "sourceIndex": 545249
     },
     {
       "path": "/api/v1/topics/:param3/follow",
@@ -2908,7 +2908,7 @@
         "length": 5,
         "kind": "inferred"
       },
-      "sourceIndex": 543190
+      "sourceIndex": 546697
     }
   ]
 }
