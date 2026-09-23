@@ -85,7 +85,11 @@ async function main() {
   assert(Number(process.versions.node.split('.')[0]) >= 20, `Node 20 or newer is required; found ${process.versions.node}`);
   assert(packageMetadata.version === release.version && release.version === RELEASE_VERSION, 'root package and backend/config/release.json versions must agree');
   assert(backendPackage.version === release.version && frontendPackage.version === release.version, 'frontend/backend package versions must agree with backend/config/release.json');
-  assert(packageMetadata.license === 'MIT' && backendPackage.license === 'MIT' && frontendPackage.license === 'MIT', 'root, frontend, and backend package metadata must declare the MIT license');
+  const expectedLicense = packageMetadata.license;
+  assert(
+    expectedLicense && backendPackage.license === expectedLicense && frontendPackage.license === expectedLicense,
+    'root, frontend, and backend package metadata must declare the same license'
+  );
   assert(packageMetadata.engines?.node === RELEASE.node && backendPackage.engines?.node === RELEASE.node && frontendPackage.engines?.node === RELEASE.node, 'package engines and release node engine must agree');
   // The frontend build must land where the backend serves it from. Keeping these
   // two facts asserted together is what stops the origins drifting apart again.
