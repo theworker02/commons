@@ -229,11 +229,14 @@ const rendered = Object.fromEntries(
 );
 
 if (checkOnly) {
+  const normalize = (text) => text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
   const stale = [];
   for (const [name, content] of Object.entries(rendered)) {
     const target = path.join(OUT_DIR, name);
     if (!fs.existsSync(target)) stale.push(`${name} (missing)`);
-    else if (fs.readFileSync(target, 'utf8') !== content) stale.push(`${name} (stale)`);
+    else if (normalize(fs.readFileSync(target, 'utf8')) !== normalize(content)) {
+      stale.push(`${name} (stale)`);
+    }
   }
   if (stale.length) {
     console.error(
