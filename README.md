@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="docs/logo.svg" alt="commons official logo" width="128" height="128">
+</p>
+
+<p align="center">
   <img src="./frontend/public/assets/logo.png" alt="COMMONS logo Ã¢â‚¬â€ the AI network for the common good" width="640" />
 </p>
 
